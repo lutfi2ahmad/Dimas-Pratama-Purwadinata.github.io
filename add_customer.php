@@ -7,7 +7,7 @@ include_once("init.php");
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>POSNIC - Add Customer</title>
+    <title>Pure Nature Shop - Tambah Data Pelanggan</title>
 
     <!-- Stylesheets -->
 
@@ -33,27 +33,17 @@ include_once("init.php");
 <div id="header-with-tabs">
 
     <div class="page-full-width cf">
-
-        <ul id="tabs" class="fl">
-            <li><a href="dashboard.php" class="dashboard-tab">Dashboard</a></li>
-            <li><a href="view_sales.php" class=" sales-tab">Sales</a></li>
-            <li><a href="view_customers.php" class="active-tab customers-tab">Customers</a></li>
-            <li><a href="view_purchase.php" class="purchase-tab">Purchase</a></li>
-            <li><a href="view_supplier.php" class="  supplier-tab">Supplier</a></li>
-            <li><a href="view_product.php" class="stock-tab">Stocks / Products</a></li>
-            <li><a href="view_payments.php" class="payment-tab">Payments / Outstandings</a></li>
-            <li><a href="view_report.php" class="report-tab">Reports</a></li>
-        </ul>
-        <!-- end tabs -->
-
-        <!-- Change this image to your own company's logo -->
-        <!-- The logo will automatically be resized to 30px height. -->
-        <a href="#" id="company-branding-small" class="fr"><img src="<?php if (isset($_SESSION['logo'])) {
-                echo "upload/" . $_SESSION['logo'];
-            } else {
-                echo "upload/posnic.png";
-            } ?>" alt="Point of Sale"/></a>
-
+      <ul id="tabs" class="fl">
+          <li><a href="dashboard.php" class=" dashboard-tab">Dashboard</a></li>
+          <li><a href="view_sales.php" class="sales-tab">Penjualan</a></li>
+          <li><a href="view_customers.php" class="active-tab customers-tab">Pelangggan</a></li>
+          <li><a href="view_purchase.php" class="purchase-tab">Pembelian</a></li>
+          <li><a href="view_supplier.php" class=" supplier-tab">Pemasok</a></li>
+          <li><a href="view_product.php" class=" stock-tab">Produk</a></li>
+          <li><a href="view_payments.php" class="payment-tab">Pembayaran</a></li>
+          <li><a href="view_report.php" class="report-tab">Rekap Laporan</a></li>
+      </ul>
+  <a href="dashboard.php" id="company-branding-small" class="fr"><img src="images/s.png" alt=""></a>
     </div>
     <!-- end full-width -->
 
@@ -68,10 +58,10 @@ include_once("init.php");
 
         <div class="side-menu fl">
 
-            <h3>Customers Management</h3>
+            <h3>kelola Data Pelanggan</h3>
             <ul>
-                <li><a href="add_customer.php">Add Customer</a></li>
-                <li><a href="view_customers.php">View Customers</a></li>
+                <li><a href="add_customer.php">Tambah Pelanggan</a></li>
+                <li><a href="view_customers.php">Lihat Pelanggan</a></li>
             </ul>
 
         </div>
@@ -83,9 +73,9 @@ include_once("init.php");
 
                 <div class="content-module-heading cf">
 
-                    <h3 class="fl">Add Customer</h3>
-                    <span class="fr expand-collapse-text">Click to collapse</span>
-                    <span class="fr expand-collapse-text initial-expand">Click to expand</span>
+                    <h3 class="fl">Tambah Pelanggan</h3>
+                    <!-- <span class="fr expand-collapse-text">Click to collapse</span>
+                    <span class="fr expand-collapse-text initial-expand">Click to expand</span> -->
 
                 </div>
                 <!-- end content-module-heading -->
@@ -126,7 +116,7 @@ include_once("init.php");
                             $name = mysqli_real_escape_string($db->connection, $_POST['name']);
                             $address = mysqli_real_escape_string($db->connection, $_POST['address']);
                             $contact1 = mysqli_real_escape_string($db->connection, $_POST['contact1']);
-                            $contact2 = mysqli_real_escape_string($db->connection, $_POST['contact2']);
+                            //$contact2 = mysqli_real_escape_string($db->connection, $_POST['contact2']);
 
                             $count = $db->countOf("customer_details", "customer_name='$name'");
                             if ($count == 1) {
@@ -146,15 +136,15 @@ include_once("init.php");
 
                     <form name="form1" method="post" id="form1" action="">
 
-                        <p><strong>Add Customer Details </strong> - Add New ( Control +A)</p>
+                        <p><strong>Tambah Rincian Pelanggan </strong></p>
                         <table class="form" border="0" cellspacing="0" cellpadding="0">
                             <tr>
-                                <td><span class="man">*</span>Name:</td>
+                                <td><span class="man">*</span>Nama: </td>
                                 <td><input name="name" placeholder="ENTER YOUR FULL NAME" type="text" id="name"
                                            maxlength="200" class="round default-width-input" onkeypress="return lettersOnly(event)"
                                            value="<?php echo isset($name) ? $name : ''; ?>"/></td>
-                                <td><b><span class="man">*</span></b><b>Contact</b><b>-1</b></td>
-                                <td><input name="contact1" placeholder="ENTER YOUR CONTACT1" type="text"
+                                <td><b><span class="man">*</span>Kontak: </td>
+                                <td><input name="contact1" placeholder="" type="text"
                                            id="buyingrate" maxlength="20" class="round default-width-input" onkeypress="return numbersonly(event)"
                                            value="<?php echo isset($contact1) ? $contact1 : ''; ?>"/></td>
                             </tr>
@@ -164,13 +154,9 @@ include_once("init.php");
                             </tr>
                             <tr>
                                 <td><b>Address:</b></td>
-                                <td><textarea name="address" placeholder="ENTER YOUR ADDRESS" cols="15"
+                                <td><textarea name="address" placeholder="Masukan Alamat" cols="30"
                                               class="round full-width-textarea"><?php echo isset($address) ? $address : ''; ?></textarea>
                                 </td>
-                                <td><b>Contact</b><b>-2</b></td>
-                                <td><input name="contact2" placeholder="ENTER YOUR CONTACT2" type="text"
-                                           id="sellingrate" maxlength="20" class="round default-width-input" onkeypress="return numbersonly(event)"
-                                           value="<?php echo isset($contact2) ? $contact2 : ''; ?>"/></td>
 
                             </tr>
 
@@ -184,13 +170,12 @@ include_once("init.php");
                                 </td>
                                 <td>
                                     <input class="button round blue image-right ic-add text-upper" type="submit"
-                                           name="Submit" value="Add">
-                                    (Control + S)
+                                           name="Submit" value="Simpan">
                                 <td>
                                     &nbsp;
                                 </td>
                                 <td align="right"><input class="button round red text-upper" type="reset" name="Reset"
-                                                         value="Reset"></td>
+                                                         value="Batal"></td>
                             </tr>
                         </table>
                     </form>

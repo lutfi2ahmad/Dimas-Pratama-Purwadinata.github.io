@@ -6,7 +6,7 @@ include_once("init.php");
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>POSNIC - Add supplier</title>
+        <title>Pure Nature Shop - Jenis Produk</title>
 
         <!-- Stylesheets -->
         <!---->
@@ -34,34 +34,19 @@ include_once("init.php");
 
             <div class="page-full-width cf">
 
-                <ul id="tabs" class="fl">
-                    <li><a href="dashboard.php" class="dashboard-tab">Dashboard</a></li>
-                    <li><a href="view_sales.php" class="sales-tab">Sales</a></li>
-                    <li><a href="view_customers.php" class=" customers-tab">Customers</a></li>
-                    <li><a href="view_purchase.php" class="purchase-tab">Purchase</a></li>
-                    <li><a href="view_supplier.php" class=" supplier-tab">Supplier</a></li>
-                    <li><a href="view_product.php" class="active-tab stock-tab">Stocks / Products</a></li>
-                    <li><a href="view_payments.php" class="payment-tab">Payments / Outstandings</a></li>
-                    <li><a href="view_report.php" class="report-tab">Reports</a></li>
-                </ul>
-                <!-- end tabs -->
-
-                <!-- Change this image to your own company's logo -->
-                <!-- The logo will automatically be resized to 30px height. -->
-                <a href="#" id="company-branding-small" class="fr"><img src="<?php
-        if (isset($_SESSION['logo'])) {
-            echo "upload/" . $_SESSION['logo'];
-        } else {
-            echo "upload/posnic.png";
-        }
-        ?>" alt="Point of Sale"/></a>
-
-            </div>
-            <!-- end full-width -->
-
+              <ul id="tabs" class="fl">
+                  <li><a href="dashboard.php" class=" dashboard-tab">Dashboard</a></li>
+                  <li><a href="view_sales.php" class="sales-tab">Penjualan</a></li>
+                  <li><a href="view_customers.php" class=" customers-tab">Pelangggan</a></li>
+                  <li><a href="view_purchase.php" class="purchase-tab">Pembelian</a></li>
+                  <li><a href="view_supplier.php" class=" supplier-tab">Pemasok</a></li>
+                  <li><a href="view_product.php" class="active-tab stock-tab">Produk</a></li>
+                  <li><a href="view_payments.php" class="payment-tab">Pembayaran</a></li>
+                  <li><a href="view_report.php" class="report-tab">Rekap Laporan</a></li>
+              </ul>
+          <a href="dashboard.php" id="company-branding-small" class="fr"><img src="images/s.png" alt=""></a>
+          </div>
         </div>
-        <!-- end header -->
-
 
         <!-- MAIN CONTENT -->
         <div id="content">
@@ -70,13 +55,14 @@ include_once("init.php");
 
                 <div class="side-menu fl">
 
-                    <h3>Stock Category Management</h3>
-                    <ul>
-                        <li><a href="add_stock.php">Add Stock/Product</a></li>
-                        <li><a href="view_product.php">View Stock/Product</a></li>
-                        <li><a href="add_category.php">Add Stock Category</a></li>
-                        <li><a href="view_category.php">view Stock Category</a></li>
-                    </ul>
+                  <h3>Kelola Data Produk</h3>
+                  <ul>
+                      <li><a href="add_stock.php">Tambah Produk</a></li>
+                      <li><a href="view_product.php">Lihat Produk</a></li>
+                      <li><a href="add_category.php">Tambah Jenis Produk</a></li>
+                      <li><a href="view_category.php">Lihat Jenis Produk</a></li>
+                      <li><a href="view_stock_availability.php">Lihat Stok</a></li>
+                  </ul>
 
                 </div>
                 <!-- end side-menu -->
@@ -87,10 +73,9 @@ include_once("init.php");
 
                         <div class="content-module-heading cf">
 
-                            <h3 class="fl">Stock Category</h3>
-                            <span class="fr expand-collapse-text">Click to collapse</span>
-                            <span class="fr expand-collapse-text initial-expand">Click to expand</span>
-
+                          <h3 class="fl">Jenis Produk</h3>
+                          <!-- <span class="fr expand-collapse-text">Click to collapse</span>
+                          <span class="fr expand-collapse-text initial-expand">Click to expand</span> -->
                         </div>
                         <!-- end content-module-heading -->
 
@@ -101,15 +86,15 @@ include_once("init.php");
                                 <form action="" method="post" name="search">
                                     <input name="searchtxt" type="text" class="round my_text_box" placeholder="Search">
                                     &nbsp;&nbsp;<input name="Search" type="submit" class="my_button round blue   text-upper"
-                                                       value="Search">
+                                                       value="cari">
                                 </form>
                                 <form action="" method="get" name="limit_go">
-                                    Page per Record<input name="limit" type="text" class="round my_text_box" id="search_limit"
+                                    item yang ditampilkan<input name="limit" type="text" class="round my_text_box" id="search_limit"
                                                           style="margin-left:5px;"
                                                           value="<?php if (isset($_GET['limit'])) echo $_GET['limit'];
                                                                         else echo "10"; ?>"
                                                           size="3" maxlength="3">
-                                    <input name="go" type="button" value="Go" class=" round blue my_button  text-upper"
+                                    <input name="go" type="button" value="pergi" class=" round blue my_button  text-upper"
                                            onclick="return confirmLimitSubmit()">
                                 </form>
 
@@ -117,13 +102,13 @@ include_once("init.php");
 
                                     <input type="hidden" name="table" value="category_details">
                                     <input type="hidden" name="return" value="view_category.php">
-                                    <input type="button" name="selectall" value="SelectAll"
+                                    <input type="button" name="selectall" value="pilih semua"
                                            class="my_button round blue   text-upper" onClick="checkAll()"
                                            style="margin-left:5px;"/>
-                                    <input type="button" name="unselectall" value="DeSelectAll"
+                                    <input type="button" name="unselectall" value="batal pilih"
                                            class="my_button round blue   text-upper" onClick="uncheckAll()"
                                            style="margin-left:5px;"/>
-                                    <input name="dsubmit" type="button" value="Delete Selected"
+                                    <input name="dsubmit" type="button" value="hapus item terpilih"
                                            class="my_button round blue   text-upper" style="margin-left:5px;"
                                            onclick="return confirmDeleteSubmit()"/>
 
@@ -315,11 +300,11 @@ include_once("init.php");
                                         ?>
                                         <tr>
                                             <th>No</th>
-                                            <th>Category Name</th>
-                                            <th>description</th>
+                                            <th>Jenis Produk</th>
+                                            <th>keterangan</th>
 
-                                            <th>Edit /Delete</th>
-                                            <th>Select</th>
+                                            <th>Edit / hapus</th>
+                                            <th>pilih</th>
                                         </tr>
 
                                         <?php
@@ -362,13 +347,9 @@ include_once("init.php");
 }
 ?>
                                         <table>
-                                            <tr>
-                                                <td align='right'style="width:20%"><?php $end = $no + $co1; ?>
-                                                    Showing <?php echo $no + 1; ?> to <?php echo $end; ?> of <?php echo $co; ?> entries</td><td >&nbsp;</td><td><?php echo $pagination; ?></td>
-                                            </tr>
 
 
-                                        </table> 
+                                        </table>
                                     </table>
                                 </form>
 
@@ -376,8 +357,6 @@ include_once("init.php");
                         </div>
                     </div>
                     <div id="footer">
-                        <p>Any Queries email to <a href="mailto:sridhar.posnic@gmail.com?subject=Stock%20Management%20System">sridhar.posnic@gmail.com</a>.
-                        </p>
 
                     </div>
                     <!-- end footer -->

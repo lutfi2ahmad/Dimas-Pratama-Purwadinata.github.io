@@ -1,5 +1,5 @@
 
-  
+
         /*$.validator.setDefaults({
          submitHandler: function() { alert("submitted!"); }
          });*/
@@ -20,15 +20,14 @@
                 },
                 messages: {
                     username: {
-                        required: "Please enter a username",
-                        minlength: "Your username must consist of at least 3 characters"
+                        required: "Silahkan masukan username",
+                        minlength: "Gunakan minimal 3 huruf"
                     },
                     password: {
-                        required: "Please provide a password",
-                        minlength: "Your password must be at least 3 characters long"
+                        required: "Silahkan masukan password",
+                        minlength: "Gunakan minimal 3 huruf"
                     }
                 }
             });
 
         });
-

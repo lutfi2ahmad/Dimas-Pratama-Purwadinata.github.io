@@ -6,7 +6,7 @@ include_once("init.php");
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>POSNIC - Add Purchase</title>
+        <title>Pure Nature Shop - Tambah Data Pembelian</title>
 
         <!-- Stylesheets -->
 
@@ -36,28 +36,17 @@ include_once("init.php");
 
             <div class="page-full-width cf">
 
-                <ul id="tabs" class="fl">
-                    <li><a href="dashboard.php" class="dashboard-tab">Dashboard</a></li>
-                    <li><a href="view_sales.php" class="sales-tab">Sales</a></li>
-                    <li><a href="view_customers.php" class=" customers-tab">Customers</a></li>
-                    <li><a href="view_purchase.php" class="active-tab purchase-tab">Purchase</a></li>
-                    <li><a href="view_supplier.php" class=" supplier-tab">Supplier</a></li>
-                    <li><a href="view_product.php" class="stock-tab">Stocks / Products</a></li>
-                    <li><a href="view_payments.php" class="payment-tab">Payments / Outstandings</a></li>
-                    <li><a href="view_report.php" class="report-tab">Reports</a></li>
-                </ul>
-                <!-- end tabs -->
-
-                <!-- Change this image to your own company's logo -->
-                <!-- The logo will automatically be resized to 30px height. -->
-                <a href="#" id="company-branding-small" class="fr"><img src="<?php
-        if (isset($_SESSION['logo'])) {
-            echo "upload/" . $_SESSION['logo'];
-        } else {
-            echo "upload/posnic.png";
-        }
-        ?>" alt="Point of Sale"/></a>
-
+              <ul id="tabs" class="fl">
+                  <li><a href="dashboard.php" class="dashboard-tab">Dashboard</a></li>
+                  <li><a href="view_sales.php" class="sales-tab">Penjualan</a></li>
+                  <li><a href="view_customers.php" class=" customers-tab">Pelangggan</a></li>
+                  <li><a href="view_purchase.php" class="active-tab purchase-tab">Pembelian</a></li>
+                  <li><a href="view_supplier.php" class=" supplier-tab">Pemasok</a></li>
+                  <li><a href="view_product.php" class=" stock-tab">Produk</a></li>
+                  <li><a href="view_payments.php" class="payment-tab">Pembayaran</a></li>
+                  <li><a href="view_report.php" class="report-tab">Rekap Laporan</a></li>
+              </ul>
+              <a href="dashboard.php" id="company-branding-small" class="fr"><img src="images/s.png" alt=""></a>
             </div>
             <!-- end full-width -->
 
@@ -72,10 +61,10 @@ include_once("init.php");
 
                 <div class="side-menu fl">
 
-                    <h3>Purchase Management</h3>
+                    <h3>Kelola Pengeluaran</h3>
                     <ul>
-                        <li><a href="add_purchase.php">Add Purchase</a></li>
-                        <li><a href="view_purchase.php">View Purchase </a></li>
+                        <li><a href="add_purchase.php">Tambah Pembelian</a></li>
+                        <li><a href="view_purchase.php">Lihat Pembelian</a></li>
                     </ul>
 
                 </div>
@@ -87,10 +76,9 @@ include_once("init.php");
 
                         <div class="content-module-heading cf">
 
-                            <h3 class="fl">Add Purchase</h3>
-                            <span class="fr expand-collapse-text">Click to collapse</span>
-                            <span class="fr expand-collapse-text initial-expand">Click to expand</span>
-
+                            <h3 class="fl">Tambah Data Pembelian</h3>
+                          <!-- <span class="fr expand-collapse-text">Click to collapse</span>
+                           <span class="fr expand-collapse-text initial-expand">Click to expand</span> -->
                         </div>
                         <!-- end content-module-heading -->
 
@@ -183,31 +171,31 @@ include_once("init.php");
                             <form name="form1" method="post" id="form1" action="">
                                 <input type="hidden" id="posnic_total">
 
-                                <p><strong>Add Stock/Product </strong> - Add New ( Control +2)</p>
+                                <p><strong>Tambah Pembelian</strong></p>
                                 <table class="form" border="0" cellspacing="0" cellpadding="0">
                                     <tr>
                             <?php
-                                $str = $db->maxOfAll("stock_id", "stock_entries"); 
-                                $array = explode(' ', $str);                           
+                                $str = $db->maxOfAll("stock_id", "stock_entries");
+                                $array = explode(' ', $str);
                                 $autoid = ++$array[0];
                                 if($str == ''){
-                                  $autoid_new = "PR".$autoid;  
+                                  $autoid_new = "PR".$autoid;
                                 }
                                   ?>
                                         <?php if($str == ''){ ?>
-                                        <td>Purchase ID:</td>
+                                        <td>IDpembelian:</td>
                                         <td><input name="purchaseid" type="text" id="purchaseid" readonly="readonly" maxlength="200"
                                                    class="round default-width-input" style="width:130px "
                                                    value="<?php echo $autoid_new ?>"/></td>
-                                        
+
                                         <?php } ?>
                                         <?php if($str != ''){ ?>
-                                        <td>Purchase ID:</td>
+                                        <td>IDpembelian:</td>
                                         <td><input name="purchaseid" type="text" id="purchaseid" readonly="readonly" maxlength="200"
                                                    class="round default-width-input" style="width:130px "
                                                    value="<?php echo $autoid ?>"/></td>
                                         <?php }?>
-                                        <td>Date:</td>
+                                        <td>Tanggal:</td>
                                         <td><input name="date" id="test1" placeholder=""  style="margin-left: 15px;" value="<?php date_default_timezone_set("Asia/Kolkata");
                                         echo date('Y-m-d H:i:s'); ?>"
                                                    type="text" id="name" maxlength="200" class="round default-width-input"/>
@@ -216,16 +204,16 @@ include_once("init.php");
 
                                     </tr>
                                     <tr>
-                                        <td><span class="man">*</span>Supplier:</td>
-                                        <td><input name="supplier" placeholder="ENTER SUPPLIER" type="text" id="supplier"
+                                        <td><span class="man">*</span>Nama Pemasok:</td>
+                                        <td><input name="supplier" placeholder="" type="text" id="supplier"
                                                    maxlength="200" class="round default-width-input" style="width:130px "/></td>
 
-                                        <td>Address:</td>
-                                        <td><input name="address" placeholder="ENTER ADDRESS" type="text" id="address"
+                                        <td>Alamat:</td>
+                                        <td><input name="address" placeholder="" type="text" id="address"
                                                    maxlength="200" class="round default-width-input"/></td>
 
-                                        <td>contact:</td>
-                                        <td><input name="contact" placeholder="ENTER CONTACT" type="text" id="contact1"
+                                        <td>Kontak:</td>
+                                        <td><input name="contact" placeholder="" type="text" id="contact1"
                                                    maxlength="200" class="round default-width-input"
                                                    onkeypress="return numbersonly(event)" style="width:120px "/></td>
 
@@ -235,11 +223,11 @@ include_once("init.php");
                                 <input type="hidden" id="edit_guid">
                                 <table class="form">
                                     <tr>
-                                        <td>Item</td>
-                                        <td>Quantity</td>
-                                        <td>Cost</td>
-                                        <td>Selling</td>
-                                        <td>Available Stock</td>
+                                        <td>Nama Produk</td>
+                                        <td>Kuantitas</td>
+                                        <td>Harga Asli</td>
+                                        <td>Harga Penjualan</td>
+                                        <td>Stok tersedia</td>
                                         <td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Total</td>
                                         <td> &nbsp;</td>
                                     </tr>
@@ -271,48 +259,34 @@ include_once("init.php");
 
                                     </tr>
                                 </table>
-                                <div style="overflow:auto ;max-height:300px;  ">
-                                    <table class="form" id="item_copy_final">
-
-                                    </table>
-                                </div>
-
-                                <table class="form">
+                                <table class="form"  style="width: inherit; transform: translate(157px, 10px);">
                                     <tr>
                                         <td>Mode &nbsp;</td>
                                         <td>
                                             <select name="mode">
                                                 <option value="cash">Cash</option>
-                                                <option value="cash">Cash</option>
                                                 <option value="cheque">Cheque</option>
-
                                                 <option value="other">Other</option>
                                             </select>
                                         </td>
-                                        <td>Description</td>
-                                        <td><textarea name="description"></textarea></td>
-                                        <td>Grand Total:<input type="hidden" readonly="readonly" id="grand_total"
-                                                               name="subtotal">
-                                            <input type="text" id="main_grand_total" class="round default-width-input"
+                                        <td>keterangan</td>
+                                        <td><textarea name=""></textarea></td>
+                                            <input type="hidden" id="main_grand_total" class="round default-width-input"
                                                    onkeypress="return numbersonly(event)" readonly="readonly"
                                                    style="text-align:right;width: 120px">
                                         </td>
-                                        <td> &nbsp;</td>
-                                        <td> &nbsp;</td>
-                                        <td> &nbsp;</td>
+
                                     </tr>
                                 </table>
-                                <table class="form">
+                                <table class="form"  style="width: inherit; transform: translate(157px, 10px);">
                                     <tr>
                                         <td>
                                             <input class="button round blue image-right ic-add text-upper" type="submit"
-                                                   name="Submit" value="Add" onclick="return checkValid(this);">
+                                                   name="Submit" value="Simpan" onclick="return checkValid(this);">
                                         </td>
-                                        <td> (Control + S)
-                                           </td>
                                         <td> &nbsp;</td>
                                         <td> <input class="button round red   text-upper" type="reset" id="Reset" name="Reset"
-                                                   value="Reset"> </td>
+                                                   value="Batal"> </td>
                                     </tr>
                                 </table>
                             </form>

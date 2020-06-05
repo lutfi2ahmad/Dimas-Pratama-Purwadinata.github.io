@@ -7,7 +7,7 @@ include_once("init.php");
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>POSNIC - Add Stock Category</title>
+    <title>Pure Nature Shop - Tambah Jenis Produk</title>
 
     <!-- Stylesheets -->
 
@@ -20,7 +20,7 @@ include_once("init.php");
     <?php include_once("tpl/common_js.php"); ?>
     <script src="js/script.js"></script>
     <script src="js/add_category.js"></script>
-   
+
 </head>
 <body>
 
@@ -34,29 +34,18 @@ include_once("init.php");
 
     <div class="page-full-width cf">
 
-        <ul id="tabs" class="fl">
-            <li><a href="dashboard.php" class="dashboard-tab">Dashboard</a></li>
-            <li><a href="view_sales.php" class="sales-tab">Sales</a></li>
-            <li><a href="view_customers.php" class=" customers-tab">Customers</a></li>
-            <li><a href="view_purchase.php" class="purchase-tab">Purchase</a></li>
-            <li><a href="view_supplier.php" class=" supplier-tab">Supplier</a></li>
-            <li><a href="view_product.php" class="active-tab stock-tab">Stocks / Products</a></li>
-            <li><a href="view_payments.php" class="payment-tab">Payments / Outstandings</a></li>
-            <li><a href="view_report.php" class="report-tab">Reports</a></li>
-        </ul>
-        <!-- end tabs -->
-
-        <!-- Change this image to your own company's logo -->
-        <!-- The logo will automatically be resized to 30px height. -->
-        <a href="#" id="company-branding-small" class="fr"><img src="<?php if (isset($_SESSION['logo'])) {
-                echo "upload/" . $_SESSION['logo'];
-            } else {
-                echo "upload/posnic.png";
-            } ?>" alt="Point of Sale"/></a>
-
-    </div>
-    <!-- end full-width -->
-
+      <ul id="tabs" class="fl">
+          <li><a href="dashboard.php" class="dashboard-tab">Dashboard</a></li>
+          <li><a href="view_sales.php" class="sales-tab">Penjualan</a></li>
+          <li><a href="view_customers.php" class=" customers-tab">Pelangggan</a></li>
+          <li><a href="view_purchase.php" class="purchase-tab">Pembelian</a></li>
+          <li><a href="view_supplier.php" class=" supplier-tab">Pemasok</a></li>
+          <li><a href="view_product.php" class="active-tab stock-tab">Produk</a></li>
+          <li><a href="view_payments.php" class="payment-tab">Pembayaran</a></li>
+          <li><a href="view_report.php" class="report-tab">Rekap Laporan</a></li>
+      </ul>
+  <a href="dashboard.php" id="company-branding-small" class="fr"><img src="images/s.png" alt=""></a>
+  </div>
 </div>
 <!-- end header -->
 
@@ -68,12 +57,13 @@ include_once("init.php");
 
         <div class="side-menu fl">
 
-            <h3>supplier Management</h3>
+            <h3>Kelola Data Produk</h3>
             <ul>
-                <li><a href="add_stock.php">Add Stock/Product</a></li>
-                <li><a href="view_product.php">View Stock/Product</a></li>
-                <li><a href="add_category.php">Add Stock Category</a></li>
-                <li><a href="view_category.php">view Stock Category</a></li>
+                <li><a href="add_stock.php">Tambah Produk</a></li>
+                <li><a href="view_product.php">Lihat Produk</a></li>
+                <li><a href="add_category.php">Tambah Jenis Produk</a></li>
+                <li><a href="view_category.php">Lihat Jenis Produk</a></li>
+                <li><a href="view_stock_availability.php">Lihat Stok</a></li>
             </ul>
 
         </div>
@@ -85,13 +75,12 @@ include_once("init.php");
 
                 <div class="content-module-heading cf">
 
-                    <h3 class="fl">Add Stock Category</h3>
-                    <span class="fr expand-collapse-text">Click to collapse</span>
-                    <span class="fr expand-collapse-text initial-expand">Click to expand</span>
+                    <h3 class="fl">Tambah Jenis Produk</h3>
+                    <!-- <span class="fr expand-collapse-text">Click to collapse</span>
+                    <span class="fr expand-collapse-text initial-expand">Click to expand</span> -->
 
                 </div>
                 <!-- end content-module-heading -->
-
                 <div class="content-module-main cf">
 
 
@@ -148,11 +137,11 @@ include_once("init.php");
 
                     <form name="form1" method="post" id="form1" action="">
 
-                        <p><strong>Add New Category </strong> - Add New ( Control +A)</p>
+                        <p><strong>Tambah Jenis Produk</strong></p>
                         <table class="form" border="0" cellspacing="0" cellpadding="0">
                             <tr>
-                                <td><span class="man">*</span>Name:</td>
-                                <td><input name="name" placeholder="ENTER CATEGORY NAME" type="text" id="name"
+                                <td><span class="man">*</span>Nama:</td>
+                                <td><input name="name" placeholder="Jenis Produk " type="text" id="name"
                                            maxlength="200" class="round default-width-input"
                                            value="<?php echo isset($name) ? $name : ''; ?>"/></td>
 
@@ -162,8 +151,8 @@ include_once("init.php");
                                 <td>&nbsp;</td>
                             </tr>
                             <tr>
-                                <td>Address</td>
-                                <td><textarea name="address" placeholder="ENTER DESCRIPTION" cols="8"
+                                <td>Deskripsi</td>
+                                <td><textarea name="address" placeholder="" cols="8"
                                               class="round full-width-textarea"><?php echo isset($address) ? $address : ''; ?></textarea>
                                 </td>
 
@@ -180,11 +169,10 @@ include_once("init.php");
                                 </td>
                                 <td>
                                     <input class="button round blue image-right ic-add text-upper" type="submit"
-                                           name="Submit" value="Add">
-                                    (Control + S)
+                                           name="Submit" value="Simpan">
 
                                 <td align="right"><input class="button round red   text-upper" type="reset" name="Reset"
-                                                         value="Reset"></td>
+                                                         value="Batal"></td>
                             </tr>
                         </table>
                     </form>
@@ -192,7 +180,6 @@ include_once("init.php");
 
                 </div>
                 <!-- end content-module-main -->
-
 
             </div>
             <!-- end content-module -->
@@ -207,9 +194,6 @@ include_once("init.php");
 
     <!-- FOOTER -->
     <div id="footer">
-        <p>Any Queries email to <a href="mailto:syvoliamary@gmail.com?subject=Stock%20Management%20System">syvoliamary@gmail.com</a>.
-    </p>
-
     </div>
     <!-- end footer -->
 

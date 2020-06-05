@@ -7,7 +7,7 @@ include_once("init.php");
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>POSNIC - Add Category</title>
+    <title>Pure Nature Shop - Tambah Jenis Produk</title>
 
     <!-- Stylesheets -->
 
@@ -33,10 +33,10 @@ include_once("init.php");
                         minlength: 3,
                         maxlength: 200
                     },
-                    address: {
-                        minlength: 3,
-                        maxlength: 500
-                    },
+                    // address: {
+                    //     minlength: 3,
+                    //     maxlength: 500
+                    // },
                     contact1: {
                         minlength: 3,
                         maxlength: 20
@@ -48,12 +48,12 @@ include_once("init.php");
                 },
                 messages: {
                     name: {
-                        required: "Please enter a Customer Name",
-                        minlength: "Customer must consist of at least 3 characters"
+                        required: "Silahkan Masukan nama pelanggan",
+                        minlength: "minimal mengandung 3 karakter"
                     },
-                    address: {
-                        minlength: "Customer Address must be at least 3 characters long",
-                        maxlength: "Customer Address must be at least 3 characters long"
+                    // address: {
+                    //     minlength: "Customer Address must be at least 3 characters long",
+                    //     maxlength: "Customer Address must be at least 3 characters long"
                     }
                 }
             });
@@ -76,25 +76,16 @@ include_once("init.php");
     <div class="page-full-width cf">
 
         <ul id="tabs" class="fl">
-            <li><a href="dashboard.php" class="dashboard-tab">Dashboard</a></li>
-            <li><a href="view_sales.php" class="sales-tab">Sales</a></li>
-            <li><a href="view_customers.php" class=" customers-tab">Customers</a></li>
-            <li><a href="view_purchase.php" class="purchase-tab">Purchase</a></li>
-            <li><a href="view_supplier.php" class=" supplier-tab">Supplier</a></li>
-            <li><a href="view_product.php" class="active-tab stock-tab">Stocks / Products</a></li>
-            <li><a href="view_payments.php" class="payment-tab">Payments / Outstandings</a></li>
-            <li><a href="view_report.php" class="report-tab">Reports</a></li>
+          <li><a href="dashboard.php" class="dashboard-tab">Dashboard</a></li>
+          <li><a href="view_sales.php" class="sales-tab">Penjualan</a></li>
+          <li><a href="view_customers.php" class=" customers-tab">Pelangggan</a></li>
+          <li><a href="view_purchase.php" class="purchase-tab">Pembelian</a></li>
+          <li><a href="view_supplier.php" class=" supplier-tab">Pemasok</a></li>
+          <li><a href="view_product.php" class="active-tab stock-tab">Produk</a></li>
+          <li><a href="view_payments.php" class="payment-tab">Pembayaran</a></li>
+            <li><a href="view_report.php" class="report-tab">Rekap Laporan</a></li>
         </ul>
-        <!-- end tabs -->
-
-        <!-- Change this image to your own company's logo -->
-        <!-- The logo will automatically be resized to 30px height. -->
-        <a href="#" id="company-branding-small" class="fr"><img src="<?php if (isset($_SESSION['logo'])) {
-                echo "upload/" . $_SESSION['logo'];
-            } else {
-                echo "upload/posnic.png";
-            } ?>" alt="Point of Sale"/></a>
-
+    <a href="dashboard.php" id="company-branding-small" class="fr"><img src="images/s.png" alt=""></a>
     </div>
     <!-- end full-width -->
 

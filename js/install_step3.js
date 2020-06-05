@@ -11,6 +11,7 @@
                     uname: {
                         required: true,
                         minlength: 5
+
                     },
                     password: {
                         required: true,
@@ -18,25 +19,23 @@
                     },
                     answer: {
                         required: true,
-                        minlength: 5
+                        minlength: 3
                     }
                 },
                 messages: {
                     uname: {
-                        required: "Please Enter The User Name",
-                        minlength: "Your User Name must consist of at least 5 characters"
+                        required: "Masukkan username",
+                        minlength: "Gunakan minimal 5 huruf"
                     },
                     password: {
-                        required: "Please Enter The Password",
-                        minlength: "Your Password must be at least 5 characters long"
+                        required: "Masukkan Password",
+                        minlength: "Gunakan minimal 3 huruf"
                     },
                     answer: {
-                        required: "Please Enter Security Question Answer",
-                        minlength: "Your Security Question Answer must be at least 5 characters long"
+                        required: "Masukkan Jawaban Pertanyaaan Keamanan",
+                        minlength: "Gunakan minimal 3 huruf"
                     }
                 }
             });
 
         });
-
-

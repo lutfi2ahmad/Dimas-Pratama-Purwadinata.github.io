@@ -18,8 +18,8 @@
                 },
                 messages: {
                     name: {
-                        required: "Please Enter The Database Name",
-                        minlength: "Your Database must consist of at least 3 characters"
+                        required: "Masukkan nama database",
+                        minlength: "Gunakan minimal 3 huruf"
                     }
                 }
             });
@@ -35,5 +35,3 @@
             document.getElementById("name").disabled = true;
 
         }
-   
-

@@ -7,7 +7,7 @@ include_once("init.php");
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>POSNIC - Add Supplier</title>
+    <title>Pure Nature Shop - Tambah Data Pemasok</title>
 
     <!-- Stylesheets -->
 
@@ -39,26 +39,17 @@ include_once("init.php");
     <div class="page-full-width cf">
 
         <ul id="tabs" class="fl">
-            <li><a href="dashboard.php" class="dashboard-tab">Dashboard</a></li>
-            <li><a href="view_sales.php" class=" sales-tab">Sales</a></li>
-            <li><a href="view_customers.php" class="customers-tab">Customers</a></li>
-            <li><a href="view_purchase.php" class="purchase-tab">Purchase</a></li>
-            <li><a href="view_supplier.php" class="active-tab   supplier-tab">Supplier</a></li>
-            <li><a href="view_product.php" class="stock-tab">Stocks / Products</a></li>
-            <li><a href="view_payments.php" class="payment-tab">Payments / Outstandings</a></li>
-            <li><a href="view_report.php" class="report-tab">Reports</a></li>
+          <li><a href="dashboard.php" class="dashboard-tab">Dashboard</a></li>
+          <li><a href="view_sales.php" class="sales-tab">Penjualan</a></li>
+          <li><a href="view_customers.php" class=" customers-tab">Pelangggan</a></li>
+          <li><a href="view_purchase.php" class="purchase-tab">Pembelian</a></li>
+          <li><a href="view_supplier.php" class="active-tab  supplier-tab">Pemasok</a></li>
+          <li><a href="view_product.php" class=" stock-tab">Produk</a></li>
+          <li><a href="view_payments.php" class="payment-tab">Pembayaran</a></li>
+            <li><a href="view_report.php" class="report-tab">Rekap Laporan</a></li>
         </ul>
-        <!-- end tabs -->
-
-        <!-- Change this image to your own company's logo -->
-        <!-- The logo will automatically be resized to 30px height. -->
-        <a href="#" id="company-branding-small" class="fr"><img src="<?php if (isset($_SESSION['logo'])) {
-                echo "upload/" . $_SESSION['logo'];
-            } else {
-                echo "upload/posnic.png";
-            } ?>" alt="Point of Sale"/></a>
-
-    </div>
+  <a href="dashboard.php" id="company-branding-small" class="fr"><img src="images/s.png" alt=""></a>
+</div>
     <!-- end full-width -->
 
 </div>
@@ -72,10 +63,10 @@ include_once("init.php");
 
         <div class="side-menu fl">
 
-            <h3>supplier Management</h3>
+            <h3>Kelola Data Pemasok</h3>
             <ul>
-                <li><a href="add_supplier.php">Add Supplier</a></li>
-                <li><a href="view_supplier.php">View Supplier</a></li>
+                <li><a href="add_supplier.php">Tambah Pemasok</a></li>
+                <li><a href="view_supplier.php">Lihat Pemasok</a></li>
             </ul>
 
         </div>
@@ -87,9 +78,9 @@ include_once("init.php");
 
                 <div class="content-module-heading cf">
 
-                    <h3 class="fl">Add supplier</h3>
-                    <span class="fr expand-collapse-text">Click to collapse</span>
-                    <span class="fr expand-collapse-text initial-expand">Click to expand</span>
+                    <h3 class="fl">Tambah Data Pemasok</h3>
+                    <!-- <span class="fr expand-collapse-text">Click to collapse</span>
+                    <span class="fr expand-collapse-text initial-expand">Click to expand</span> -->
 
                 </div>
                 <!-- end content-module-heading -->
@@ -154,13 +145,13 @@ include_once("init.php");
 
                     <form name="form1" method="post" id="form1" action="">
 
-                        <p><strong>Add Supplier Details </strong> - Add New ( Control +u)</p>
+                        <p><strong>Tambah Rincian Pemasok</strong></p>
                         <table class="form" border="0" cellspacing="0" cellpadding="0">
                             <tr>
-                                <td><span class="man">*</span>Name:</td>
+                                <td><span class="man">*</span>Nama:</td>
                                 <td><input name="name" placeholder="ENTER YOUR FULL NAME" type="text" id="name"
                                            maxlength="200" class="round default-width-input"onKeyPress="return ValidateAlpha(event)"                                           value="<?php echo isset($name) ? $name : ''; ?>"/></td>
-                                <td><span class="man">*</span><b>Contact</b><b>-1</b></td>
+                                <td><span class="man">*</span><b>Kontak</b><b>-1</b></td>
                                 <td><input name="contact1" placeholder="ENTER YOUR CONTACT-1" type="text"
                                            id="buyingrate" maxlength="20" class="round default-width-input"onkeypress="return numbersonly(event)"
                                            value="<?php echo isset($contact1) ? $contact1 : ''; ?>"/></td>
@@ -170,11 +161,11 @@ include_once("init.php");
                                 <td>&nbsp;</td>
                             </tr>
                             <tr>
-                                <td>Address:</td>
+                                <td>Alamat</td>
                                 <td><textarea name="address" placeholder="ENTER YOUR ADDRESS" cols="8"
                                               class="round full-width-textarea"><?php echo isset($address) ? $address : ''; ?></textarea>
                                 </td>
-                                <td><b>Contact</b><b>-2</b></td>
+                                <td><b>Kontak</b><b>-2</b></td>
                                 <td><input name="contact2" placeholder="ENTER YOUR CONTACT-2" type="text"
                                            id="sellingrate" maxlength="20" class="round default-width-input"onkeypress="return numbersonly(event)"
                                            value="<?php echo isset($contact2) ? $contact2 : ''; ?>"/></td>
@@ -191,11 +182,9 @@ include_once("init.php");
                                 </td>
                                 <td>
                                     <input class="button round blue image-right ic-add text-upper" type="submit"
-                                           name="Submit" value="Add">
-                                    <b>(Control + S)</b>
-
+                                           name="Submit" value="Simpan">
                                 <td align="right"><input class="button round red   text-upper" type="reset" name="Reset"
-                                                         value="Reset"></td>
+                                                         value="Batal"></td>
                             </tr>
                         </table>
                     </form>
@@ -218,8 +207,6 @@ include_once("init.php");
 
     <!-- FOOTER -->
     <div id="footer">
-        <p>Any Queries email to <a href="mailto:syvoliamary@gmail.com?subject=Stock%20Management%20System">syvoliamary@gmail.com</a>.
-    </p>
 
     </div>
     <!-- end footer -->

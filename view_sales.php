@@ -7,7 +7,7 @@ include_once("init.php");
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>POSNIC - Stock</title>
+    <title>Pure Nature Shop - Data Penjualan</title>
 
     <!-- Stylesheets -->
     <!---->
@@ -27,8 +27,8 @@ include_once("init.php");
 	//var c=sessionStorage.getItem('checked-checkboxesviewsales');
 	//alert(c);
 </script>
-		
-    
+
+
 </head>
 <body>
 
@@ -41,28 +41,17 @@ include_once("init.php");
 <div id="header-with-tabs">
 
     <div class="page-full-width cf">
-
-        <ul id="tabs" class="fl">
-            <li><a href="dashboard.php" class="dashboard-tab">Dashboard</a></li>
-			<li>
-            <li><a href="view_sales.php" class="active-tab sales-tab">Sales</a></li>
-            <li><a href="view_customers.php" class=" customers-tab">Customers</a></li>
-            <li><a href="view_purchase.php" class=" purchase-tab">Purchase</a></li>
-            <li><a href="view_supplier.php" class=" supplier-tab">Supplier</a></li>
-            <li><a href="view_product.php" class=" stock-tab">Stocks / Products</a></li>
-            <li><a href="view_payments.php" class="payment-tab">Payments / Outstandings</a></li>
-            <li><a href="view_report.php" class="report-tab">Reports</a></li>
-        </ul>
-        <!-- end tabs -->
-
-        <!-- Change this image to your own company's logo -->
-        <!-- The logo will automatically be resized to 30px height. -->
-        <a href="#" id="company-branding-small" class="fr"><img src="<?php if (isset($_SESSION['logo'])) {
-                echo "upload/" . $_SESSION['logo'];
-            } else {
-                echo "upload/posnic.png";
-            } ?>" alt="Point of Sale"/></a>
-
+      <ul id="tabs" class="fl">
+          <li><a href="dashboard.php" class="dashboard-tab">Dashboard</a></li>
+          <li><a href="view_sales.php" class="active-tab sales-tab">Penjualan</a></li>
+          <li><a href="view_customers.php" class=" customers-tab">Pelangggan</a></li>
+          <li><a href="view_purchase.php" class="purchase-tab">Pembelian</a></li>
+          <li><a href="view_supplier.php" class=" supplier-tab">Pemasok</a></li>
+          <li><a href="view_product.php" class=" stock-tab">Produk</a></li>
+          <li><a href="view_payments.php" class="payment-tab">Pembayaran</a></li>
+          <li><a href="view_report.php" class="report-tab">Rekap Laporan</a></li>
+      </ul>
+    <a href="dashboard.php" id="company-branding-small" class="fr"><img src="images/s.png" alt=""></a>
     </div>
     <!-- end full-width -->
 
@@ -77,10 +66,10 @@ include_once("init.php");
 
         <div class="side-menu fl">
 
-            <h3>Sales</h3>
+            <h3>Data Penjualan</h3>
             <ul>
-                <li><a href="add_sales.php">Add Sales</a></li>
-                <li><a href="view_sales.php">View Sales</a></li>
+                <li><a href="add_sales.php">Tambah Penjualan</a></li>
+                <li><a href="view_sales.php">Lihat Penjualan</a></li>
 
             </ul>
 
@@ -92,11 +81,7 @@ include_once("init.php");
             <div class="content-module">
 
                 <div class="content-module-heading cf">
-
-                    <h3 class="fl">Sales</h3>
-                    <span class="fr expand-collapse-text">Click to collapse</span>
-                    <span class="fr expand-collapse-text initial-expand">Click to expand</span>
-
+                    <h3 class="fl">Data Penjualan</h3>
                 </div>
                 <!-- end content-module-heading -->
 
@@ -107,36 +92,30 @@ include_once("init.php");
                         <form action="" method="post" name="search">
                             <input name="searchtxt" type="text" class="round my_text_box" placeholder="Search">
                             &nbsp;&nbsp;<input name="Search" type="submit" class="my_button round blue   text-upper"
-                                               value="Search">
+                                               value="cari">
                         </form>
                         <form action="" method="get" name="limit_go">
-                            Page per Record<input name="limit" type="text" class="round my_text_box" id="search_limit"
+                            item yang ditampilkan  <input name="limit" type="text" class="round my_text_box" id="search_limit"
                                                   style="margin-left:5px;"
                                                   value="<?php if (isset($_GET['limit'])) echo $_GET['limit']; else echo "10"; ?>"
                                                   size="3" maxlength="3">
-                            <input name="go" type="button" value="Go" class=" round blue my_button  text-upper"
+                            <input name="go" type="button" value="pergi" class=" round blue my_button  text-upper"
                                    onclick="return confirmLimitSubmit()">
                         </form>
 
                         <form name="deletefiles" action="delete.php" method="post">
 
-                            <input type="hidden" name="table" value="stock_sales">
-                            <input type="hidden" name="return" value="view_sales.php">
-                         <!--   <input type="button" name="selectall" value="SelectAll"
+                            <input type="hidden" name="table" value="category_details">
+                            <input type="hidden" name="return" value="view_category.php">
+                            <input type="button" name="selectall" value="pilih semua"
                                    class="my_button round blue   text-upper" onClick="checkAll()"
-                                   style="margin-left:5px;" id="checkall" />
-                            <input type="button" name="unselectall" value="DeSelectAll"
+                                   style="margin-left:5px;"/>
+                            <input type="button" name="unselectall" value="batal pilih"
                                    class="my_button round blue   text-upper" onClick="uncheckAll()"
-                                   style="margin-left:5px;" id="cancelall"/>-->
-								    <input name="dsubmit" type="button" value="Delete Selected"
+                                   style="margin-left:5px;"/>
+                            <input name="dsubmit" type="button" value="hapus item terpilih"
                                    class="my_button round blue   text-upper" style="margin-left:5px;"
-                                   onclick="return confirmDeleteSubmit();"/>
-								<!--   <input type="button" name="Deleteall" value="Delect All Records"
-                                   class="my_button round blue   text-upper" onClick="deleteall()"
-                                   style="margin-left:5px;" id="cancelall"/>-->
-								   
-                           
-
+                                   onclick="return confirmDeleteSubmit()"/>
 
                             <table id="tblDisplay">
                                 <?php
@@ -209,7 +188,7 @@ include_once("init.php");
 								{
 									$co++;
 								}
-								
+
 
                                 $sql = "SELECT * FROM stock_sales ORDER BY id desc LIMIT $start, $limit  ";
                                 if (isset($_POST['Search']) AND trim($_POST['searchtxt']) != "") {
@@ -377,15 +356,15 @@ include_once("init.php");
                                 ?>
                                 <tr>
                                     <th>No</th>
-                                    <th>Stock Name</th>
-                                    <th>Sales Id</th>
-                                    <th>Date</th>
-                                    <th>Customer</th>
+                                    <th>Nama Produk</th>
+                                    <th>Id Penjualan</th>
+                                    <th>Tanggal</th>
+                                    <th>Nama Pelanggan</th>
 
-                                    <th>Payment</th>
-                                    <th>Amount</th>
-                                    <th>Edit /Delete</th>
-                                    <th>Select</th>
+                                    <th>pembayaran</th>
+                                    <th>Jumlah</th>
+                                    <th> Edit / hapus</th>
+                                    <th>  Pilih</th>
                                 </tr>
 
                                 <?php
@@ -429,32 +408,21 @@ $count=0;
                                 } ?>
                                 <tr>
 
-                                   
+
 
                                 </tr>
                                 <table>
-                                    <tr>
-                                    <td align='right'style="width:20%"><?php $end=$no+$co1;?>
-                                        <?php if($end == '0'){?>
-                                            Showing <?php echo $no;?> to <?php echo $end;?> of <?php echo $co;?> entries</td><td >&nbsp;</td><td><?php echo $pagination; ?></td>
-                                <?php }else{?>
-                                    Showing <?php echo $no+1; ;?> to <?php echo $end;?> of <?php echo $co;?> entries</td><td >&nbsp;</td><td><?php echo $pagination; ?></td>
-                                <?php }?>
-                                    </tr>
 
+                                </table>
 
-                                </table> 
-                                                                
                             </table>
-                            
+
                         </form>
 
 
                 </div>
             </div>
             <div id="footer">
-              <p>Any Queries email to <a href="mailto:syvoliamary@gmail.com?subject=Stock%20Management%20System">syvoliamary@gmail.com</a>.
-    </p>
 
             </div>
             <!-- end footer -->

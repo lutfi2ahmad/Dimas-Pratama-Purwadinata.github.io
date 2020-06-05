@@ -1,5 +1,5 @@
 
-  
+
         /*$.validator.setDefaults({
          submitHandler: function() { alert("submitted!"); }
          });*/
@@ -20,17 +20,14 @@
                 },
                 messages: {
                     host: {
-                        required: "Please Enter The Host",
-                        minlength: "Your Host must consist of at least 3 characters"
+                        required: "Masukkan nama lokal host anda",
+                        minlength: "Gunakan minimal 3 huruf"
                     },
                     username: {
-                        required: "Please Enter The User Name",
-                        minlength: "Your User Name must be at least 3 characters long"
+                        required: "Masukkan username lokal host anda",
+                        minlength: "Gunakan minimal 3 huruf"
                     }
                 }
             });
 
         });
-
-
-

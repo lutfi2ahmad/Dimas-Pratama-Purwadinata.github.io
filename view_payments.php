@@ -7,7 +7,7 @@ include_once("init.php");
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>POSNIC - Payment</title>
+    <title>Pure Nature Shop - Data Pembayaran</title>
 
     <!-- Stylesheets -->
     <!---->
@@ -22,7 +22,7 @@ include_once("init.php");
     <script src="js/view_payments.js"></script>
 
 
-    
+
 </head>
 <body>
 
@@ -35,32 +35,19 @@ include_once("init.php");
 <div id="header-with-tabs">
 
     <div class="page-full-width cf">
-
-        <ul id="tabs" class="fl">
-            <li><a href="dashboard.php" class="dashboard-tab">Dashboard</a></li>
-            <li><a href="view_sales.php" class="sales-tab">Sales</a></li>
-            <li><a href="view_customers.php" class=" customers-tab">Customers</a></li>
-            <li><a href="view_purchase.php" class="purchase-tab">Purchase</a></li>
-            <li><a href="view_supplier.php" class=" supplier-tab">Supplier</a></li>
-            <li><a href="view_product.php" class=" stock-tab">Stocks / Products</a></li>
-            <li><a href="view_payments.php" class="active-tab payment-tab">Payments / Outstandings</a></li>
-            <li><a href="view_report.php" class="report-tab">Reports</a></li>
+      <ul id="tabs" class="fl">
+          <li><a href="dashboard.php" class="dashboard-tab">Dashboard</a></li>
+          <li><a href="view_sales.php" class="sales-tab">Penjualan</a></li>
+          <li><a href="view_customers.php" class=" customers-tab">Pelangggan</a></li>
+          <li><a href="view_purchase.php" class="purchase-tab">Pembelian</a></li>
+          <li><a href="view_supplier.php" class=" supplier-tab">Pemasok</a></li>
+          <li><a href="view_product.php" class="stock-tab">Produk</a></li>
+          <li><a href="view_payments.php" class="active-tab payment-tab">Pembayaran</a></li>
+          <li><a href="view_report.php" class="report-tab">Rekap Laporan</a></li>
         </ul>
-        <!-- end tabs -->
-
-        <!-- Change this image to your own company's logo -->
-        <!-- The logo will automatically be resized to 30px height. -->
-        <a href="#" id="company-branding-small" class="fr"><img src="<?php if (isset($_SESSION['logo'])) {
-                echo "upload/" . $_SESSION['logo'];
-            } else {
-                echo "upload/posnic.png";
-            } ?>" alt="Point of Sale"/></a>
-
+    <a href="dashboard.php" id="company-branding-small" class="fr"><img src="images/s.png" alt=""></a>
     </div>
-    <!-- end full-width -->
-
 </div>
-<!-- end header -->
 
 
 <!-- MAIN CONTENT -->
@@ -70,10 +57,10 @@ include_once("init.php");
 
         <div class="side-menu fl">
 
-            <h3>Payment</h3>
+            <h3>Data Pembayaran</h3>
             <ul>
-                <li><a href="view_payments.php">Payments</a></li>
-                <li><a href="view_out_standing.php">Out standings</a></li>
+                <li><a href="view_payments.php">Pemasukan</a></li>
+                <li><a href="view_out_standing.php">Pengeluaran</a></li>
 
             </ul>
 
@@ -86,9 +73,7 @@ include_once("init.php");
 
                 <div class="content-module-heading cf">
 
-                    <h3 class="fl">Payment</h3>
-                    <span class="fr expand-collapse-text">Click to collapse</span>
-                    <span class="fr expand-collapse-text initial-expand">Click to expand</span>
+                    <h3 class="fl">Pemasukan</h3>
 
                 </div>
                 <!-- end content-module-heading -->
@@ -100,14 +85,14 @@ include_once("init.php");
                         <form action="" method="post" name="search">
                             <input name="searchtxt" type="text" class="round my_text_box" placeholder="Search">
                             &nbsp;&nbsp;<input name="Search" type="submit" class="my_button round blue   text-upper"
-                                               value="Search">
+                                               value="cari">
                         </form>
                         <form action="" method="get" name="limit_go">
-                            Page per Record<input name="limit" type="text" class="round my_text_box" id="search_limit"
+                          item yang ditampilkan<input name="limit" type="text" class="round my_text_box" id="search_limit"
                                                   style="margin-left:5px;"
                                                   value="<?php if (isset($_GET['limit'])) echo $_GET['limit']; else echo "10"; ?>"
                                                   size="3" maxlength="3">
-                            <input name="go" type="button" value="Go" class=" round blue my_button  text-upper"
+                            <input name="go" type="button" value="pergi" class=" round blue my_button  text-upper"
                                    onclick="return confirmLimitSubmit()">
                         </form>
 
@@ -339,11 +324,11 @@ include_once("init.php");
                                 ?>
                                 <tr>
                                     <th>No</th>
-                                    <th>Transaction Id</th>
-                                    <th>Due Date</th>
+                                    <th>Id Transaksi</th>
+                                    <th>jatuh Tempo</th>
                                     <th>subtotal</th>
-                                    <th>Payment Received</th>
-                                 
+                                    <th>Pembayaran diterima</th>
+
 
                                 </tr>
 
@@ -367,20 +352,19 @@ include_once("init.php");
 
 
                                         <td>   <?php echo $no + $i; ?></td>
-                                        <td width="100"><?php echo $line->transactionid; ?></td>
+                                        <td><?php echo $line->transactionid; ?></td>
 
-                                        <td width="100"><?php echo $phpdate; ?></td>
+                                        <td><?php echo $phpdate; ?></td>
 
-                                        <td width="100"><?php echo $line->subtotal; ?></td>
-                                        <td width="100"><?php echo $line->subtotal; ?></td>
-                                      <!--  <td width="100"><?php echo $line->balance; ?></td>
+                                        <td><?php echo $line->subtotal; ?></td>
+                                        <td><?php echo $line->subtotal; ?></td>
+                                       <td><?php echo $line->balance; ?></td>
                                         <td>
                                             <a href="update_payment.php?sid=<?php echo $line->transactionid; ?>&table=stock_entries&return=view_payments.php">Pay
                                                 now
                                             </a>
 
                                         </td>
-										-->
 
 
                                     </tr>
@@ -400,8 +384,6 @@ include_once("init.php");
                 </div>
             </div>
             <div id="footer">
-               <p>Any Queries email to <a href="mailto:syvoliamary@gmail.com?subject=Stock%20Management%20System">syvoliamary@gmail.com</a>.
-    </p>
 
             </div>
             <!-- end footer -->

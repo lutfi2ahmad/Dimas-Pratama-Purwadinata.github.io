@@ -60,8 +60,8 @@ include_once("init.php");
 
             <h3>Kelola Produk</h3>
             <ul>
-              <li><a href="add_stock.php">Tambah Produk</a></li>
-              <li><a href="view_product.php">Lihat Produk</a></li>
+              <li><a href="add_stock.php">Tambah Bibit Tanaman</a></li>
+              <li><a href="view_product.php">Lihat Bibit Tanaman</a></li>
               <li><a href="add_category.php">Tambah Jenis Produk</a></li>
               <li><a href="view_category.php">Lihat Jenis Produk</a></li>
               <li><a href="view_stock_availability.php">Lihat Stok</a></li>
@@ -76,7 +76,7 @@ include_once("init.php");
 
                 <div class="content-module-heading cf">
 
-                    <h3 class="fl">Tambah Produk </h3>
+                    <h3 class="fl">Tambah Bibit Tanaman </h3>
                     <!-- <span class="fr expand-collapse-text">Click to collapse</span>
                     <span class="fr expand-collapse-text initial-expand">Click to expand</span> -->
                 </div>
@@ -168,7 +168,7 @@ include_once("init.php");
                                            class="round default-width-input"
                                            value="<?php echo isset($autoid) ? $autoid : ''; ?>"/></td>
 
-                                <td><span class="man">*</span>Nama:</td>
+                                <td><span class="man">*</span>Nama Bibit Tanaman:</td>
                                 <td><input name="name" placeholder="ENTER STOCK NAME" type="text" id="name"
                                            maxlength="200" class="round default-width-input"
                                            value="<?php echo isset($name) ? $name : ''; ?>"/></td>

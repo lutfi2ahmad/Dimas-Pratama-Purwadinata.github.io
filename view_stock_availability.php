@@ -72,11 +72,11 @@ include_once("init.php");
 
                     <h3>Stock Management</h3>
                     <ul>
-                        <li><a href="add_stock.php">Add Stock/Product</a></li>
-                        <li><a href="view_product.php">View Stock/Product</a></li>
-                        <li><a href="add_category.php">Add Stock Category</a></li>
-                        <li><a href="view_category.php">view Stock Category</a></li>
-                        <li><a href="view_stock_availability.php">view Stock Available</a></li>
+                        <li><a href="add_stock.php">Tambah Bibit Tanaman</a></li>
+                        <li><a href="view_product.php">Lihat Bibit Tanaman</a></li>
+                        <li><a href="add_category.php">Tambah Jenis Produk</a></li>
+                        <li><a href="view_category.php">Lihat Jenis Produk</a></li>
+                        <li><a href="view_stock_availability.php">Lihat Stok</a></li>
                     </ul>
 
 

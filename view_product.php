@@ -61,8 +61,8 @@ include_once("init.php");
 
                   <h3>Kelola Data Produk</h3>
                   <ul>
-                      <li><a href="add_stock.php">Tambah Produk</a></li>
-                      <li><a href="view_product.php">Lihat Produk</a></li>
+                      <li><a href="add_stock.php">Tambah Bibit Tanaman</a></li>
+                      <li><a href="view_product.php">Lihat Bibit Tanaman</a></li>
                       <li><a href="add_category.php">Tambah Jenis Produk</a></li>
                       <li><a href="view_category.php">Lihat Jenis Produk</a></li>
                       <li><a href="view_stock_availability.php">Lihat Stok</a></li>
@@ -77,7 +77,7 @@ include_once("init.php");
                     <div class="content-module">
 
                         <div class="content-module-heading cf">
-                          <h3 class="fl">Data Produk</h3>
+                          <h3 class="fl">Data Bibit Tanaman</h3>
                           <!-- <span class="fr expand-collapse-text">Click to collapse</span>
                           <span class="fr expand-collapse-text initial-expand">Click to expand</span> -->
 
@@ -309,8 +309,8 @@ include_once("init.php");
                                         ?>
                                         <tr>
                                             <th>No</th>
-                                            <th>Id Produk</th>
-                                            <th>Nama Produk</th>
+                                            <th>Id Bibit Tanaman</th>
+                                            <th>Nama Bibit Tanaman</th>
                                             <th>Pemasok</th>
                                             <th>Harga asli</th>  
                                             <th>Harga Penjualan</th>

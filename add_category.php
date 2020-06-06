@@ -59,8 +59,8 @@ include_once("init.php");
 
             <h3>Kelola Data Produk</h3>
             <ul>
-                <li><a href="add_stock.php">Tambah Produk</a></li>
-                <li><a href="view_product.php">Lihat Produk</a></li>
+                <li><a href="add_stock.php">Tambah Bibit Tanaman</a></li>
+                <li><a href="view_product.php">Lihat Bibit Tanaman</a></li>
                 <li><a href="add_category.php">Tambah Jenis Produk</a></li>
                 <li><a href="view_category.php">Lihat Jenis Produk</a></li>
                 <li><a href="view_stock_availability.php">Lihat Stok</a></li>

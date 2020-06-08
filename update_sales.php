@@ -2,41 +2,26 @@
 include_once("init.php");
 ?>
 <!DOCTYPE html>
-
 <html lang="en">
     <head>
         <meta charset="utf-8">
         <title>POSNIC - Update Supplier</title>
-
-        <!-- Stylesheets -->
-
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="js/date_pic/date_input.css">
         <link rel="stylesheet" href="lib/auto/css/jquery.autocomplete.css">
-
-        <!-- Optimize for mobile devices -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-        <!-- jQuery & JS files -->
         <?php include_once("tpl/common_js.php"); ?>
         <script src="js/date_pic/jquery.date_input.js"></script>
         <script src="lib/auto/js/jquery.autocomplete.js "></script>
         <script src="js/script.js"></script>
         <script src="js/update_sales.js"></script>
-       
     </head>
     <body>
-
-        <!-- TOP BAR -->
-<?php include_once("tpl/top_bar.php"); ?>
-        <!-- end top-bar -->
-
-
-        <!-- HEADER -->
+    
+    <?php include_once("tpl/top_bar.php"); ?>
         <div id="header-with-tabs">
-
             <div class="page-full-width cf">
-
                 <ul id="tabs" class="fl">
                     <li><a href="dashboard.php" class="dashboard-tab">Dashboard</a></li>
                     <li><a href="view_sales.php" class="active-tab sales-tab">Sales</a></li>
@@ -47,62 +32,36 @@ include_once("init.php");
                     <li><a href="view_payments.php" class="payment-tab">Payments / Outstandings</a></li>
                     <li><a href="view_report.php" class="report-tab">Reports</a></li>
                 </ul>
-                <!-- end tabs -->
-
-                <!-- Change this image to your own company's logo -->
-                <!-- The logo will automatically be resized to 30px height. -->
                 <a href="#" id="company-branding-small" class="fr"><img src="<?php
-if (isset($_SESSION['logo'])) {
-    echo "upload/" . $_SESSION['logo'];
-} else {
-    echo "upload/posnic.png";
-}
-?>" alt="Point of Sale"/></a>
+        if (isset($_SESSION['logo'])) {
+            echo "upload/" . $_SESSION['logo'];
+        } else {
+            echo "upload/posnic.png";
+        }
+    ?>" alt="Point of Sale"/></a>
 
             </div>
-            <!-- end full-width -->
-
         </div>
-        <!-- end header -->
-
-
-        <!-- MAIN CONTENT -->
         <div id="content">
-
             <div class="page-full-width cf">
-
                 <div class="side-menu fl">
-
                     <h3>Sales Management</h3>
                     <ul>
                         <li><a href="add_sales.php">Add Sales</a></li>
                         <li><a href="view_sales.php">View Sales</a></li>
-
                     </ul>
-
                 </div>
-                <!-- end side-menu -->
-
                 <div class="side-content fr">
-
                     <div class="content-module">
-
                         <div class="content-module-heading cf">
-
                             <h3 class="fl">Update sales</h3>
                             <span class="fr expand-collapse-text">Click to collapse</span>
                             <span class="fr expand-collapse-text initial-expand">Click to expand</span>
-
                         </div>
-                        <!-- end content-module-heading -->
-
                         <div class="content-module-main cf">
-
                             <?php
                             if (isset($_POST['supplier']) and isset($_POST['stock_name'])) {
-                                //$billnumber = mysqli_real_escape_string($db->connection, $_POST['bill_no']);
                                 $autoid1 = mysqli_real_escape_string($db->connection, $_POST['id']);
-
                                 $customer = mysqli_real_escape_string($db->connection, $_POST['supplier']);
                                 $address = mysqli_real_escape_string($db->connection, $_POST['address']);
                                 $contact = mysqli_real_escape_string($db->connection, $_POST['contact']);
@@ -110,33 +69,11 @@ if (isset($_SESSION['logo'])) {
                                 if ($count == 0) {
                                     $db->query("insert into customer_details(customer_name,customer_address,customer_contact1) values('$customer','$address','$contact')");
                                 }
-                                //$payment = mysqli_real_escape_string($db->connection, $_POST['payment']);
-                                //$balance = mysqli_real_escape_string($db->connection, $_POST['balance']);
-                                //$newvalue = $balance;
                                 $oldvalue = $db->queryUniqueValue("SELECT balance FROM customer_details WHERE customer_name='$customer'");
-                                //$diff = $newvalue - $oldvalue;
-                                //$temp_balance = isset($temp_balance) ? $temp_balance : 0;
-                                //$temp_balance = (int)$temp_balance + (int)$diff;
-                                //$db->execute("UPDATE customer_details SET balance='$temp_balance' WHERE customer_name='$customer'");
-                                // $selected_date = $_POST['due'];
-                                // $selected_date = strtotime($selected_date);
-                                // $mysqldate = date('Y-m-d H:i:s', $selected_date);
-                                //$due = $mysqldate;
                                 $mode = mysqli_real_escape_string($db->connection, $_POST['mode']);
-
-
-                                //$newvalue = $balance;
                                 $oldvalue = $db->queryUniqueValue("SELECT balance FROM customer_details WHERE customer_name='$customer'");
-                                // $diff = $newvalue - $oldvalue;
-                                //$temp_balance = (int)$temp_balance + (int)$diff;
-                                //$db->execute("UPDATE customer_details SET balance='$temp_balance' WHERE customer_name='$customer'");
-                                //$selected_date = $_POST['due'];
-                                // $selected_date = strtotime($selected_date);
-                                //$mysqldate = date('Y-m-d H:i:s', $selected_date);
-                                //$due = $mysqldate;
                                 $mode = mysqli_real_escape_string($db->connection, $_POST['mode']);
                                 $description = mysqli_real_escape_string($db->connection, $_POST['description']);
-
                                 $namet = $_POST['stock_name'];
                                 $quantityt = isset($_POST['quanitity']) ? $_POST['quanitity'] : 0;
                                 $ratet = $_POST['sell'];
@@ -146,9 +83,7 @@ if (isset($_SESSION['logo'])) {
                                     $tax = 00;
                                 }
                                 if ($_POST['tax_dis'] == "") {
-                                    
                                 }
-
                                 $totalt = $_POST['total'];
                                 $payable = mysqli_real_escape_string($db->connection, $_POST['subtotal']);
                                 $discount = mysqli_real_escape_string($db->connection, $_POST['discount']);
@@ -160,12 +95,9 @@ if (isset($_SESSION['logo'])) {
                                     $discount = 00;
                                 }
                                 $subtotal = mysqli_real_escape_string($db->connection, $_POST['payable']);
-
                                 $username = $_SESSION['username'];
-
                                 $i = 0;
                                 $j = 1;
-
                                 foreach ($namet as $name1) {
                                     $autoid = $_POST['s_id'][$i];
                                     $quantity = $_POST['quantity'][$i];
@@ -175,26 +107,19 @@ if (isset($_SESSION['logo'])) {
                                     $selected_date = strtotime($selected_date);
                                     $mysqldate = date('Y-m-d H:i:s', $selected_date);
                                     $username = $_SESSION['username'];
-
                                     $count = $db->queryUniqueValue("SELECT count(*) FROM stock_avail WHERE name='$name1' and quantity >='$quantity'");
-
                                     if ($count == 1) {
-
                                         $old_quantity = $db->queryUniqueValue("SELECT quantity FROM stock_sales WHERE id='$autoid' and count1='$i'");
                                         $db->query("update stock_sales set tax=$tax,tax_dis='$tax_did', grand_total='$payable',discount='$discount',dis_amount='$dis_amount', stock_name='$name1',selling_price='$rate',quantity='$quantity',amount='$total',date='$mysqldate',username='$username',customer_id='$customer',subtotal='$subtotal',mode='$mode',description='$description' where id='$autoid'");
                                         $quantity_diff = $quantity - $old_quantity;
                                         $quantity = $quantity + $quantity_diff;
                                         $amount = $db->queryUniqueValue("SELECT quantity FROM stock_avail WHERE name='$name1'");
                                         $amount1 = $amount - $quantity;
-
                                         $db->query("update stock_entries set  stock_id='$autoid',stock_name='$name1',quantity='$quantity',opening_stock='$amount',closing_stock='$amount1',date='$mysqldate',username='$username',type='sales',total='$total',selling_price='$rate' where salesid='$autoid' and count1='$j'");
-                                        //echo "<br><font color=green size=+1 >New Sales Added ! Transaction ID [ $autoid ]</font>" ;
-                                        //echo "<br><font color=green size=+1> Current Stock Availability is  [ $amount1 ]</font>" ;
                                         $j++;
                                     } else {
                                         echo "<br><font color=green size=+1 >There is no enough stock deliver for $name1! Please add stock !</font>";
                                     }
-
 
                                     $i++;
                                 }
@@ -202,8 +127,7 @@ if (isset($_SESSION['logo'])) {
                                 echo "<div style='background-color:yellow;'><br><font color=green size=+1 >Sales Updated ! Transaction ID [" . $_POST['stockid'] . "] !</font></div> ";
                                 echo "<script>window.open('add_sales_print.php?sid=$trans_id','myNewWinsr','width=620,height=800,toolbar=0,menubar=no,status=no,resizable=yes,location=no,directories=no');</script>";
                             }
-                            //echo "<div style='background-color:yellow;'><br><font color=green size=+1 >Sales Updated ! Transaction ID [ $autoid ]</font></div> ";
-                            //echo "<script>window.open('add_sales_print.php?sid=$autoid','myNewWinsr','width=620,height=800,toolbar=0,menubar=no,status=no,resizable=yes,location=no,directories=no');</script>";
+
                             ?>
                             <?php
                             if (isset($_GET['sid']))
@@ -218,9 +142,9 @@ if (isset($_SESSION['logo'])) {
                                 <table class="form" border="0" cellspacing="0" cellpadding="0">
                                     <tr>
                             <?php
-                            $max = $db->maxOfAll("transactionid", "stock_sales");
-                            $max = $max + 1;
-                            $autoid = "SL" . $max . "";
+                                $max = $db->maxOfAll("transactionid", "stock_sales");
+                                $max = $max + 1;
+                                $autoid = "SL" . $max . "";
                             ?>
                                         <td>Bill no:</td>
                                         <td><input name="stockid" type="text" id="stockid" readonly="readonly" maxlength="200"
@@ -231,8 +155,6 @@ if (isset($_SESSION['logo'])) {
                                         <td><input name="date" id="test1" placeholder="" value="<?php echo $line->date; ?> "
                                                    style="margin-left: 15px;" type="text" id="name" maxlength="200" class="round default-width-input"/>
                                         </td>
-
-
                                     </tr>
                                     <tr>
                                         <td>Customer:</td>
@@ -259,7 +181,6 @@ if (isset($_SESSION['logo'])) {
                                 </table>
                                 <input type="hidden" id="guid">
                                 <input type="hidden" id="edit_guid">
-
                                 <table id="hideen_display">
                                     <tr>
                                         <td>Item</td>
@@ -322,15 +243,15 @@ if (isset($_SESSION['logo'])) {
                                 <div style="overflow:auto ;max-height:300px;  ">
                                     <table class="form" id="item_copy_final">
 
-<?php
-$sid = $line->transactionid;
-$max = $db->maxOf("count1", "stock_sales", "transactionid ='$sid'");
+        <?php
+            $sid = $line->transactionid;
+            $max = $db->maxOf("count1", "stock_sales", "transactionid ='$sid'");
 
-for ($i = 1; $i <= $max; $i++) {
-    $line1 = $db->queryUniqueObject("SELECT * FROM stock_sales WHERE transactionid ='$sid' and count1=$i");
+            for ($i = 1; $i <= $max; $i++) {
+                $line1 = $db->queryUniqueObject("SELECT * FROM stock_sales WHERE transactionid ='$sid' and count1=$i");
 
-    $item = $db->queryUniqueValue("SELECT transactionid  FROM stock_sales WHERE stock_name='" . $line1->stock_name . "'");
-    ?>
+                $item = $db->queryUniqueValue("SELECT transactionid  FROM stock_sales WHERE stock_name='" . $line1->stock_name . "'");
+        ?>
 
                                             <tr>
 
@@ -374,10 +295,7 @@ for ($i = 1; $i <= $max; $i++) {
 <?php } ?>
                                     </table>
                                 </div>
-
-
                                 <table class="form">
-
                                     <tr>
                                         <td> &nbsp;</td>
                                         <td> &nbsp;</td>
@@ -414,7 +332,6 @@ for ($i = 1; $i <= $max; $i++) {
                                                    value="<?php echo $line->grand_total; ?>" class="round default-width-input"
                                                    style="text-align:right;width: 120px">
                                         </td>
-
                                     </tr>
                                     <tr>
                                         <td> &nbsp;</td>
@@ -447,8 +364,6 @@ for ($i = 1; $i <= $max; $i++) {
                                             </select>
                                         </td>
 
-
-
                                         <td>Description</td>
                                         <td><textarea name="description"><?php echo $line->description; ?></textarea></td>
                                         <td> &nbsp;</td>
@@ -470,30 +385,9 @@ for ($i = 1; $i <= $max; $i++) {
                                     </tr>
                                 </table>
                             </form>
-
-
                         </div>
-                        <!-- end content-module-main -->
-
-
                     </div>
-                    <!-- end content-module -->
-
-
                 </div>
-                <!-- end full-width -->
-
             </div>
-            <!-- end content -->
-
-
-            <!-- FOOTER -->
-            <div id="footer">
-                <p>Any Queries email to <a href="mailto:sridhar.posnic@gmail.com?subject=Stock%20Management%20System">sridhar.posnic@gmail.com</a>.
-                </p>
-
-            </div>
-            <!-- end footer -->
-
     </body>
 </html>

@@ -94,6 +94,7 @@
                     }
                     ?>
                 </select>
+                 <input type="hidden" name="dummy" value="1">
             </p>
             <input type="hidden" name="host" value="<?php echo $host ?>">
             <input type="hidden" name="username" value="<?php echo $user ?>">

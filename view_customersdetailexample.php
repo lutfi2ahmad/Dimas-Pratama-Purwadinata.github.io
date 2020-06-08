@@ -1,36 +1,22 @@
 <?php
-session_start(); // Use session variable on this page. This function must put on the top of page.
-if(!isset($_SESSION['username']) || $_SESSION['usertype'] != 'admin'){ // if session variable "username" does not exist.
-    header("location: index.php?msg=Please%20login%20to%20access%20admin%20area%20!"); // Re-direct to index.php
+session_start();
+if(!isset($_SESSION['username']) || $_SESSION['usertype'] != 'admin'){ 
+    header("location: index.php?msg=Please%20login%20to%20access%20admin%20area%20!"); 
 }
 else
 {
 include_once "db.php";
-
-
-
 ?><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
     <title>Welcome to Stock Management System !</title>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-    <link rel="stylesheet" href="css/validationEngine.jquery.css" type="text/css" media="screen" title="no title"
-          charset="utf-8"/>
+    <link rel="stylesheet" href="css/validationEngine.jquery.css" type="text/css" media="screen" title="no title" charset="utf-8"/>
     <link rel="stylesheet" href="css/template.css" type="text/css" media="screen" title="no title" charset="utf-8"/>
     <script src="js/jquery.min.js" type="text/javascript"></script>
-
     <script src="js/jquery.hotkeys-0.7.9.js"></script>
-    <!-- AJAX SUCCESS TEST FONCTION
-        <script>function callSuccessFunction(){alert("success executed")}
-                function callFailFunction(){alert("fail executed")}
-        </script>
-    -->
-
-
     <script LANGUAGE="JavaScript">
-        <!--
-        // Nannette Thacker http://www.shiningstar.net
         function confirmSubmit() {
             var agree = confirm("Are you sure you wish to Delete this Entry?");
             if (agree)
@@ -61,13 +47,11 @@ include_once "db.php";
             for (i = 0; i < field.length; i++)
                 field[i].checked = false;
         }
-        // -->
     </script>
     <script>
 
 
         $(document).ready(function () {
-            // SUCCESS AJAX CALL, replace "success: false," by:     success : function() { callSuccessFunction() },
             $("#name").focus();
             $("#form1").validationEngine(),
 
@@ -124,10 +108,6 @@ include_once "db.php";
                 window.location = "view_stock_details.php";
                 return false;
             });
-            //$.validationEngine.loadValidation("#date")
-            //alert($("#formID").validationEngine({returnIsValid:true}))
-            //$.validationEngine.buildPrompt("#date","This is an example","error")	 		 // Exterior prompt build example								 // input prompt close example
-            //$.validationEngine.closePrompt(".formError",true) 							// CLOSE ALL OPEN PROMPTS
         });
     </script>
     <style type="text/css">
@@ -252,8 +232,6 @@ include_once "db.php";
             color: #DDD;
 
         }
-
-        -->
     </style>
 </head>
 
@@ -266,8 +244,7 @@ include_once "db.php";
                     <td>
                         <table width="960" border="0" cellpadding="0" cellspacing="0" bgcolor="#ECECEC">
                             <tr>
-                                <td height="90" align="left" valign="top"><img src="images/topbanner.jpg" width="960"
-                                                                               height="82"></td>
+                                <td height="90" align="left" valign="top"><img src="images/topbanner.jpg" width="960" height="82"></td>
                             </tr>
                             <tr>
                                 <td height="800" align="left" valign="top">
@@ -320,8 +297,6 @@ include_once "db.php";
                                                         <td align="center">&nbsp;</td>
                                                     </tr>
                                                 </table>
-
-
                                             </td>
                                             <td height="500" align="center" valign="top">
                                                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -406,101 +381,48 @@ include_once "db.php";
                                                 if (isset($_POST['Search']) AND trim($_POST['searchtxt']) != "") {
 
                                                     $SQL = "SELECT * FROM  customer_details WHERE customer_name LIKE '%" . $_POST['searchtxt'] . "%' OR customer_address LIKE '%" . $_POST['searchtxt'] . "%' OR customer_contact1 LIKE '%" . $_POST['searchtxt'] . "%' OR customer_contact2 LIKE '%" . $_POST['searchtxt'] . "%' ORDER BY id DESC";
-
-
                                                 }
 
-                                                $tbl_name = "customer_details";        //your table name
-
-                                                // How many adjacent pages should be shown on each side?
-
+                                                $tbl_name = "customer_details";    
                                                 $adjacents = 3;
-
-
-                                                /*
-
-                                                   First get total number of rows in data table.
-
-                                                   If you have a WHERE clause in your query, make sure you mirror it here.
-
-                                                */
-
                                                 $query = "SELECT COUNT(*) as num FROM $tbl_name";
                                                 if (isset($_POST['Search']) AND trim($_POST['searchtxt']) != "") {
-
                                                     $query = "SELECT COUNT(*) as num FROM  customer_details WHERE customer_name LIKE '%" . $_POST['searchtxt'] . "%' OR customer_address LIKE '%" . $_POST['searchtxt'] . "%' OR customer_contact1 LIKE '%" . $_POST['searchtxt'] . "%' OR customer_contact2 LIKE '%" . $_POST['searchtxt'] . "%'";
-
-
                                                 }
-
 
                                                 $total_pages = mysqli_fetch_array(mysqli_query($db->connection, $query));
 
                                                 $total_pages = $total_pages['num'];
-
-
-                                                /* Setup vars for query. */
-
-                                                $targetpage = "view_customer_details.php";    //your file name  (the name of this file)
-
-                                                $limit = 10;                                //how many items to show per page
+                                                $targetpage = "view_customer_details.php";
+                                                $limit = 10;                                
                                                 if (isset($_GET['limit']))
                                                     $limit = $_GET['limit'];
-
-
                                                 $page = isset($_GET['page']) ? $_GET['page'] : 0;
 
                                                 if ($page)
-
-                                                    $start = ($page - 1) * $limit;            //first item to display on this page
-
+                                                    $start = ($page - 1) * $limit;        
                                                 else
-
-                                                    $start = 0;                                //if no page var is given, set start to 0
-
-
-                                                /* Get data. */
-
+                                                    $start = 0;                               
                                                 $sql = "SELECT * FROM customer_details  ORDER BY id DESC LIMIT $start, $limit ";
                                                 if (isset($_POST['Search']) AND trim($_POST['searchtxt']) != "") {
 
                                                     $sql = "SELECT * FROM  customer_details WHERE customer_name LIKE '%" . $_POST['searchtxt'] . "%' OR customer_address LIKE '%" . $_POST['searchtxt'] . "%' OR customer_contact1 LIKE '%" . $_POST['searchtxt'] . "%' OR customer_contact2 LIKE '%" . $_POST['searchtxt'] . "%' ORDER BY id DESC  LIMIT $start, $limit";
-
-
                                                 }
-
 
                                                 $result = mysqli_query($db->connection, $sql);
 
+                                                if ($page == 0) $page = 1;              
+                                                $prev = $page - 1;                            
 
-                                                /* Setup page vars for display. */
+                                                $next = $page + 1;                         
 
-                                                if ($page == 0) $page = 1;                    //if no page var is given, default to 1.
-
-                                                $prev = $page - 1;                            //previous page is page - 1
-
-                                                $next = $page + 1;                            //next page is page + 1
-
-                                                $lastpage = ceil($total_pages / $limit);        //lastpage is = total pages / items per page, rounded up.
-
-                                                $lpm1 = $lastpage - 1;                        //last page minus 1
-
-
-                                                /*
-
-                                                    Now we apply our rules and draw the pagination object.
-
-                                                    We're actually saving the code to a variable in case we want to draw it more than once.
-
-                                                */
-
+                                                $lastpage = ceil($total_pages / $limit);      
+                                                $lpm1 = $lastpage - 1;                       
                                                 $pagination = "";
 
                                                 if ($lastpage > 1) {
 
                                                     $pagination .= "<div class=\"pagination\">";
-
-                                                    //previous button
 
                                                     if ($page > 1)
 
@@ -510,11 +432,7 @@ include_once "db.php";
 
                                                         $pagination .= "<span class=\"disabled\">� previous</span>";
 
-
-                                                    //pages
-
-                                                    if ($lastpage < 7 + ($adjacents * 2))    //not enough pages to bother breaking it up
-
+                                                    if ($lastpage < 7 + ($adjacents * 2))    
                                                     {
 
                                                         for ($counter = 1; $counter <= $lastpage; $counter++) {
@@ -529,11 +447,9 @@ include_once "db.php";
 
                                                         }
 
-                                                    } elseif ($lastpage > 5 + ($adjacents * 2))    //enough pages to hide some
+                                                    } elseif ($lastpage > 5 + ($adjacents * 2))   
 
                                                     {
-
-                                                        //close to beginning; only hide later pages
 
                                                         if ($page < 1 + ($adjacents * 2)) {
 
@@ -555,8 +471,7 @@ include_once "db.php";
 
                                                             $pagination .= "<a href=\"$targetpage?page=$lastpage&limit=$limit\">$lastpage</a>";
 
-                                                        } //in middle; hide some front and some back
-
+                                                        } 
                                                         elseif ($lastpage - ($adjacents * 2) > $page && $page > ($adjacents * 2)) {
 
                                                             $pagination .= "<a href=\"$targetpage?page=1&limit=$limit\">1</a>";
@@ -583,8 +498,7 @@ include_once "db.php";
 
                                                             $pagination .= "<a href=\"$targetpage?page=$lastpage&limit=$limit\">$lastpage</a>";
 
-                                                        } //close to end; only hide early pages
-
+                                                        } 
                                                         else {
 
                                                             $pagination .= "<a href=\"$targetpage?page=1&limit=$limit\">1</a>";
@@ -608,9 +522,6 @@ include_once "db.php";
                                                         }
 
                                                     }
-
-
-                                                    //next button
 
                                                     if ($page < $counter - 1)
 
@@ -778,29 +689,15 @@ include_once "db.php";
                                                             <td>&nbsp;</td>
 
                                                         </tr>
-
                                                     </table>
-
-
                                                 </form>
-
-
                                             </td>
-
                                         </tr>
-
                                     </table>
-
                                 </td>
                             </tr>
                         </table>
-
                     </td>
-                </tr>
-                <tr>
-                    <td height="30" align="center" bgcolor="#72C9F4"><span class="style1"><a
-                                href="mailto:sridhar.posnic@gmail.com?Subject=Stock%20Management%20System">Any Queries
-                                Mail to : sridhar.posnic@gmail.com</a></span></td>
                 </tr>
             </table>
         </td>
@@ -809,9 +706,5 @@ include_once "db.php";
 </td>
 </tr>
 </table>
-
 </body>
 </html>
-<?php
-}
-?>

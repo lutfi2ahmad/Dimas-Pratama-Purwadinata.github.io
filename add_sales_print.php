@@ -1,12 +1,10 @@
 <?php
-include_once("init.php");  // Use session variable on this page. This function must put on the top of page.
-if(!isset($_SESSION['username']) || $_SESSION['usertype'] != 'admin'){ // if session variable "username" does not exist.
-    header("location: index.php?msg=Please%20login%20to%20access%20admin%20area%20!"); // Re-direct to index.php
+include_once("init.php");
+if(!isset($_SESSION['username']) || $_SESSION['usertype'] != 'admin'){
+    header("location: index.php?msg=Please%20login%20to%20access%20admin%20area%20!");
 }
 else
 {
-
-
 if(isset($_GET['sid']))
 {
 echo $_GET['sid'];
@@ -20,7 +18,6 @@ echo $_GET['sid'];
         .hide {
             display: none
         }
-
     </style>
     <script type="text/javascript">
         function printpage() {
@@ -34,7 +31,6 @@ echo $_GET['sid'];
         .style1 {
             font-size: 10px
         }
-
         -->
     </style>
      <?php include_once("tpl/common_js.php"); ?>
@@ -42,11 +38,10 @@ echo $_GET['sid'];
         $(document).ready(function(){
            jQuery(document).bind('keydown', 'return',function() {
 			  window.close();
-	    }); 
+	    });
         });
      </script>
 </head>
-
     <body onload="window.print();">
     <input name="print" type="button" class="hide" value="Print" id="printButton" onClick="printpage()">
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -214,8 +209,6 @@ echo $_GET['sid'];
         </td>
     </tr>
 </table>
-
-
 </body>
 </html>
 <?php

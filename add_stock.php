@@ -1,24 +1,14 @@
 <?php
-include_once("init.php");
-
-?>
+include_once("init.php");?>
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <title>Pure Nature Shop - Tambah Data Produk</title>
-
-    <!-- Stylesheets -->
-
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="js/date_pic/date_input.css">
     <link rel="stylesheet" href="lib/auto/css/jquery.autocomplete.css">
-
-    <!-- Optimize for mobile devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-    <!-- jQuery & JS files -->
     <?php include_once("tpl/common_js.php"); ?>
     <script src="js/script.js"></script>
     <script src="js/date_pic/jquery.date_input.js"></script>
@@ -26,16 +16,9 @@ include_once("init.php");
     <script src="js/add_stock.js"></script>
 </head>
 <body>
-<!-- TOP BAR -->
 <?php include_once("tpl/top_bar.php"); ?>
-<!-- end top-bar -->
-
-
-<!-- HEADER -->
 <div id="header-with-tabs">
-
     <div class="page-full-width cf">
-
         <ul id="tabs" class="fl">
           <li><a href="dashboard.php" class="dashboard-tab">Dashboard</a></li>
           <li><a href="view_sales.php" class="sales-tab">Penjualan</a></li>
@@ -48,17 +31,11 @@ include_once("init.php");
         </ul>
   <a href="dashboard.php" id="company-branding-small" class="fr"><img src="images/s.png" alt=""></a>
 </div>
-<!-- end header -->
 </div>
-
-<!-- MAIN CONTENT -->
 <div id="content">
-
     <div class="page-full-width cf">
-
         <div class="side-menu fl">
-
-            <h3>Kelola Produk</h3>
+            <h3>Kelola Data Produk</h3>
             <ul>
               <li><a href="add_stock.php">Tambah Bibit Tanaman</a></li>
               <li><a href="view_product.php">Lihat Bibit Tanaman</a></li>
@@ -66,28 +43,14 @@ include_once("init.php");
               <li><a href="view_category.php">Lihat Jenis Produk</a></li>
               <li><a href="view_stock_availability.php">Lihat Stok</a></li>
             </ul>
-
         </div>
-        <!-- end side-menu -->
-
         <div class="side-content fr">
-
             <div class="content-module">
-
                 <div class="content-module-heading cf">
-
                     <h3 class="fl">Tambah Bibit Tanaman </h3>
-                    <!-- <span class="fr expand-collapse-text">Click to collapse</span>
-                    <span class="fr expand-collapse-text initial-expand">Click to expand</span> -->
                 </div>
-                <!-- end content-module-heading -->
-
                 <div class="content-module-main cf">
-
-
                     <?php
-                    //Gump is libarary for Validatoin
-
                     if (isset($_POST['name'])) {
                         $_POST = $gump->sanitize($_POST);
                         $gump->validation_rules(array(
@@ -97,9 +60,7 @@ include_once("init.php");
                             'cost' => 'required|max_len,200',
                             'supplier' => 'max_len,200',
                             'category' => 'max_len,200'
-
                         ));
-
                         $gump->filter_rules(array(
                             'name' => 'trim|sanitize_string|mysqli_escape',
                             'stockid' => 'trim|sanitize_string|mysqli_escape',
@@ -107,9 +68,7 @@ include_once("init.php");
                             'cost' => 'trim|sanitize_string|mysqli_escape',
                             'category' => 'trim|sanitize_string|mysqli_escape',
                             'supplier' => 'trim|sanitize_string|mysqli_escape'
-
                         ));
-
                         $validated_data = $gump->run($_POST);
                         $name = "";
                         $stockid = "";
@@ -117,45 +76,29 @@ include_once("init.php");
                         $cost = "";
                         $supplier = "";
                         $category = "";
-
-
                         if ($validated_data === false) {
                             echo $gump->get_readable_errors(true);
                         } else {
-
-
                             $name = mysqli_real_escape_string($db->connection, $_POST['name']);
                             $stockid = mysqli_real_escape_string($db->connection, $_POST['stockid']);
                             $sell = mysqli_real_escape_string($db->connection, $_POST['sell']);
                             $cost = mysqli_real_escape_string($db->connection, $_POST['cost']);
                             $supplier = mysqli_real_escape_string($db->connection, $_POST['supplier']);
                             $category = mysqli_real_escape_string($db->connection, $_POST['category']);
-
-
                             $count = $db->countOf("stock_details", "stock_id ='$stockid'");
                             if ($count == 1) {
                                 echo "<font color=red> Dublicat Entry. Please Verify</font>";
                             } else {
-
                                 if ($db->query("insert into stock_details(stock_id,stock_name,stock_quatity,supplier_id,company_price,selling_price,category) values('$stockid','$name',0,'$supplier','$cost','$sell','$category')")) {
                                     echo "<br><font color=green size=+1 > [ $name ] Stock Details Added !</font>";
                                     $db->query("insert into stock_avail(name,quantity) values('$name',0)");
                                 } else
                                     echo "<br><font color=red size=+1 >Problem in Adding !</font>";
-
                             }
-
-
                         }
-
                     }
-
-
                     ?>
-
                     <form name="form1" method="post" id="form1" action="">
-
-
                         <table class="form" border="0" cellspacing="0" cellpadding="0">
                             <tr>
                                 <?php
@@ -197,15 +140,11 @@ include_once("init.php");
                                 <td>Jenis:</td> <td><input name="category" placeholder="ENTER CATEGORY NAME" type="text" id="category"
                                            maxlength="200" class="round default-width-input"
                                            value="<?php echo isset($category) ? $category : ''; ?>"/></td>
-
                             </tr>
-
                             <tr>
                                 <td>&nbsp;</td>
                                 <td>&nbsp;</td>
                             </tr>
-
-
                             <tr>
                                 <td>
                                     &nbsp;
@@ -213,33 +152,16 @@ include_once("init.php");
                                 <td>
                                     <input class="button round blue image-right ic-add text-upper" type="submit"
                                            name="Submit" value="Simpan">
-
                                 <td align="right"><input class="button round red   text-upper" type="reset" name="Reset"
                                                          value="Batal"></td>
                             </tr>
                         </table>
                     </form>
-
-
                 </div>
-                <!-- end content-module-main -->
-
-
             </div>
-            <!-- end content-module -->
-
-
         </div>
-        <!-- end full-width -->
-
     </div>
-    <!-- end content -->
-
-
-    <!-- FOOTER -->
     <div id="footer">
     </div>
-    <!-- end footer -->
-
 </body>
 </html>

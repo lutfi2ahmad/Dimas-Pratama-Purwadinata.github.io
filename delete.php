@@ -1,11 +1,8 @@
 <?php
 include_once "init.php";
-// Use session variable on this page. This function must put on the top of page.
-if (!isset($_SESSION['username']) || $_SESSION['usertype'] != 'admin') { // if session variable "username" does not exist.
-    header("location: index.php?msg=Please%20login%20to%20access%20admin%20area%20!"); // Re-direct to index.php
+if (!isset($_SESSION['username']) || $_SESSION['usertype'] != 'admin') {
+    header("location: index.php?msg=Please%20login%20to%20access%20admin%20area%20!");
 } else {
-
-    
     if (isset($_GET['id']) && isset($_GET['table'])) {
         $id = $_GET['id'];
         $tablename = $_GET['table'];
@@ -21,7 +18,6 @@ if (!isset($_SESSION['username']) || $_SESSION['usertype'] != 'admin') { // if s
                 $csd = $line2->closing_stock - $difference;
                 $cid = $line2->id;
                 $db->execute("UPDATE stock_entries SET opening_stock='" . $osd . "',closing_stock='" . $csd . "' WHERE id='$cid'");
-
             }
             $total = $db->queryUniqueValue("SELECT quantity FROM stock_avail WHERE name='$name'");
             $total = $total - $difference;
@@ -38,7 +34,6 @@ if (!isset($_SESSION['username']) || $_SESSION['usertype'] != 'admin') { // if s
                 $csd = $line2->closing_stock + $difference;
                 $cid = $line2->id;
                 $db->execute("UPDATE stock_entries SET opening_stock='" . $osd . "',closing_stock='" . $csd . "' WHERE id='$cid'");
-
             }
             echo "sale $name";
             $total = $db->queryUniqueValue("SELECT quantity FROM stock_avail WHERE name='$name'");

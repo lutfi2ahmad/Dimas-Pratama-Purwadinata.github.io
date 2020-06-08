@@ -1,39 +1,20 @@
 <?php
-include_once("init.php");
-
-?>
+include_once("init.php");?>
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <title>Pure Nature Shop - Tambah Jenis Produk</title>
-
-    <!-- Stylesheets -->
-
     <link rel="stylesheet" href="css/style.css">
-
-    <!-- Optimize for mobile devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-    <!-- jQuery & JS files -->
     <?php include_once("tpl/common_js.php"); ?>
     <script src="js/script.js"></script>
     <script src="js/add_category.js"></script>
-
 </head>
 <body>
-
-<!-- TOP BAR -->
 <?php include_once("tpl/top_bar.php"); ?>
-<!-- end top-bar -->
-
-
-<!-- HEADER -->
 <div id="header-with-tabs">
-
     <div class="page-full-width cf">
-
       <ul id="tabs" class="fl">
           <li><a href="dashboard.php" class="dashboard-tab">Dashboard</a></li>
           <li><a href="view_sales.php" class="sales-tab">Penjualan</a></li>
@@ -47,16 +28,9 @@ include_once("init.php");
   <a href="dashboard.php" id="company-branding-small" class="fr"><img src="images/s.png" alt=""></a>
   </div>
 </div>
-<!-- end header -->
-
-
-<!-- MAIN CONTENT -->
 <div id="content">
-
     <div class="page-full-width cf">
-
         <div class="side-menu fl">
-
             <h3>Kelola Data Produk</h3>
             <ul>
                 <li><a href="add_stock.php">Tambah Bibit Tanaman</a></li>
@@ -65,56 +39,32 @@ include_once("init.php");
                 <li><a href="view_category.php">Lihat Jenis Produk</a></li>
                 <li><a href="view_stock_availability.php">Lihat Stok</a></li>
             </ul>
-
         </div>
-        <!-- end side-menu -->
-
         <div class="side-content fr">
-
             <div class="content-module">
-
-                <div class="content-module-heading cf">
-
+                <div class="content-module-heading cf"
                     <h3 class="fl">Tambah Jenis Produk</h3>
-                    <!-- <span class="fr expand-collapse-text">Click to collapse</span>
-                    <span class="fr expand-collapse-text initial-expand">Click to expand</span> -->
-
                 </div>
-                <!-- end content-module-heading -->
                 <div class="content-module-main cf">
-
-
                     <?php
-                    //Gump is libarary for Validatoin
-
                     if (isset($_POST['name'])) {
                         $_POST = $gump->sanitize($_POST);
                         $gump->validation_rules(array(
                             'name' => 'required|max_len,100|min_len,3',
                             'address' => 'max_len,200',
-
                         ));
-
                         $gump->filter_rules(array(
                             'name' => 'trim|sanitize_string|mysqli_escape',
                             'address' => 'trim|sanitize_string|mysqli_escape',
-
                         ));
-
                         $validated_data = $gump->run($_POST);
                         $name = "";
                         $address = "";
-
-
                         if ($validated_data === false) {
                             echo $gump->get_readable_errors(true);
                         } else {
-
-
                             $name = mysqli_real_escape_string($db->connection, $_POST['name']);
                             $address = mysqli_real_escape_string($db->connection, $_POST['address']);
-
-
                             $count = $db->countOf("category_details", "category_name='$name'");
                             if ($count == 1) {
                                 echo "<font color=red> Dublicat Entry. Please Verify</font>";
@@ -124,19 +74,11 @@ include_once("init.php");
                                     echo "<br><font color=green size=+1 > [ $name ] Category Details Added !</font>";
                                 else
                                     echo "<br><font color=red size=+1 >Problem in Adding !</font>";
-
                             }
-
-
                         }
-
                     }
-
-
                     ?>
-
                     <form name="form1" method="post" id="form1" action="">
-
                         <p><strong>Tambah Jenis Produk</strong></p>
                         <table class="form" border="0" cellspacing="0" cellpadding="0">
                             <tr>
@@ -144,7 +86,6 @@ include_once("init.php");
                                 <td><input name="name" placeholder="Jenis Produk " type="text" id="name"
                                            maxlength="200" class="round default-width-input"
                                            value="<?php echo isset($name) ? $name : ''; ?>"/></td>
-
                             </tr>
                             <tr>
                                 <td>&nbsp;</td>
@@ -155,14 +96,11 @@ include_once("init.php");
                                 <td><textarea name="address" placeholder="" cols="8"
                                               class="round full-width-textarea"><?php echo isset($address) ? $address : ''; ?></textarea>
                                 </td>
-
                             </tr>
                             <tr>
                                 <td>&nbsp;</td>
                                 <td>&nbsp;</td>
                             </tr>
-
-
                             <tr>
                                 <td>
                                     &nbsp;
@@ -176,26 +114,12 @@ include_once("init.php");
                             </tr>
                         </table>
                     </form>
-
-
                 </div>
-                <!-- end content-module-main -->
-
             </div>
-            <!-- end content-module -->
-
-
         </div>
-        <!-- end full-width -->
-
     </div>
-    <!-- end content -->
 
-
-    <!-- FOOTER -->
     <div id="footer">
     </div>
-    <!-- end footer -->
-
 </body>
 </html>

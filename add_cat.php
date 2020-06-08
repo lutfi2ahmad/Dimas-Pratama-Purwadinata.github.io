@@ -1,42 +1,24 @@
 <?php
 include_once("init.php");
-
 ?>
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <title>Pure Nature Shop - Tambah Jenis Produk</title>
-
-    <!-- Stylesheets -->
-
     <link rel="stylesheet" href="css/style.css">
-
-    <!-- Optimize for mobile devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-    <!-- jQuery & JS files -->
     <?php include_once("tpl/common_js.php"); ?>
     <script src="js/script.js"></script>
     <script>
-        /*$.validator.setDefaults({
-         submitHandler: function() { alert("submitted!"); }
-         });*/
         $(document).ready(function () {
-
-            // validate signup form on keyup and submit
             $("#form1").validate({
                 rules: {
                     name: {
                         required: true,
                         minlength: 3,
                         maxlength: 200
-                    },
-                    // address: {
-                    //     minlength: 3,
-                    //     maxlength: 500
-                    // },
+                    }
                     contact1: {
                         minlength: 3,
                         maxlength: 20
@@ -51,30 +33,16 @@ include_once("init.php");
                         required: "Silahkan Masukan nama pelanggan",
                         minlength: "minimal mengandung 3 karakter"
                     },
-                    // address: {
-                    //     minlength: "Customer Address must be at least 3 characters long",
-                    //     maxlength: "Customer Address must be at least 3 characters long"
                     }
                 }
             });
-
         });
-
     </script>
-
 </head>
 <body>
-
-<!-- TOP BAR -->
 <?php include_once("tpl/top_bar.php"); ?>
-<!-- end top-bar -->
-
-
-<!-- HEADER -->
 <div id="header-with-tabs">
-
     <div class="page-full-width cf">
-
         <ul id="tabs" class="fl">
           <li><a href="dashboard.php" class="dashboard-tab">Dashboard</a></li>
           <li><a href="view_sales.php" class="sales-tab">Penjualan</a></li>
@@ -87,48 +55,27 @@ include_once("init.php");
         </ul>
     <a href="dashboard.php" id="company-branding-small" class="fr"><img src="images/s.png" alt=""></a>
     </div>
-    <!-- end full-width -->
-
 </div>
-<!-- end header -->
 
-
-<!-- MAIN CONTENT -->
 <div id="content">
-
     <div class="page-full-width cf">
-
         <div class="side-menu fl">
-
-            <h3>Products Management</h3>
+            <h3>Kelola data produk</h3>
             <ul>
-                <li><a href="add_stock.php">Add Stock/Product</a></li>
-                <li><a href="view_stock.php">View Stocks/Products</a></li>
-                <li><a href="add_cat.php">Add Category</a></li>
+                <li><a href="add_stock.php">Tambah Bibit Tanaman</a></li>
+                <li><a href="view_stock.php">Lihat Bibit Tanaman</a></li>
+                <li><a href="add_cat.php">Tambah Jenis Bibit</a></li>
             </ul>
-
         </div>
-        <!-- end side-menu -->
 
         <div class="side-content fr">
-
             <div class="content-module">
-
                 <div class="content-module-heading cf">
-
-                    <h3 class="fl">Add Customer</h3>
-                    <span class="fr expand-collapse-text">Click to collapse</span>
-                    <span class="fr expand-collapse-text initial-expand">Click to expand</span>
-
+                    <h3 class="fl">Tambah Pelanggan</h3>
                 </div>
-                <!-- end content-module-heading -->
 
                 <div class="content-module-main cf">
-
-
                     <?php
-                    //Gump is libarary for Validatoin
-
                     if (isset($_POST['name'])) {
                         $_POST = $gump->sanitize($_POST);
                         $gump->validation_rules(array(
@@ -137,30 +84,24 @@ include_once("init.php");
                             'contact1' => 'alpha_numeric|max_len,20',
                             'contact2' => 'alpha_numeric|max_len,20'
                         ));
-
                         $gump->filter_rules(array(
                             'name' => 'trim|sanitize_string|mysqli_escape',
                             'address' => 'trim|sanitize_string|mysqli_escape',
                             'contact1' => 'trim|sanitize_string|mysqli_escape',
                             'contact2' => 'trim|sanitize_string|mysqli_escape'
                         ));
-
                         $validated_data = $gump->run($_POST);
                         $name = "";
                         $address = "";
                         $contact1 = "";
                         $contact2 = "";
-
                         if ($validated_data === false) {
                             echo $gump->get_readable_errors(true);
                         } else {
-
-
                             $name = mysqli_real_escape_string($db->connection, $_POST['name']);
                             $address = mysqli_real_escape_string($db->connection, $_POST['address']);
                             $contact1 = mysqli_real_escape_string($db->connection, $_POST['contact1']);
                             $contact2 = mysqli_real_escape_string($db->connection, $_POST['contact2']);
-
                             $count = $db->countOf("customer_details", "customer_name='$name'");
                             if ($count == 1) {
                                 echo "<div class='error-box round'>Dublicat Entry. Please Verify</div>";
@@ -170,15 +111,11 @@ include_once("init.php");
                                     echo "<div class='confirmation-box round'>[ $name ] Customer Details Added !</div>";
                                 else
                                     echo "<div class='error-box round'>Problem in Adding !</div>";
-
                             }
                         }
                     }
-
                     ?>
-
                     <form name="form1" method="post" id="form1" action="">
-
                         <p><strong>Add Customer Details </strong> - Add New ( Control +A)</p>
                         <table class="form" border="0" cellspacing="0" cellpadding="0">
                             <tr>
@@ -225,36 +162,18 @@ include_once("init.php");
                                 </td>
                                 <td>
                                     <input class="button round blue image-right ic-add text-upper" type="submit"
-                                           name="Submit" value="Add">
-                                    (Control + S)
+                                           name="Submit" value="Simpan">
                                 </td>
                             </tr>
                         </table>
                     </form>
-
-
                 </div>
-                <!-- end content-module-main -->
-
-
             </div>
-            <!-- end content-module -->
-
-
         </div>
-        <!-- end full-width -->
-
     </div>
-    <!-- end content -->
 
-
-    <!-- FOOTER -->
     <div id="footer">
-        <p>Any Queries email to <a href="mailto:syvoliamary@gmail.com?subject=Stock%20Management%20System">syvoliamary@gmail.com</a>.
-    </p>
 
     </div>
-    <!-- end footer -->
-
 </body>
 </html>

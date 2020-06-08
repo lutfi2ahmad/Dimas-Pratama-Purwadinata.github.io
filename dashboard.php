@@ -1,9 +1,7 @@
 <?php
 include_once("init.php");
-
 ?>
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -14,12 +12,7 @@ include_once("init.php");
     <script src="js/script.js"></script>
 </head>
 <body>
-
-<!-- TOP BAR -->
 <?php include_once("tpl/top_bar.php"); ?>
-<!-- end top-bar -->
-
-<!-- HEADER -->
 <div id="header-with-tabs">
     <div class="page-full-width cf">
         <ul id="tabs" class="fl">
@@ -32,17 +25,13 @@ include_once("init.php");
             <li><a href="view_payments.php" class="payment-tab">Pembayaran</a></li>
             <li><a href="view_report.php" class="report-tab">Laporan</a></li>
         </ul>
-        <?php $line = $db->queryUniqueObject("SELECT * FROM store_details ");
-        $_SESSION['logo'] = $line->log;
-        ?>
-        <a href="dashboard.php" id="company-branding-small" class="fr"  alt="Point of Sale"/><img src="images/s.png" alt="">
-        </a>
+        <a href="dashboard.php" id="company-branding-small" class="fr"><img src="images/s.png" alt=""></a>
     </div>
 </div>
 <div id="content">
     <div class="page-full-width cf">
         <div class="side-menu fl">
-            <h3>Pintasan</h3>
+            <h3>Pintasan Menu</h3>
             <ul>
                 <li><a href="add_sales.php">Tambah Penjualan</a></li>
                 <li><a href="add_purchase.php">Tambah Pembelian</a></li>
@@ -50,16 +39,10 @@ include_once("init.php");
                 <li><a href="add_customer.php">Tambah Pelangggan</a></li>
                 <li><a href="view_report.php">Laporan</a></li>
             </ul>
-
         </div>
-        <!-- end side-menu -->
-
         <div class="side-content fr">
-
             <div class="content-module">
-
                 <div class="content-module-heading cf">
-
                     <h3 class="fl">Analisis</h3>
                 </div>
             <div class="content-module-main cf">
@@ -105,46 +88,11 @@ include_once("init.php");
                             <td align="left">&nbsp;</td>
                         </tr>
                     </table>
-<!--
-                    <table style="width:600px; margin-left:50px; float:left;" border="0" cellspacing="0"
-                           cellpadding="0">
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td width="250" align="left">Home (Ctrl+0)</td>
-                            <td width="150" align="left">Add Purchase(Ctrl+1)</td>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td width="250" align="left">Add Stock(Ctrl+2)</td>
-                            <td align="left">Add Sale(Ctrl+)</td>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td align="left">Add Category (Ctrl+4 )</td>
-                            <td align="left">Add Supplier (Ctrl+5 )</td>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td align="left">Add Customer (Ctrl+6)</td>
-                            <td align="left">View Stocks (Ctrl+7)</td>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td align="left">View Sales(Ctrl+8)</td>
-                            <td align="left">View Purchase (Ctrl+9)</td>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td align="left">Add New (Ctrl+a)</td>
-                            <td align="left">Save( Ctrl+s )</td>
-                        </tr>
-                    </table> -->
                 </div>
             </div>
         </div>
     </div>
 </div>
-<!-- FOOTER -->
 <footer>
 <div id="footer">
 

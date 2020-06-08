@@ -1,25 +1,15 @@
 <?php
-session_start(); // Use session variable on this page. This function must put on the top of page.
-if (!isset($_SESSION['username']) || $_SESSION['usertype'] != 'admin') { // if session variable "username" does not exist.
-    header("location: index.php?msg=Please%20login%20to%20access%20admin%20area%20!&type=error"); // Re-direct to index.php
+session_start();
+if (!isset($_SESSION['username']) || $_SESSION['usertype'] != 'admin') {
+    header("location: index.php?msg=Please%20login%20to%20access%20admin%20area%20!&type=error");
 }
-
 include("lib/db.class.php");
 if (!include_once "config.php") {
     header("location: install_step1.php");
 }
-
-// Open the base (construct the object):
 $db = new DB($config['database'], $config['host'], $config['username'], $config['password']);
-
-# Note that filters and validators are separate rule sets and method calls. There is a good reason for this.
-
 require "lib/gump.class.php";
-
 $gump = new GUMP();
-
-
-// Messages Settings
 $POSNIC = array();
 $POSNIC['username'] = $_SESSION['username'];
 $POSNIC['usertype'] = $_SESSION['usertype'];

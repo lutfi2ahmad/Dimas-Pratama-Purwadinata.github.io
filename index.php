@@ -12,14 +12,10 @@ if (isset($_SESSION['username'])) {
 }
 ?>
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <title>Pure Nature Shop - Login</title>
-
-    <!-- Stylesheets -->
-
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/cmxform.css">
     <link rel="stylesheet" href="js/lib/validationEngine.jquery.css">
@@ -33,27 +29,15 @@ if (isset($_SESSION['username'])) {
     <div class="page-full-width">
     </div>
 </div>
-<!-- end top-bar -->
-
-<!-- HEADER -->
 <div id="header">
-
     <div class="page-full-width cf">
-
         <div id="login-intro" class="fl">
-
             <h1>Login untuk masuk</h1>
             <h5>Gunakan akun yang sudah dibuat</h5>
-
         </div>
         <a href="#" id="company-branding-small" class="fr"><img src="images/s.png" alt=""></a>
     </div>
-    <!-- end full-width -->
-
 </div>
-<!-- end header -->
-
-<!-- MAIN CONTENT -->
 <div id="content">
     <form action="checklogin.php" method="POST" id="login-form" class="cmxform" autocomplete="off">
         <fieldset>
@@ -76,26 +60,20 @@ if (isset($_SESSION['username'])) {
                 <input type="text" id="login-username" class="round full-width-input" placeholder="admin"
                        name="username" autofocus/>
             </p>
-
             <p>
                 <label for="login-password">password</label>
                 <input type="password" id="login-password" name="password" placeholder="admin"
                        class="round full-width-input"/>
             </p>
-
-
             <input type="submit" class="button round blue image-right ic-right-arrow" name="submit" value="LOG IN"/>
         </fieldset>
             <a href="forget_pass.php" class="button " style="transform:translate(85px, 3px)">Lupa Password?</a>
         <br/>
     </form>
-
 </div>
-<!-- end content -->
 </body>
 <footer>
 <div id="footer">
-
 </div>
 </footer>
 </html>

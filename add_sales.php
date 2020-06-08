@@ -1,43 +1,23 @@
 <?php
-include_once("init.php");
-
-?>
+include_once("init.php");?>
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <title>Pure Nature Shop - Tambah Data Penjualan</title>
-
-    <!-- Stylesheets -->
-
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="js/date_pic/date_input.css">
     <link rel="stylesheet" href="lib/auto/css/jquery.autocomplete.css">
-
-    <!-- Optimize for mobile devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-    <!-- jQuery & JS files -->
     <?php include_once("tpl/common_js.php"); ?>
     <script src="js/script.js"></script>
     <script src="js/date_pic/jquery.date_input.js"></script>
     <script src="lib/auto/js/jquery.autocomplete.js "></script>
     <script src="js/add_sales.js"></script>
-
-
-
 </head>
 <body>
-
-<!-- TOP BAR -->
 <?php include_once("tpl/top_bar.php"); ?>
-<!-- end top-bar -->
-
-
-<!-- HEADER -->
 <div id="header-with-tabs">
-
     <div class="page-full-width cf">
       <ul id="tabs" class="fl">
           <li><a href="dashboard.php" class="dashboard-tab">Dashboard</a></li>
@@ -51,57 +31,32 @@ include_once("init.php");
       </ul>
     <a href="dashboard.php" id="company-branding-small" class="fr"><img src="images/s.png" alt=""></a>
     </div>
-    <!-- end full-width -->
-
 </div>
-<!-- end header -->
-
-
-<!-- MAIN CONTENT -->
 <div id="content">
-
     <div class="page-full-width cf">
-
         <div class="side-menu fl">
-
             <h3>Kelola Data Penjualan</h3>
             <ul>
                 <li><a href="add_sales.php">Tambah Penjualan</a></li>
                 <li><a href="view_sales.php">Lihat Penjualan</a></li>
             </ul>
         </div>
-        <!-- end side-menu -->
-
-
         <div class="side-content fr">
-
             <div class="content-module">
-
                 <div class="content-module-heading cf">
-
                     <h3 class="fl">Tambah Penjualan</h3>
-                    <!-- <span class="fr expand-collapse-text">Click to collapse</span>
-                    <span class="fr expand-collapse-text initial-expand">Click to expand</span> -->
-
                 </div>
-                <!-- end content-module-heading -->
-
                 <div class="content-module-main cf">
-
-
                     <?php
-                    //Gump is libarary for Validatoin
                     if (isset($_GET['msg'])) {
                         echo $_GET['msg'];
                     }
-
                     if (isset($_POST['total'])) {
                         $validated_data = $gump->run($_POST);
                         $stock_name = "";
                         $stockid = "";
                         $payment = "";
                         $bill_no = "";
-
                         if ($validated_data === false) {
                             echo $gump->get_readable_errors(true);
                         } else {
@@ -149,8 +104,6 @@ include_once("init.php");
                             //$mysqldate = date('Y-m-d H:i:s', $selected_date);
                             //$due = $mysqldate;
                             $str = $db->maxOfAll("transactionid", "stock_sales");
-
-
                             $array = explode(' ', $str);
                             $autoid = ++$array[0];
                             if($str == ''){
@@ -161,15 +114,11 @@ include_once("init.php");
                                 $quantity = $_POST['quty'][$i];
                                 $rate = $_POST['sell'][$i];
                                 $total = $_POST['total'][$i];
-
-
                                 $selected_date = $_POST['date'];
                                 $selected_date = strtotime($selected_date);
                                 $mysqldate = date('Y-m-d H:i:s', $selected_date);
                                 $username = $_SESSION['username'];
-
                                 $count = $db->queryUniqueValue("SELECT quantity FROM stock_avail WHERE name='$name1'");
-
                                 if ($count >= 1) {
 
                                     if($str == ''){
@@ -182,20 +131,12 @@ include_once("init.php");
                                      }
                                     $amount = $db->queryUniqueValue("SELECT quantity FROM stock_avail WHERE name='$name1'");
                                     $amount1 = $amount - $quantity;
-
-                                    //$db->query("insert into stock_entries (stock_id,stock_name,quantity,opening_stock,closing_stock,date,username,type,salesid,total,selling_price,count1,billnumber) values('$autoid','$name1','$quantity','$amount','$amount1','$mysqldate','$username','sales','$autoid','$total','$rate',$i+1,'$bill_no')");
-                                    //echo "<br><font color=green size=+1 >New Sales Added ! Transaction ID [ $autoid ]</font>" ;
-
-
                                     $amount = $db->queryUniqueValue("SELECT quantity FROM stock_avail WHERE name='$name1'");
                                     $amount1 = $amount - $quantity;
                                     $db->execute("UPDATE stock_avail SET quantity='$amount1' WHERE name='$name1'");
-
                                 } else {
                                     echo "<br><font color=green size=+1 >There is no enough stock deliver for $name1! Please add stock !</font>";
                                 }
-
-
                             }
                             $msg = "<br><font color=green size=6px >Sales Added successfully Ref: [" . $_POST['stockid'] . "] !</font>";
                             echo $msg;
@@ -208,14 +149,9 @@ include_once("init.php");
                             }
                             }
                         }
-
-
-
                     ?>
-
                     <form name="form1" method="post" id="form1" action="">
                         <input type="hidden" id="posnic_total">
-
                         <p><strong>Tambah Penjualan</strong></p>
                         <table class="form" border="0" cellspacing="0" cellpadding="0">
                             <tr>
@@ -243,9 +179,6 @@ include_once("init.php");
                                 <td><input name="date" id="test1" placeholder="" value="<?php date_default_timezone_set("Asia/Kolkata");echo date('Y-m-d H:i:s');?>"
                                 style="margin-left: 15px;"type="text" id="name" maxlength="200" class="round default-width-input"/>
                                 </td>
-
-
-
                             </tr>
                             <tr>
                                 <td>Pelanggan: </td>
@@ -260,7 +193,6 @@ include_once("init.php");
                                 <td><input name="contact" placeholder="ENTER CONTACT" type="text" id="contact1"
                                            value="9876543210"maxlength="200" class="round default-width-input"
                                            onkeypress="return numbersonly(event)" style="width:120px "/></td>
-
                             </tr>
                         </table>
                         <input type="hidden" id="guid">
@@ -269,7 +201,6 @@ include_once("init.php");
                             <tr>
                                 <td>Produk</td>
                                 <td>Kuantitas</td>
-
                                 <td>Harga</td>
                                 <td>Stok</td>
                                 <td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Total</td>
@@ -279,21 +210,14 @@ include_once("init.php");
 
                                 <td><input name="" type="text" id="item" maxlength="200"
                                            class="round default-width-input " style="width: 150px"/></td>
-
                                 <td><input name="" type="text" id="quty" maxlength="200"
                                            class="round default-width-input my_with"
                                            onKeyPress="quantity_chnage(event);return numbersonly(event)"
                                            onkeyup="total_amount();unique_check();stock_size();"/></td>
-
-
                                 <td><input name="" type="text" id="sell" readonly="readonly" maxlength="200"
                                            class="round default-width-input my_with"/></td>
-
-
                                 <td><input name="" type="text" id="stock" readonly="readonly" maxlength="200"
                                            class="round  my_with"/></td>
-
-
                                 <td><input name="" type="text" id="total" maxlength="200"
                                            class="round default-width-input " style="width:120px;  margin-left: 20px"/>
                                            <input type="hidden" id="payable_amount" readonly="readonly" name="payable">
@@ -328,21 +252,11 @@ include_once("init.php");
                         </table>
                     </form>
                 </div>
-                <!-- end content-module-main -->
             </div>
-            <!-- end content-module -->
         </div>
     </div>
-    <!-- end full-width -->
 </div>
-<!-- end content -->
-
-
-<!-- FOOTER -->
 <div id="footer">
-
 </div>
-<!-- end footer -->
-
 </body>
 </html>

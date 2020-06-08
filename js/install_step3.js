@@ -1,17 +1,9 @@
-
-        /*$.validator.setDefaults({
-         submitHandler: function() { alert("submitted!"); }
-         });*/
-
-        $(document).ready(function () {
-
-            // validate signup form on keyup and submit
+  $(document).ready(function () {
             $("#login-form").validate({
                 rules: {
                     uname: {
                         required: true,
                         minlength: 5
-
                     },
                     password: {
                         required: true,
@@ -29,13 +21,13 @@
                     },
                     password: {
                         required: "Masukkan Password",
-                        minlength: "Gunakan minimal 3 huruf"
+                        minlength: "Gunakan minimal 5 huruf"
                     },
                     answer: {
                         required: "Masukkan Jawaban Pertanyaaan Keamanan",
-                        minlength: "Gunakan minimal 3 huruf"
+                        minlength: "Gunakan minimal 5 huruf"
                     }
                 }
             });
 
-        });
+});

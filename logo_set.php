@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>POS- Store Logo</title>
+    <title>Pure Nature Shop</title>
 
     <!-- Stylesheets -->
 
@@ -168,4 +168,3 @@
 
 </body>
 </html>
-

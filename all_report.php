@@ -1,11 +1,9 @@
 <?php
-include_once("init.php");  // Use session variable on this page. This function must put on the top of page.
-if (!isset($_SESSION['username']) || $_SESSION['usertype'] != 'admin') { // if session variable "username" does not exist.
-    header("location: index.php?msg=Please%20login%20to%20access%20admin%20area%20!"); // Re-direct to index.php
+include_once("init.php");
+if (!isset($_SESSION['username']) || $_SESSION['usertype'] != 'admin') {
+    header("location: index.php?msg=Please%20login%20to%20access%20admin%20area%20!");
 } else {
     if (isset($_GET['from_sales_purchase_date']) && isset($_GET['to_sales_purchase_date']) && $_GET['from_sales_purchase_date'] != '' && $_GET['to_sales_purchase_date'] != '') {
-
-
         $selected_date = $_GET['from_sales_purchase_date'];
         $selected_date = strtotime($selected_date);
         $mysqldate = date('Y-m-d H:i:s', $selected_date);
@@ -13,12 +11,9 @@ if (!isset($_SESSION['username']) || $_SESSION['usertype'] != 'admin') { // if s
         $selected_date = $_GET['to_sales_purchase_date'];
         $selected_date = strtotime($selected_date);
         $mysqldate = date('Y-m-d H:i:s', $selected_date);
-
         $todate = $mysqldate;
-
         ?>
-        <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-            "http://www.w3.org/TR/html4/loose.dtd">
+        <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
         <html>
         <head>
             <title>Purchase Report</title>
@@ -26,7 +21,7 @@ if (!isset($_SESSION['username']) || $_SESSION['usertype'] != 'admin') { // if s
         </head>
         <style type="text/css" media="print">
             .hide {
-                display: none
+                display: none;
             }
         </style>
         <script type="text/javascript">
@@ -41,14 +36,12 @@ if (!isset($_SESSION['username']) || $_SESSION['usertype'] != 'admin') { // if s
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
             <tr>
                 <td align="center">
-                    <!-- <div align="right">
                         <?php $line4 = $db->queryUniqueObject("SELECT * FROM store_details ");
                         ?>
                         <strong><?php echo $line4->name; ?></strong><br/>
                         <?php echo $line4->address; ?>,<?php echo $line4->place; ?>, <br/>
                     </div> -->
                     <table width="595" border="0" cellspacing="0" cellpadding="0">
-
                         <tr>
                             <td height="30" align="center"><strong>Rekap Pembelian</strong></td>
                         </tr>
@@ -149,8 +142,6 @@ if (!isset($_SESSION['username']) || $_SESSION['usertype'] != 'admin') { // if s
                                             <td><?php echo $line->closing_stock; ?></td>
                                             <td><?php echo $line->total; ?></td>
                                         </tr>
-
-
                                         <?php
                                     }
                                     ?>
@@ -167,7 +158,6 @@ if (!isset($_SESSION['username']) || $_SESSION['usertype'] != 'admin') { // if s
                 </td>
             </tr>
         </table>
-
         </body>
         </html>
         <?php

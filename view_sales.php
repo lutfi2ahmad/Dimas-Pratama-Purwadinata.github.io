@@ -1,6 +1,5 @@
 <?php
 include_once("init.php");
-
 ?>
 <!DOCTYPE html>
 
@@ -8,38 +7,15 @@ include_once("init.php");
 <head>
     <meta charset="utf-8">
     <title>Pure Nature Shop - Data Penjualan</title>
-
-    <!-- Stylesheets -->
-    <!---->
     <link rel="stylesheet" href="css/style.css">
-
-    <!-- Optimize for mobile devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-
-
-    <!-- jQuery & JS files -->
     <?php include_once("tpl/common_js.php"); ?>
     <script src="js/script.js"></script>
     <script src="js/view_sales.js"></script>
-
-<script>
-	//var c=sessionStorage.getItem('checked-checkboxesviewsales');
-	//alert(c);
-</script>
-
-
 </head>
 <body>
-
-<!-- TOP BAR -->
 <?php include_once("tpl/top_bar.php"); ?>
-<!-- end top-bar -->
-
-
-<!-- HEADER -->
 <div id="header-with-tabs">
-
     <div class="page-full-width cf">
       <ul id="tabs" class="fl">
           <li><a href="dashboard.php" class="dashboard-tab">Dashboard</a></li>
@@ -53,41 +29,22 @@ include_once("init.php");
       </ul>
     <a href="dashboard.php" id="company-branding-small" class="fr"><img src="images/s.png" alt=""></a>
     </div>
-    <!-- end full-width -->
-
 </div>
-<!-- end header -->
-
-
-<!-- MAIN CONTENT -->
 <div id="content">
-
     <div class="page-full-width cf">
-
         <div class="side-menu fl">
-
             <h3>Data Penjualan</h3>
             <ul>
                 <li><a href="add_sales.php">Tambah Penjualan</a></li>
                 <li><a href="view_sales.php">Lihat Penjualan</a></li>
-
             </ul>
-
         </div>
-        <!-- end side-menu -->
-
         <div class="side-content fr">
-
             <div class="content-module">
-
                 <div class="content-module-heading cf">
                     <h3 class="fl">Data Penjualan</h3>
                 </div>
-                <!-- end content-module-heading -->
-
                 <div class="content-module-main cf">
-
-
                     <table>
                         <form action="" method="post" name="search">
                             <input name="searchtxt" type="text" class="round my_text_box" placeholder="Search">
@@ -125,24 +82,11 @@ include_once("init.php");
                                 if (isset($_POST['Search']) AND trim($_POST['searchtxt']) != "") {
 
                                     $SQL = "SELECT DISTINCT(transactionid) FROM  stock_sales WHERE stock_name LIKE '%" . $_POST['searchtxt'] . "%' ORDER BY id DESC ";
-
-
                                 }
 
-                                $tbl_name = "stock_sales";        //your table name
-
-                                // How many adjacent pages should be shown on each side?
+                                $tbl_name = "stock_sales";        
 
                                 $adjacents = 3;
-
-
-                                /*
-
-                                   First get total number of rows in data table.
-
-                                   If you have a WHERE clause in your query, make sure you mirror it here.
-
-                                */
 
                                 $query = "SELECT COUNT(transactionid) as num FROM $tbl_name ";
                                 if (isset($_POST['Search']) AND trim($_POST['searchtxt']) != "") {
@@ -156,12 +100,9 @@ include_once("init.php");
                                 $total_pages = mysqli_fetch_array(mysqli_query($db->connection, $query));
                                 $total_pages = $total_pages['num'];
 
+                                $targetpage = "view_sales.php"; 
 
-                                /* Setup vars for query. */
-
-                                $targetpage = "view_sales.php";    //your file name  (the name of this file)
-
-                                $limit = 10;                                //how many items to show per page
+                                $limit = 10;                               
                                 if (isset($_GET['limit']) && is_numeric($_GET['limit'])) {
                                     $limit = $_GET['limit'];
                                     $_GET['limit'] = 10;
@@ -172,15 +113,12 @@ include_once("init.php");
 
                                 if ($page)
 
-                                    $start = ($page - 1) * $limit;            //first item to display on this page
+                                    $start = ($page - 1) * $limit;           
 
                                 else
 
-                                    $start = 0;                                //if no page var is given, set start to 0
+                                    $start = 0;                               
 
-
-                                /* Get data. */
-								//Count number of records
 								$co=0;
 								$co1=0;
 								$s=mysqli_query($db->connection, "select * from stock_sales");
@@ -201,35 +139,17 @@ include_once("init.php");
 
                                 $result = mysqli_query($db->connection, $sql);
 
+                                if ($page == 0) $page = 1;                   
+                                $prev = $page - 1;                            
+                                $next = $page + 1;                            
 
-                                /* Setup page vars for display. */
-
-                                if ($page == 0) $page = 1;                    //if no page var is given, default to 1.
-
-                                $prev = $page - 1;                            //previous page is page - 1
-
-                                $next = $page + 1;                            //next page is page + 1
-
-                                $lastpage = ceil($total_pages / $limit);        //lastpage is = total pages / items per page, rounded up.
-
-                                $lpm1 = $lastpage - 1;                        //last page minus 1
-
-
-                                /*
-
-                                    Now we apply our rules and draw the pagination object.
-
-                                    We're actually saving the code to a variable in case we want to draw it more than once.
-
-                                */
-
+                                $lastpage = ceil($total_pages / $limit);        
+                                $lpm1 = $lastpage - 1;                        
                                 $pagination = "";
 
                                 if ($lastpage > 1) {
 
                                     $pagination .= "<div >";
-
-                                    //previous button
 
                                     if ($page > 1)
 
@@ -239,10 +159,7 @@ include_once("init.php");
 
                                         $pagination .= "<span class=my_pagination>Previous</span>";
 
-
-                                    //pages
-
-                                    if ($lastpage < 7 + ($adjacents * 2))    //not enough pages to bother breaking it up
+                                    if ($lastpage < 7 + ($adjacents * 2))    
 
                                     {
 
@@ -258,12 +175,8 @@ include_once("init.php");
 
                                         }
 
-                                    } elseif ($lastpage > 5 + ($adjacents * 2))    //enough pages to hide some
-
+                                    } elseif ($lastpage > 5 + ($adjacents * 2))    
                                     {
-
-                                        //close to beginning; only hide later pages
-
                                         if ($page < 1 + ($adjacents * 2)) {
 
                                             for ($counter = 1; $counter < 4 + ($adjacents * 2); $counter++) {
@@ -284,7 +197,7 @@ include_once("init.php");
 
                                             $pagination .= "<a href=\"view_sales.php?page=$lastpage&limit=$limit\" class=my_pagination>$lastpage</a>";
 
-                                        } //in middle; hide some front and some back
+                                        } 
 
                                         elseif ($lastpage - ($adjacents * 2) > $page && $page > ($adjacents * 2)) {
 
@@ -312,8 +225,7 @@ include_once("init.php");
 
                                             $pagination .= "<a href=\"view_sales.php?page=$lastpage&limit=$limit\" class=my_pagination>$lastpage</a>";
 
-                                        } //close to end; only hide early pages
-
+                                        } 
                                         else {
 
                                             $pagination .= "<a href=\"$view_sales.php?page=1&limit=$limit\" class=my_pagination>1</a>";
@@ -337,9 +249,6 @@ include_once("init.php");
                                         }
 
                                     }
-
-
-                                    //next button
 
                                     if ($page < $counter - 1)
 
@@ -397,35 +306,20 @@ $count=0;
                                                class="table-actions-button ic-table-delete"></a>
                                         </td>
                                         <td><input type="checkbox" value="<?php echo $row['id']; ?>" name="checklist[]"
-
                                                    id="<?php echo $row['id']; ?>" /></td>
-
                                                    </td>
-
 
                                     </tr>
                                     <?php $i++;
                                 } ?>
                                 <tr>
-
-
-
                                 </tr>
                                 <table>
 
                                 </table>
-
                             </table>
-
                         </form>
-
-
                 </div>
             </div>
-            <div id="footer">
-
-            </div>
-            <!-- end footer -->
-
 </body>
 </html>

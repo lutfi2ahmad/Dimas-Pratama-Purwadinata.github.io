@@ -97,7 +97,6 @@ include_once("init.php");?>
                             }
                             $tax_dis = mysqli_real_escape_string($db->connection, $_POST['tax_dis']);
                             $temp_balance = $db->queryUniqueValue("SELECT balance FROM customer_details WHERE customer_name='$customer'");
-                            //$temp_balance = (int)$temp_balance + (int)$balance;
                             $db->execute("UPDATE customer_details SET balance=$temp_balance WHERE customer_name='$customer'");
                             //$selected_date = $_POST['due'];
                             //$selected_date = strtotime($selected_date);
@@ -206,8 +205,7 @@ include_once("init.php");?>
                                 <td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Total</td>
                                 <td> &nbsp;</td>
                             </tr>
-                            <tr>
-
+                            <tr>s
                                 <td><input name="" type="text" id="item" maxlength="200"
                                            class="round default-width-input " style="width: 150px"/></td>
                                 <td><input name="" type="text" id="quty" maxlength="200"

@@ -1,12 +1,10 @@
 <?php
-include_once("init.php");// Use session variable on this page. This function must put on the top of page.
-if(!isset($_SESSION['username']) || $_SESSION['usertype'] != 'admin'){ // if session variable "username" does not exist.
-    header("location: index.php?msg=Please%20login%20to%20access%20admin%20area%20!"); // Re-direct to index.php
+include_once("init.php");
+if(!isset($_SESSION['username']) || $_SESSION['usertype'] != 'admin'){ 
+    header("location: index.php?msg=Please%20login%20to%20access%20admin%20area%20!"); 
 }
 else
 {
-
-
 if(isset($_GET['sid']))
 {
 ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
@@ -19,7 +17,6 @@ if(isset($_GET['sid']))
         .hide {
             display: none
         }
-
     </style>
     <script type="text/javascript">
         function printpage() {
@@ -29,39 +26,33 @@ if(isset($_GET['sid']))
         }
     </script>
 </head>
-
 <body>
 <input name="print" type="button" value="Print" id="printButton" onClick="printpage()">
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
     <tr>
         <td align="center" valign="top">
-
             <table width="595" cellspacing="0" cellpadding="0" id="bordertable" border="1">
                 <tr>
-                    <td align="center"><strong>Payment Receipt <br/>
+                    <td align="center"><strong>Kwitansi Pembayaran<br/>
                         </strong>
                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
                             <tr>
                                 <td width="67%" align="left" valign="top">&nbsp;&nbsp;&nbsp;Date: <?php
                                     $sid = $_GET['sid'];
                                     $line = $db->queryUniqueObject("SELECT * FROM transactions WHERE id='$sid' ");
-
                                     $mysqldate = $line->date;
-
                                     $phpdate = strtotime($mysqldate);
-
                                     $phpdate = date("d/m/Y", $phpdate);
                                     echo $phpdate;
                                     ?> <br/>
                                     <br/>
                                     <strong><br/>
                                         &nbsp;&nbsp;&nbsp;Receipt No: <?php echo $line->receiptid;
-
                                         ?> </strong><br/></td>
                                 <td width="33%">Murugan Company<br/>
-                                    address<br/>
+                                    alamat<br/>
                                     chennai<br/>
-                                    Phone
+                                    Telepon
                                 </td>
                             </tr>
                         </table>
@@ -77,17 +68,13 @@ if(isset($_GET['sid']))
                                     echo $line->customer;
                                     echo '<br>';
                                     $cname = $line->customer;
-
                                     $line2 = $db->queryUniqueObject("SELECT * FROM customer_details WHERE customer_name='$cname' ");
-
                                     echo $line2->customer_address;
                                     ?>
                                     <br/>
                                     <?php
                                     echo "Contact1: " . $line2->customer_contact1 . "<br>";
                                     echo "Contact2: " . $line2->customer_contact2 . "<br>";
-
-
                                     ?></td>
                             </tr>
                         </table>
@@ -100,19 +87,14 @@ if(isset($_GET['sid']))
                                 <td width="33%" align="left" valign="top"></td>
                                 <td width="67%" align="left"><br/>
                                     <br/>
-                                    <strong>&nbsp;&nbsp;Paid Amount :&nbsp;&nbsp;<?php echo $line->payment; ?><br/>
-                                        &nbsp;&nbsp;Balance &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <strong>&nbsp;&nbsp;Jumlah pembayaran :&nbsp;&nbsp;<?php echo $line->payment; ?><br/>
+                                        &nbsp;&nbsp;Keseimbangan &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                         &nbsp;:&nbsp;&nbsp;<?php echo $line->balance; ?><br/>
-                                        
-
                                         <?php
                                         $bal = $line->balance;
                                         if ($bal != 0) {
-
                                             $mysqldate = $line->due;
-
                                             $phpdate = strtotime($mysqldate);
-
                                             $phpdate = date("d/m/Y", $phpdate);
                                             echo $phpdate;
                                         } else
@@ -124,20 +106,18 @@ if(isset($_GET['sid']))
                             </tr>
                             <tr>
                                 <td height="100" align="left" valign="top">&nbsp;</td>
-                                <td height="100" align="right" valign="bottom">Signature&nbsp;</td>
+                                <td height="100" align="right" valign="bottom">Tanda tangan&nbsp;</td>
                             </tr>
                         </table>
                     </td>
                 </tr>
                 <tr>
-                    <td align="center" bgcolor="#CCCCCC">Thank you for Business with Us</td>
+                    <td align="center" bgcolor="#CCCCCC">Terima Kasih Telah Berbisnis Dengan Kami</td>
                 </tr>
             </table>
         </td>
     </tr>
 </table>
-
-
 </body>
 </html>
 <?php

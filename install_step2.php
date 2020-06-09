@@ -94,11 +94,11 @@
                     }
                     ?>
                 </select>
-                 <input type="hidden" name="dummy" value="1">
             </p>
             <input type="hidden" name="host" value="<?php echo $host ?>">
             <input type="hidden" name="username" value="<?php echo $user ?>">
             <input type="hidden" name="password" value="<?php echo $pass ?>">
+            <input type="hidden" name="dummy" value="1">
             <input type="submit" class="button round blue image-right ic-right-arrow" name="submit" value="INSTALL"/>
         </fieldset>
     </form>

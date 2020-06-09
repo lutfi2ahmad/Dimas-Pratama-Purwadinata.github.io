@@ -20,9 +20,7 @@ if (isset($_POST['host']) and isset($_POST['username']) and $_POST['host'] != ""
         header("location: install_step1.php?msg=$data");
         exit;
     }
-
     $con = mysqli_connect("$host", "$user", "$pass");
-// Check connection
     if (isset($_POST['name'])) {
         $sql = "CREATE DATABASE $name";
         if (!mysqli_query($con, $sql)) {
@@ -31,7 +29,6 @@ if (isset($_POST['host']) and isset($_POST['username']) and $_POST['host'] != ""
             exit;
         }
     }
-
     $con = mysqli_connect("$host", "$user", "$pass", "$name");
     if (mysqli_connect_errno()) {
         echo "Failed to connect to MySQL: " . mysqli_connect_error();
@@ -42,11 +39,8 @@ if (isset($_POST['host']) and isset($_POST['username']) and $_POST['host'] != ""
     }else {
         $sql = file_get_contents('install_db/structure_only.sql');
     }
-
-    /* execute multi query */
     if (mysqli_multi_query($con, $sql)) {
         do {
-            /* store first result set */
             if ($result = mysqli_store_result($con)) {
                 while ($row = mysqli_fetch_row($result)) {
                     printf("%s\n", $row[0]);
@@ -55,7 +49,6 @@ if (isset($_POST['host']) and isset($_POST['username']) and $_POST['host'] != ""
             } else {    
                 echo "issue with query";
             }
-            /* print divider */
             if (mysqli_more_results($con)) {
                 printf("-----------------\n");
             }
@@ -63,19 +56,13 @@ if (isset($_POST['host']) and isset($_POST['username']) and $_POST['host'] != ""
     } else {
         die('Problem in query execution.');
     }
-
-
     $ourFileName = "config.php";
     $ourFileHandle = fopen($ourFileName, 'w') or die("Not able to write config file (check directory permissions). You can directly Create config.php file as like config.php.sample file. ");
     $data = '<?php $config["database"] = "' . $name . '"; $config["host"]= "' . $host . '";$config["username"]= "' . $user . '"; $config["password"]= "' . $pass . '";?>';
     fwrite($ourFileHandle, $data);
     fclose($ourFileHandle);
     header("location: install_step3.php");
-
-
 } else {
     header("location: install_step1.php");
 }
-//
-
 ?> 

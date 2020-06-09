@@ -1,5 +1,4 @@
 <?php
-
 $data[0] = array(
     'label' => 'sasi',
     'desc' => 'jibi',
@@ -11,5 +10,4 @@ $data[1] = array(
     'value' => 'jibi'
 );
 echo json_encode($data);
-
 ?>

@@ -5,7 +5,7 @@ include_once("init.php");
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>POSNIC - Update Category</title>
+    <title>Pure Nature Shop - Update Category</title>
     <link rel="stylesheet" href="css/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <?php include_once("tpl/common_js.php"); ?>

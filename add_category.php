@@ -35,8 +35,8 @@ include_once("init.php");?>
             <ul>
                 <li><a href="add_stock.php">Tambah Bibit Tanaman</a></li>
                 <li><a href="view_product.php">Lihat Bibit Tanaman</a></li>
-                <li><a href="add_category.php">Tambah Jenis Produk</a></li>
-                <li><a href="view_category.php">Lihat Jenis Produk</a></li>
+                <li><a href="add_category.php">Tambah Jenis Bibit Tanaman</a></li>
+                <li><a href="view_category.php">Lihat Jenis Bibit Tanaman</a></li>
                 <li><a href="view_stock_availability.php">Lihat Stok</a></li>
             </ul>
         </div>
@@ -92,7 +92,7 @@ include_once("init.php");?>
                                 <td>&nbsp;</td>
                             </tr>
                             <tr>
-                                <td>Deskripsi</td>
+                                <td>Keterangan</td>
                                 <td><textarea name="address" placeholder="" cols="8"
                                               class="round full-width-textarea"><?php echo isset($address) ? $address : ''; ?></textarea>
                                 </td>

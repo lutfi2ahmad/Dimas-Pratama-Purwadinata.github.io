@@ -78,7 +78,7 @@ include_once("init.php");
                                             $SQL = "SELECT * FROM  stock_details WHERE stock_name LIKE '%" . $_POST['searchtxt'] . "%' OR supplier_address LIKE '%" . $_POST['searchtxt'] . "%' OR supplier_id LIKE '%" . $_POST['searchtxt'] . "%' OR date LIKE '%" . $_POST['searchtxt'] . "%' ORDER BY id DESC";
                                         }
 
-                                        $tbl_name = "stock_details";      
+                                        $tbl_name = "stock_details";
                                         $adjacents = 3;
                                         $query = "SELECT COUNT(*) as num FROM $tbl_name";
                                         if (isset($_POST['Search']) AND trim($_POST['searchtxt']) != "") {
@@ -91,8 +91,8 @@ include_once("init.php");
 
                                         $total_pages = $total_pages['num'];
 
-                                        $targetpage = "view_product.php";    
-                                        $limit = 10;                                
+                                        $targetpage = "view_product.php";
+                                        $limit = 10;
                                         if (isset($_GET['limit']) && is_numeric($_GET['limit'])) {
                                             $limit = $_GET['limit'];
                                             $_GET['limit'] = 10;
@@ -102,9 +102,9 @@ include_once("init.php");
 
 
                                         if ($page)
-                                            $start = ($page - 1) * $limit;         
+                                            $start = ($page - 1) * $limit;
                                         else
-                                            $start = 0;                      
+                                            $start = 0;
 
                                         $sql = "SELECT * FROM stock_details  ORDER BY id DESC LIMIT $start, $limit";
                                         if (isset($_POST['Search']) AND trim($_POST['searchtxt']) != "") {
@@ -116,12 +116,12 @@ include_once("init.php");
                                         $result = mysqli_query($db->connection, $sql);
 
                                         if ($page == 0)
-                                            $page = 1;                
+                                            $page = 1;
 
-                                        $prev = $page - 1;                          
-                                        $next = $page + 1;                           
-                                        $lastpage = ceil($total_pages / $limit);       
-                                        $lpm1 = $lastpage - 1;                     
+                                        $prev = $page - 1;
+                                        $next = $page + 1;
+                                        $lastpage = ceil($total_pages / $limit);
+                                        $lpm1 = $lastpage - 1;
 
                                         $pagination = "";
 
@@ -134,7 +134,7 @@ include_once("init.php");
                                             else
                                                 $pagination .= "<span class=my_pagination>Previous</span>";
 
-                                            if ($lastpage < 7 + ($adjacents * 2)) {  
+                                            if ($lastpage < 7 + ($adjacents * 2)) {
                                                 for ($counter = 1; $counter <= $lastpage; $counter++) {
 
                                                     if ($counter == $page)
@@ -142,7 +142,7 @@ include_once("init.php");
                                                     else
                                                         $pagination .= "<a href=\"view_product.php?page=$counter&limit=$limit\" class=my_pagination>$counter</a>";
                                                 }
-                                            } elseif ($lastpage > 5 + ($adjacents * 2)) {  
+                                            } elseif ($lastpage > 5 + ($adjacents * 2)) {
 
                                                 if ($page < 1 + ($adjacents * 2)) {
 
@@ -159,7 +159,7 @@ include_once("init.php");
                                                     $pagination .= "<a href=\"view_product.php?page=$lpm1&limit=$limit\" class=my_pagination>$lpm1</a>";
 
                                                     $pagination .= "<a href=\"view_product.php?page=$lastpage&limit=$limit\" class=my_pagination>$lastpage</a>";
-                                                } 
+                                                }
 
                                                 elseif ($lastpage - ($adjacents * 2) > $page && $page > ($adjacents * 2)) {
 
@@ -182,7 +182,7 @@ include_once("init.php");
                                                     $pagination .= "<a href=\"view_product.php?page=$lpm1&limit=$limit\" class=my_pagination>$lpm1</a>";
 
                                                     $pagination .= "<a href=\"view_product.php?page=$lastpage&limit=$limit\" class=my_pagination>$lastpage</a>";
-                                                } 
+                                                }
                                                 else {
 
                                                     $pagination .= "<a href=\"$view_product.php?page=1&limit=$limit\" class=my_pagination>1</a>";
@@ -213,7 +213,7 @@ include_once("init.php");
                                             <th>Id Bibit Tanaman</th>
                                             <th>Nama Bibit Tanaman</th>
                                             <th>Pemasok</th>
-                                            <th>Harga asli</th>  
+                                            <th>Harga asli</th>
                                             <th>Harga Penjualan</th>
                                             <th>Stok</th>
                                             <th>Edit / hapus</th>
@@ -244,10 +244,8 @@ include_once("init.php");
                                                 <td> <?php echo $row['supplier_id']; ?></td>
                                                 <td><?php echo $row['company_price']; ?></td>
                                                 <td> <?php echo $row['selling_price']; ?></td>
-                                                <td> <?php $quantity = $db->queryUniqueValue("SELECT quantity FROM stock_avail WHERE name='" . $row['stock_name'] . "'");
-                                        echo $quantity;
-                                            ?></td>
-
+                                                <td> <?php echo $row['stock_quatity']; ?></td>
+                                              </td>
                                                 <td>
                                                     <a href="update_stock.php?sid=<?php echo $row['id']; ?>&table=stock_details&return=view_product.php"
                                                        class="table-actions-button ic-table-edit">

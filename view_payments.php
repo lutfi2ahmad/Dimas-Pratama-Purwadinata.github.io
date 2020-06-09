@@ -34,14 +34,14 @@ include_once("init.php");
         <div class="side-menu fl">
             <h3>Data Pembayaran</h3>
             <ul>
-                <li><a href="view_payments.php">Pemasukan</a></li>
-                <li><a href="view_out_standing.php">Pengeluaran</a></li>
+                <li><a href="view_payments.php">Data Pemasukan</a></li>
+                <li><a href="view_out_standing.php">Data Pengeluaran</a></li>
             </ul>
         </div>
         <div class="side-content fr">
             <div class="content-module">
                 <div class="content-module-heading cf">
-                    <h3 class="fl">Pemasukan</h3>
+                    <h3 class="fl">Data Pemasukan</h3>
                 </div>
                 <div class="content-module-main cf">
                     <table>
@@ -60,14 +60,9 @@ include_once("init.php");
                         </form>
 
                         <form name="deletefiles" action="delete.php" method="post">
-
-
                             <table>
                                 <?php
-
-
                                 $SQL = "SELECT DISTINCT(transactionid) FROM  stock_sales where balance>0";
-
                                 if (isset($_POST['Search']) AND trim($_POST['searchtxt']) != "") {
 
                                     $SQL = "SELECT DISTINCT(transactionid) FROM  stock_sales WHERE stock_name LIKE '%" . $_POST['searchtxt'] . "%' OR supplier_name LIKE '%" . $_POST['searchtxt'] . "%' OR transactionid  LIKE '%" . $_POST['searchtxt'] . "%' OR date LIKE '%" . $_POST['searchtxt'] . "%' AND balance>0";
@@ -89,9 +84,9 @@ include_once("init.php");
 
                                 $total_pages = $total_pages['num'];
 
-                                $targetpage = "view_stock_sales_payments.php";  
+                                $targetpage = "view_stock_sales_payments.php";
 
-                                $limit = 10;                               
+                                $limit = 10;
                                 if (isset($_GET['limit']))
                                     $limit = $_GET['limit'];
 
@@ -99,11 +94,11 @@ include_once("init.php");
 
                                 if ($page)
 
-                                    $start = ($page - 1) * $limit;            
+                                    $start = ($page - 1) * $limit;
 
                                 else
 
-                                    $start = 0;      
+                                    $start = 0;
 
                                 $sql = "SELECT DISTINCT(transactionid) FROM  stock_sales ORDER BY date desc LIMIT $start, $limit ";
 
@@ -116,15 +111,15 @@ include_once("init.php");
 
                                 $result = mysqli_query($db->connection, $sql);
 
-                                if ($page == 0) $page = 1;                  
+                                if ($page == 0) $page = 1;
 
-                                $prev = $page - 1;                            
+                                $prev = $page - 1;
 
-                                $next = $page + 1;                      
+                                $next = $page + 1;
 
-                                $lastpage = ceil($total_pages / $limit);       
+                                $lastpage = ceil($total_pages / $limit);
 
-                                $lpm1 = $lastpage - 1;                     
+                                $lpm1 = $lastpage - 1;
 
                                 $pagination = "";
 
@@ -134,13 +129,13 @@ include_once("init.php");
 
                                     if ($page > 1)
 
-                                        $pagination .= "<a href=\"view_payments.php?page=$prev&limit=$limit\" class=my_pagination >Previous</a>";
+                                        $pagination .= "<a href=\"view_payments.php?page=$prev&limit=$limit\" class=my_pagination >Sebelumnya</a>";
 
                                     else
 
                                         $pagination .= "<span class=my_pagination>Previous</span>";
 
-                                    if ($lastpage < 7 + ($adjacents * 2))  
+                                    if ($lastpage < 7 + ($adjacents * 2))
 
                                     {
 
@@ -156,7 +151,7 @@ include_once("init.php");
 
                                         }
 
-                                    } elseif ($lastpage > 5 + ($adjacents * 2)) 
+                                    } elseif ($lastpage > 5 + ($adjacents * 2))
                                     {
 
                                         if ($page < 1 + ($adjacents * 2)) {
@@ -179,7 +174,7 @@ include_once("init.php");
 
                                             $pagination .= "<a href=\"view_payments.php?page=$lastpage&limit=$limit\" class=my_pagination>$lastpage</a>";
 
-                                        } 
+                                        }
 
                                         elseif ($lastpage - ($adjacents * 2) > $page && $page > ($adjacents * 2)) {
 
@@ -207,7 +202,7 @@ include_once("init.php");
 
                                             $pagination .= "<a href=\"view_payments.php?page=$lastpage&limit=$limit\" class=my_pagination>$lastpage</a>";
 
-                                        } 
+                                        }
                                         else {
 
                                             $pagination .= "<a href=\"$view_payments.php?page=1&limit=$limit\" class=my_pagination>1</a>";
@@ -233,17 +228,12 @@ include_once("init.php");
                                     }
 
                                     if ($page < $counter - 1)
-
-                                        $pagination .= "<a href=\"view_payments.php?page=$next&limit=$limit\" class=my_pagination>Next</a>";
+                                        $pagination .= "<a href=\"view_payments.php?page=$next&limit=$limit\" class=my_pagination>Selanjuntnya</a>";
 
                                     else
-
                                         $pagination .= "<span class= my_pagination >Next</span>";
-
                                     $pagination .= "</div>\n";
-
                                 }
-
                                 ?>
                                 <tr>
                                     <th>No</th>
@@ -251,10 +241,7 @@ include_once("init.php");
                                     <th>jatuh Tempo</th>
                                     <th>subtotal</th>
                                     <th>Pembayaran diterima</th>
-
-
                                 </tr>
-
                                 <?php $i = 1;
                                 $no = $page - 1;
                                 $no = $no * $limit;
@@ -281,23 +268,23 @@ include_once("init.php");
 
                                         <td><?php echo $line->subtotal; ?></td>
                                         <td><?php echo $line->subtotal; ?></td>
-                                       <td><?php echo $line->balance; ?></td>
+                                       <!-- <td><?php echo $line->balance; ?></td>
                                         <td>
                                             <a href="update_payment.php?sid=<?php echo $line->transactionid; ?>&table=stock_entries&return=view_payments.php">Pay
                                                 now
                                             </a>
-                                        </td>
+                                        </td> -->
                                     </tr>
                                     <?php $i++;
                                 } ?>
-                                <tr>
-                                    <td align="center">
-                                        <div style="margin-left:20px;"><?php echo $pagination; ?></div>
-                                    </td>
-
-                                </tr>
                             </table>
                         </form>
+                        <tr>
+                            <td align="center">
+                                <div style="margin-left:20px;"><?php echo $pagination; ?></div>
+                            </td>
+
+                        </tr>
                 </div>
             </div>
 </body>

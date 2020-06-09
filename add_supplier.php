@@ -93,10 +93,10 @@ include_once("init.php");?>
                         <table class="form" border="0" cellspacing="0" cellpadding="0">
                             <tr>
                                 <td><span class="man">*</span>Nama:</td>
-                                <td><input name="name" placeholder="ENTER YOUR FULL NAME" type="text" id="name"
+                                <td><input name="name" placeholder="Masukan Nama Pemasok" type="text" id="name"
                                            maxlength="200" class="round default-width-input"onKeyPress="return ValidateAlpha(event)"                                           value="<?php echo isset($name) ? $name : ''; ?>"/></td>
                                 <td><span class="man">*</span><b>Kontak</b><b>-1</b></td>
-                                <td><input name="contact1" placeholder="ENTER YOUR CONTACT-1" type="text"
+                                <td><input name="contact1" placeholder="Masukan Kontak1" type="text"
                                            id="buyingrate" maxlength="20" class="round default-width-input"onkeypress="return numbersonly(event)"
                                            value="<?php echo isset($contact1) ? $contact1 : ''; ?>"/></td>
                             </tr>
@@ -106,11 +106,11 @@ include_once("init.php");?>
                             </tr>
                             <tr>
                                 <td>Alamat</td>
-                                <td><textarea name="address" placeholder="ENTER YOUR ADDRESS" cols="8"
+                                <td><textarea name="address" placeholder="Masukan Alamat" cols="8"
                                               class="round full-width-textarea"><?php echo isset($address) ? $address : ''; ?></textarea>
                                 </td>
                                 <td><b>Kontak</b><b>-2</b></td>
-                                <td><input name="contact2" placeholder="ENTER YOUR CONTACT-2" type="text"
+                                <td><input name="contact2" placeholder="Masukan Kontak2" type="text"
                                            id="sellingrate" maxlength="20" class="round default-width-input"onkeypress="return numbersonly(event)"
                                            value="<?php echo isset($contact2) ? $contact2 : ''; ?>"/></td>
                             </tr>

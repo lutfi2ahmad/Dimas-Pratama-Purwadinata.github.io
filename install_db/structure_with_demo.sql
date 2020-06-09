@@ -1,8 +1,25 @@
+-- phpMyAdmin SQL Dump
+-- version 4.9.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Jun 09, 2020 at 05:26 PM
+-- Server version: 10.4.8-MariaDB
+-- PHP Version: 7.3.11
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
 --
--- Database: `posnic`
+-- Database: `structure_with_demo`
 --
 
 -- --------------------------------------------------------
@@ -60,16 +77,16 @@ CREATE TABLE `customer_details` (
 --
 
 INSERT INTO `customer_details` (`id`, `customer_name`, `customer_address`, `customer_contact1`, `customer_contact2`, `balance`) VALUES
-(8, 'Chandru', 'hsr layout', '7787876786', '989898988', 0),
-(9, 'dhanush', 'hsr layout', '7787876786', '989898988', 0),
-(10, 'bala', 'hsr layout', '7787876786', '989898988', 0),
-(11, 'suraya', 'hsr layout', '7787876786', '989898988', 0),
-(12, 'sridhar', 'hsr layout', '7787876786', '989898988', 0),
-(13, 'jacob', 'hsr layout', '7787876786', '989898988', 80),
-(14, 'sam', 'hsr layout', '7787876786', '989898988', 6240),
-(15, 'nifin', 'hsr layout', '7787876786', '989898988', 0),
-(16, 'jerin', 'hsr layout', '7787876786', '989898988', 1810),
-(17, 'amal', 'hsr layout', '7787876786', '989898988', 0);
+(8, 'Nafis', 'Perumahan Tegal Besar No. 26', '7787876786', '989898988', 0),
+(9, 'Nadhif', 'Jalan Jawa III No. 10', '7787876786', '989898988', 0),
+(10, 'Romi', 'Perumahan Pondok Indah No. 11', '7787876786', '989898988', 0),
+(11, 'Bambang', 'Jalan Rambutan IV No. 30', '7787876786', '989898988', 0),
+(12, 'Edi', 'Perumahan Gunung Batu Indah No. 23', '7787876786', '989898988', 0),
+(13, 'Rizki', 'Perumahan Taman Gading No. 08', '7787876786', '989898988', 80),
+(14, 'Samsul', 'Perumahan Muktisari Blok AB 07', '7787876786', '989898988', 6240),
+(15, 'Dhafin', 'Jalan Kalimantan II No. 04', '7787876786', '989898988', 0),
+(16, 'Joko', 'Perumahan Permata Blok BB 07', '7787876786', '989898988', 1810),
+(17, 'Muklis', 'Jalan Mangga Manis III No. 19', '7787876786', '989898988', 0);
 
 -- --------------------------------------------------------
 
@@ -88,12 +105,12 @@ CREATE TABLE `stock_avail` (
 --
 
 INSERT INTO `stock_avail` (`id`, `name`, `quantity`) VALUES
-(22, 'Cello griper', 290),
-(23, 'techo tip', 900),
-(24, 'cello', 0),
-(25, 'ceParker Urban Fashion ', 0),
-(26, 'Satzuma Diamante Pen', 0),
-(27, 'Lamy Mod 17 Safari Matt ...', 0);
+(22, 'Cello griper', 29),
+(23, 'techo tip', 90),
+(24, 'cello', 22),
+(25, 'ceParker Urban Fashion ', 20),
+(26, 'Satzuma Diamante Pen', 20),
+(27, 'Lamy Mod 17 Safari Matt ...', 30);
 
 -- --------------------------------------------------------
 
@@ -110,7 +127,7 @@ CREATE TABLE `stock_details` (
   `company_price` decimal(10,2) NOT NULL,
   `selling_price` decimal(10,2) NOT NULL,
   `category` varchar(120) NOT NULL,
-  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `expire_date` datetime NOT NULL,
   `uom` varchar(120) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -247,6 +264,8 @@ CREATE TABLE `stock_user` (
 -- Dumping data for table `stock_user`
 --
 
+INSERT INTO `stock_user` (`id`, `username`, `password`, `user_type`, `answer`) VALUES
+(2, 'admin', 'admin', 'admin', 'admin');
 
 -- --------------------------------------------------------
 
@@ -294,18 +313,18 @@ CREATE TABLE `supplier_details` (
 --
 
 INSERT INTO `supplier_details` (`id`, `supplier_name`, `supplier_address`, `supplier_contact1`, `supplier_contact2`, `balance`) VALUES
-(37, 'Rahul', '#123,2nd sector ,hsr layout,nbangalore', '7787876786', '89798', 0),
-(38, 'Monish', '#124,2nd sector,hsr layout,bangalore', '7787876786', '9539126325', 0),
-(39, 'kiran', '#126,2nd sector,hsr layout,bangalore', '7787876786', '9539126325', 0),
-(40, 'arjun', '#126,2nd sector,hsr layout,bangalore', '7787876786', '9539126325', 0),
-(41, 'libin', '#126,2nd sector,hsr layout,bangalore', '7787876786', '9539126325', 0),
-(42, 'sadham', '#126,2nd sector,hsr layout bangalore', '7787876786', '9539126325', 0),
-(43, 'alex', '#126,2nd sector,hsr layout bangalore', '7787876786', '9539126325', 0),
-(44, 'arun', '#126,2nd sector,hsr layout bangalore', '7787876786', '9539126325', 0),
-(45, 'sachu', '#126,2nd sector,hsr layout bangalore', '7787876786', '9539126325', 0),
-(46, 'nijan', '#126,2nd sector,hsr layout bangalore', '7787876786', '9539126325', 0),
-(47, 'karthik', '#126,2nd sector,hsr layout bangalore', '7787876786', '9539126325', 0),
-(48, 'santhosh', '#126,2nd sector,hsr layout bangalore', '7787876786', '9539126325', 0);
+(37, 'Pa Harto', 'Perumahan Pakem Mulia No. 15', '7787876786', '89798', 0),
+(38, 'Bu Yuni', 'Jalan Kramat Jaya Baru 3 No. 14', '7787876786', '9539126325', 0),
+(39, 'PT Sukabumi', 'Jalan Pulo Raya V No.14', '7787876786', '9539126325', 0),
+(40, 'Ojan', 'Perumahan Griya Agung Permai No. 30', '7787876786', '9539126325', 0),
+(41, 'PT Sukamaju', 'Jalan Menteng Granit No. 16', '7787876786', '9539126325', 0),
+(42, 'UKM Sayur', 'Jalan Kran V no.21', '7787876786', '9539126325', 0),
+(43, 'Firman', 'Jalan Setiabudi Tengah No. 3', '7787876786', '9539126325', 0),
+(44, 'Daffa', 'Perumahan Gunung Sahari XI No. 24', '7787876786', '9539126325', 0),
+(45, 'Suci', 'Jalan Kemuning Raya No. 01 ', '7787876786', '9539126325', 0),
+(46, 'Nana', 'Perumahan Flamboyan Bawah III No. 128', '7787876786', '9539126325', 0),
+(47, 'Pa Dendi', 'Perumahan Taman Lagura Indah Blok L4 No.2', '7787876786', '9539126325', 0),
+(48, 'Koperasi 231', 'Jl. Raya Jatinegara Kaum No. 23', '7787876786', '9539126325', 0);
 
 -- --------------------------------------------------------
 
@@ -322,7 +341,7 @@ CREATE TABLE `transactions` (
   `payment` decimal(10,2) NOT NULL,
   `balance` decimal(10,2) NOT NULL,
   `due` datetime NOT NULL,
-  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `rid` varchar(120) NOT NULL,
   `receiptid` varchar(200) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -422,52 +441,62 @@ ALTER TABLE `uom_details`
 --
 ALTER TABLE `category_details`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+
 --
 -- AUTO_INCREMENT for table `customer_details`
 --
 ALTER TABLE `customer_details`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
 --
 -- AUTO_INCREMENT for table `stock_avail`
 --
 ALTER TABLE `stock_avail`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+
 --
 -- AUTO_INCREMENT for table `stock_details`
 --
 ALTER TABLE `stock_details`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+
 --
 -- AUTO_INCREMENT for table `stock_entries`
 --
 ALTER TABLE `stock_entries`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=273;
+
 --
 -- AUTO_INCREMENT for table `stock_sales`
 --
 ALTER TABLE `stock_sales`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+
 --
 -- AUTO_INCREMENT for table `stock_user`
 --
 ALTER TABLE `stock_user`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT for table `supplier_details`
 --
 ALTER TABLE `supplier_details`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+
 --
 -- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
 --
 -- AUTO_INCREMENT for table `uom_details`
 --
 ALTER TABLE `uom_details`
   MODIFY `id` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+COMMIT;
 
-
-INSERT INTO `stock_user` (`id`, `username`, `password`, `user_type`, `answer`) VALUES
-  (NULL, 'admin', 'admin', 'admin', 'admin');
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

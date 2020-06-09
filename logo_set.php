@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>POS- Store Logo</title>
+    <title>Pure Nature Shop - LOGO SET</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/cmxform.css">
     <script src="js/lib/jquery.min.js" type="text/javascript"></script>
@@ -104,4 +104,3 @@
 </div>
 </body>
 </html>
-

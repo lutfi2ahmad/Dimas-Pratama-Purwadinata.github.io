@@ -33,7 +33,7 @@ include_once("init.php");
 <div id="content">
     <div class="page-full-width cf">
         <div class="side-menu fl">
-            <h3>Data Penjualan</h3>
+            <h3>Kelola Data Penjualan</h3>
             <ul>
                 <li><a href="add_sales.php">Tambah Penjualan</a></li>
                 <li><a href="view_sales.php">Lihat Penjualan</a></li>
@@ -84,7 +84,7 @@ include_once("init.php");
                                     $SQL = "SELECT DISTINCT(transactionid) FROM  stock_sales WHERE stock_name LIKE '%" . $_POST['searchtxt'] . "%' ORDER BY id DESC ";
                                 }
 
-                                $tbl_name = "stock_sales";        
+                                $tbl_name = "stock_sales";
 
                                 $adjacents = 3;
 
@@ -100,9 +100,9 @@ include_once("init.php");
                                 $total_pages = mysqli_fetch_array(mysqli_query($db->connection, $query));
                                 $total_pages = $total_pages['num'];
 
-                                $targetpage = "view_sales.php"; 
+                                $targetpage = "view_sales.php";
 
-                                $limit = 10;                               
+                                $limit = 10;
                                 if (isset($_GET['limit']) && is_numeric($_GET['limit'])) {
                                     $limit = $_GET['limit'];
                                     $_GET['limit'] = 10;
@@ -113,11 +113,11 @@ include_once("init.php");
 
                                 if ($page)
 
-                                    $start = ($page - 1) * $limit;           
+                                    $start = ($page - 1) * $limit;
 
                                 else
 
-                                    $start = 0;                               
+                                    $start = 0;
 
 								$co=0;
 								$co1=0;
@@ -139,12 +139,12 @@ include_once("init.php");
 
                                 $result = mysqli_query($db->connection, $sql);
 
-                                if ($page == 0) $page = 1;                   
-                                $prev = $page - 1;                            
-                                $next = $page + 1;                            
+                                if ($page == 0) $page = 1;
+                                $prev = $page - 1;
+                                $next = $page + 1;
 
-                                $lastpage = ceil($total_pages / $limit);        
-                                $lpm1 = $lastpage - 1;                        
+                                $lastpage = ceil($total_pages / $limit);
+                                $lpm1 = $lastpage - 1;
                                 $pagination = "";
 
                                 if ($lastpage > 1) {
@@ -159,7 +159,7 @@ include_once("init.php");
 
                                         $pagination .= "<span class=my_pagination>Previous</span>";
 
-                                    if ($lastpage < 7 + ($adjacents * 2))    
+                                    if ($lastpage < 7 + ($adjacents * 2))
 
                                     {
 
@@ -175,7 +175,7 @@ include_once("init.php");
 
                                         }
 
-                                    } elseif ($lastpage > 5 + ($adjacents * 2))    
+                                    } elseif ($lastpage > 5 + ($adjacents * 2))
                                     {
                                         if ($page < 1 + ($adjacents * 2)) {
 
@@ -197,7 +197,7 @@ include_once("init.php");
 
                                             $pagination .= "<a href=\"view_sales.php?page=$lastpage&limit=$limit\" class=my_pagination>$lastpage</a>";
 
-                                        } 
+                                        }
 
                                         elseif ($lastpage - ($adjacents * 2) > $page && $page > ($adjacents * 2)) {
 
@@ -225,7 +225,7 @@ include_once("init.php");
 
                                             $pagination .= "<a href=\"view_sales.php?page=$lastpage&limit=$limit\" class=my_pagination>$lastpage</a>";
 
-                                        } 
+                                        }
                                         else {
 
                                             $pagination .= "<a href=\"$view_sales.php?page=1&limit=$limit\" class=my_pagination>1</a>";

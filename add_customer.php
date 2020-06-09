@@ -4,7 +4,7 @@ include_once("init.php");?>
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Pure Nature Shop - Tambah Data Pelanggan</title>
+    <title>Pure Nature Shop - Data Pelanggan</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/add_customer.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -70,7 +70,6 @@ include_once("init.php");?>
                             $name = mysqli_real_escape_string($db->connection, $_POST['name']);
                             $address = mysqli_real_escape_string($db->connection, $_POST['address']);
                             $contact1 = mysqli_real_escape_string($db->connection, $_POST['contact1']);
-                            //$contact2 = mysqli_real_escape_string($db->connection, $_POST['contact2']);
                             $count = $db->countOf("customer_details", "customer_name='$name'");
                             if ($count == 1) {
                                 echo "<div class='error-box round'>Dublicat Entry. Please Verify</div>";
@@ -84,11 +83,11 @@ include_once("init.php");?>
                     }
                     ?>
                     <form name="form1" method="post" id="form1" action="">
-                        <p><strong>Tambah Data Detail Pelanggan </strong></p>
+                        <p><strong>Isi Data Detail Pelanggan </strong></p>
                         <table class="form" border="0" cellspacing="0" cellpadding="0">
                             <tr>
                                 <td><span class="man">*</span>Nama: </td>
-                                <td><input name="name" placeholder="ENTER YOUR FULL NAME" type="text" id="name"
+                                <td><input name="name" placeholder="Masukan Nama Pelanggan" type="text" id="name"
                                            maxlength="200" class="round default-width-input" onkeypress="return lettersOnly(event)"
                                            value="<?php echo isset($name) ? $name : ''; ?>"/></td>
                                 <td><b><span class="man">*</span>Kontak: </td>
@@ -101,7 +100,7 @@ include_once("init.php");?>
                                 <td>&nbsp;</td>
                             </tr>
                             <tr>
-                                <td><b>Address:</b></td>
+                                <td><b>Alamat :</b></td>
                                 <td><textarea name="address" placeholder="Masukan Alamat" cols="30"
                                               class="round full-width-textarea"><?php echo isset($address) ? $address : ''; ?></textarea>
                                 </td>

@@ -78,8 +78,6 @@ include_once("init.php");?>
                             $total = $_POST['total'];
                             $payable = $_POST['subtotal'];
                             $description = mysqli_real_escape_string($db->connection, $_POST['description']);
-                            //$due = mysqli_real_escape_string($db->connection, $_POST['duedate']);
-                            //$payment = mysqli_real_escape_string($db->connection, $_POST['payment']);
                             $discount = mysqli_real_escape_string($db->connection, $_POST['discount']);
                             if ($discount == "") {
                                 $discount = 00;
@@ -89,7 +87,6 @@ include_once("init.php");?>
                                 $dis_amount = 00;
                             }
                             $subtotal = mysqli_real_escape_string($db->connection, $_POST['payable']);
-                            //$balance = mysqli_real_escape_string($db->connection, $_POST['balance']);
                             $mode = mysqli_real_escape_string($db->connection, $_POST['mode']);
                             $tax = mysqli_real_escape_string($db->connection, $_POST['tax']);
                             if ($tax == "") {
@@ -98,10 +95,6 @@ include_once("init.php");?>
                             $tax_dis = mysqli_real_escape_string($db->connection, $_POST['tax_dis']);
                             $temp_balance = $db->queryUniqueValue("SELECT balance FROM customer_details WHERE customer_name='$customer'");
                             $db->execute("UPDATE customer_details SET balance=$temp_balance WHERE customer_name='$customer'");
-                            //$selected_date = $_POST['due'];
-                            //$selected_date = strtotime($selected_date);
-                            //$mysqldate = date('Y-m-d H:i:s', $selected_date);
-                            //$due = $mysqldate;
                             $str = $db->maxOfAll("transactionid", "stock_sales");
                             $array = explode(' ', $str);
                             $autoid = ++$array[0];
@@ -119,7 +112,6 @@ include_once("init.php");?>
                                 $username = $_SESSION['username'];
                                 $count = $db->queryUniqueValue("SELECT quantity FROM stock_avail WHERE name='$name1'");
                                 if ($count >= 1) {
-
                                     if($str == ''){
                                     $db->query("insert into stock_sales (tax,tax_dis,discount,dis_amount,grand_total,transactionid,stock_name,selling_price,quantity,amount,date,username,customer_id,subtotal,payment,mode,description,count1,billnumber)
                             values('$tax','$tax_dis','$discount','$dis_amount','$payable','$autoid_new','$name1','$rate','$quantity','$total','$mysqldate','$username','$customer','$subtotal','$payment','$mode','$description',$i+1,'$bill_no')");
@@ -144,7 +136,6 @@ include_once("init.php");?>
                             }
                             if($str != ''){
                             echo "<script>window.open('add_sales_print.php?sid=$autoid','myNewWinsr','width=620,height=800,toolbar=0,menubar=no,status=no,resizable=yes,location=no,directories=no');</script>";
-
                             }
                             }
                         }
@@ -182,15 +173,15 @@ include_once("init.php");?>
                             <tr>
                                 <td>Pelanggan: </td>
                                 <td><input name="supplier" placeholder="ENTER CUSTOMER" type="text" id="supplier"
-                                           value="anonymous" maxlength="200" class="round default-width-input" style="width:130px "/></td>
+                                           value="pembeli" maxlength="200" class="round default-width-input" style="width:130px "/></td>
 
                                 <td>Alamat: </td>
-                                <td><input name="address" placeholder="ENTER ADDRESS" type="text" id="address"
-                                           value="coast street"maxlength="200" class="round default-width-input"/></td>
+                                <td><input name="address" placeholder="Masukan Alamat" type="text" id="address"
+                                           value=""maxlength="200" class="round default-width-input"/></td>
 
                                 <td>kontak: </td>
-                                <td><input name="contact" placeholder="ENTER CONTACT" type="text" id="contact1"
-                                           value="9876543210"maxlength="200" class="round default-width-input"
+                                <td><input name="contact" placeholder="Masukan kontak" type="text" id="contact1"
+                                           value=""maxlength="200" class="round default-width-input"
                                            onkeypress="return numbersonly(event)" style="width:120px "/></td>
                             </tr>
                         </table>
@@ -205,7 +196,7 @@ include_once("init.php");?>
                                 <td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Total</td>
                                 <td> &nbsp;</td>
                             </tr>
-                            <tr>s
+                            <tr>
                                 <td><input name="" type="text" id="item" maxlength="200"
                                            class="round default-width-input " style="width: 150px"/></td>
                                 <td><input name="" type="text" id="quty" maxlength="200"

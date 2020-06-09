@@ -39,8 +39,8 @@ include_once("init.php");?>
             <ul>
               <li><a href="add_stock.php">Tambah Bibit Tanaman</a></li>
               <li><a href="view_product.php">Lihat Bibit Tanaman</a></li>
-              <li><a href="add_category.php">Tambah Jenis Produk</a></li>
-              <li><a href="view_category.php">Lihat Jenis Produk</a></li>
+              <li><a href="add_category.php">Tambah Jenis Bibit Tanaman</a></li>
+              <li><a href="view_category.php">Lihat Jenis Bibit Tanaman</a></li>
               <li><a href="view_stock_availability.php">Lihat Stok</a></li>
             </ul>
         </div>
@@ -112,20 +112,20 @@ include_once("init.php");?>
                                            value="<?php echo isset($autoid) ? $autoid : ''; ?>"/></td>
 
                                 <td><span class="man">*</span>Nama Bibit Tanaman:</td>
-                                <td><input name="name" placeholder="ENTER STOCK NAME" type="text" id="name"
+                                <td><input name="name" placeholder="Masukan nama bibit" type="text" id="name"
                                            maxlength="200" class="round default-width-input"
                                            value="<?php echo isset($name) ? $name : ''; ?>"/></td>
 
                             </tr>
                             <tr>
                                 <td><span class="man">*</span>Harga beli:</td>
-                                <td><input name="cost" placeholder="ENTER COST PRICE" type="text" id="cost"
+                                <td><input name="cost" placeholder="Masukan harga beli" type="text" id="cost"
                                            maxlength="200" class="round default-width-input"
                                            onkeypress="return numbersonly(event)"
                                            value="<?php echo isset($cost) ? $cost : ''; ?>"/></td>
 
                                 <td><span class="man">*</span>Harga Jual&nbsp;Price</td>
-                                <td><input name="sell" placeholder="ENTER SELLING PRICE" type="text" id="sell"
+                                <td><input name="sell" placeholder="Masukan harga jual" type="text" id="sell"
                                            maxlength="200" class="round default-width-input"
                                            onkeypress="return numbersonly(event)"
                                            value="<?php echo isset($sell) ? $sell : ''; ?>"/></td>
@@ -133,11 +133,11 @@ include_once("init.php");?>
                             </tr>
                             <tr>
                                 <td>Pemasok:</td>
-                                <td><input name="supplier" placeholder="ENTER SUPPLIER NAME" type="text" id="supplier"
+                                <td><input name="supplier" placeholder="Masukan Nama Pemasok" type="text" id="supplier"
                                            maxlength="200" class="round default-width-input"
                                            value="<?php echo isset($supplier) ? $supplier : ''; ?>"/></td>
 
-                                <td>Jenis:</td> <td><input name="category" placeholder="ENTER CATEGORY NAME" type="text" id="category"
+                                <td>Jenis:</td> <td><input name="category" placeholder="Masukan Jenis Bibit" type="text" id="category"
                                            maxlength="200" class="round default-width-input"
                                            value="<?php echo isset($category) ? $category : ''; ?>"/></td>
                             </tr>

@@ -36,8 +36,8 @@ include_once("init.php");
                   <ul>
                       <li><a href="add_stock.php">Tambah Bibit Tanaman</a></li>
                       <li><a href="view_product.php">Lihat Bibit Tanaman</a></li>
-                      <li><a href="add_category.php">Tambah Jenis Produk</a></li>
-                      <li><a href="view_category.php">Lihat Jenis Produk</a></li>
+                      <li><a href="add_category.php">Tambah Jenis Bibit Tanaman</a></li>
+                      <li><a href="view_category.php">Lihat Jenis Bibit Tanaman</a></li>
                       <li><a href="view_stock_availability.php">Lihat Stok</a></li>
                   </ul>
                 </div>
@@ -84,7 +84,7 @@ include_once("init.php");
                                             $SQL = "SELECT * FROM  category_details WHERE category_name LIKE '%" . $_POST['searchtxt'] . "%' ORDER BY id DESC ";
                                         }
 
-                                        $tbl_name = "category_details";       
+                                        $tbl_name = "category_details";
                                         $adjacents = 3;
                                         $query = "SELECT COUNT(*) as num FROM $tbl_name";
                                         if (isset($_POST['Search']) AND trim($_POST['searchtxt']) != "") {
@@ -96,17 +96,17 @@ include_once("init.php");
                                         $total_pages = mysqli_fetch_array(mysqli_query($db->connection, $query));
 
                                         $total_pages = $total_pages['num'];
-                                        $targetpage = "view_category.php";    
-                                        $limit = 10;                                
+                                        $targetpage = "view_category.php";
+                                        $limit = 10;
                                         if (isset($_GET['limit']) && is_numeric($_GET['limit'])) {
                                             $limit = $_GET['limit'];
                                             $_GET['limit'] = 10;
                                         }
                                         $page = isset($_GET['page']) ? $_GET['page'] : 0;
                                         if ($page)
-                                            $start = ($page - 1) * $limit;          
+                                            $start = ($page - 1) * $limit;
                                         else
-                                            $start = 0;                                
+                                            $start = 0;
                                         $sql = "SELECT * FROM category_details ORDER BY id DESC LIMIT $start, $limit  ";
                                         if (isset($_POST['Search']) AND trim($_POST['searchtxt']) != "") {
 
@@ -114,11 +114,11 @@ include_once("init.php");
                                         }
                                         $result = mysqli_query($db->connection, $sql);
                                         if ($page == 0)
-                                            $page = 1;                    
-                                        $prev = $page - 1;                          
-                                        $next = $page + 1;                          
-                                        $lastpage = ceil($total_pages / $limit);       
-                                        $lpm1 = $lastpage - 1;                        
+                                            $page = 1;
+                                        $prev = $page - 1;
+                                        $next = $page + 1;
+                                        $lastpage = ceil($total_pages / $limit);
+                                        $lpm1 = $lastpage - 1;
                                         $pagination = "";
                                         if ($lastpage > 1) {
                                             $pagination .= "<div >";
@@ -126,7 +126,7 @@ include_once("init.php");
                                                 $pagination .= "<a href=\"view_category.php?page=$prev&limit=$limit\" class=my_pagination >Previous</a>";
                                             else
                                                 $pagination .= "<span class=my_pagination>Previous</span>";
-                                            if ($lastpage < 7 + ($adjacents * 2)) {   
+                                            if ($lastpage < 7 + ($adjacents * 2)) {
                                                 for ($counter = 1; $counter <= $lastpage; $counter++) {
 
                                                     if ($counter == $page)
@@ -147,7 +147,7 @@ include_once("init.php");
                                                     $pagination .= "<a href=\"view_category.php?page=$lpm1&limit=$limit\" class=my_pagination>$lpm1</a>";
 
                                                     $pagination .= "<a href=\"view_category.php?page=$lastpage&limit=$limit\" class=my_pagination>$lastpage</a>";
-                                                } 
+                                                }
                                                 elseif ($lastpage - ($adjacents * 2) > $page && $page > ($adjacents * 2)) {
                                                     $pagination .= "<a href=\"view_category.php?page=1&limit=$limit\" class=my_pagination>1</a>";
                                                     $pagination .= "<a href=\"view_category.php?page=2&limit=$limit\" class=my_pagination>2</a>";
@@ -166,7 +166,7 @@ include_once("init.php");
                                                     $pagination .= "<a href=\"view_category.php?page=$lpm1&limit=$limit\" class=my_pagination>$lpm1</a>";
 
                                                     $pagination .= "<a href=\"view_category.php?page=$lastpage&limit=$limit\" class=my_pagination>$lastpage</a>";
-                                                } 
+                                                }
                                                 else {
 
                                                     $pagination .= "<a href=\"$view_category.php?page=1&limit=$limit\" class=my_pagination>1</a>";

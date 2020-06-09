@@ -1,42 +1,23 @@
 <?php
 include_once("init.php");
-
 ?>
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <title>Pure Nature Shop - Data Pembelian</title>
-
-    <!-- Stylesheets -->
-    <!---->
     <link rel="stylesheet" href="css/style.css">
-
-    <!-- Optimize for mobile devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-    <!-- jQuery & JS files -->
     <?php include_once("tpl/common_js.php"); ?>
     <script src="js/script.js"></script>
     <script src="js/view_purchase.js"></script>
 	<script>
-	//var c=sessionStorage.getItem('checked-checkboxesviewpurchase');
-	//alert(c);
 </script>
 </head>
 <body>
-
-<!-- TOP BAR -->
 <?php include_once("tpl/top_bar.php"); ?>
-<!-- end top-bar -->
-
-
-<!-- HEADER -->
 <div id="header-with-tabs">
-
     <div class="page-full-width cf">
-
       <ul id="tabs" class="fl">
           <li><a href="dashboard.php" class="dashboard-tab">Dashboard</a></li>
           <li><a href="view_sales.php" class="sales-tab">Penjualan</a></li>
@@ -49,43 +30,22 @@ include_once("init.php");
       </ul>
       <a href="dashboard.php" id="company-branding-small" class="fr"><img src="images/s.png" alt=""></a>
     </div>
-    <!-- end full-width -->
-
 </div>
-<!-- end header -->
-
-
-<!-- MAIN CONTENT -->
 <div id="content">
-
     <div class="page-full-width cf">
-
         <div class="side-menu fl">
-
           <h3>Kelola Pengeluaran</h3>
           <ul>
               <li><a href="add_purchase.php">Tambah Pembelian</a></li>
               <li><a href="view_purchase.php">Lihat Pembelian</a></li>
           </ul>
-
         </div>
-        <!-- end side-menu -->
-
         <div class="side-content fr">
-
             <div class="content-module">
-
                 <div class="content-module-heading cf">
-
                   <h3 class="fl">Data Pembelian</h3>
-                <!-- <span class="fr expand-collapse-text">Click to collapse</span>
-                 <span class="fr expand-collapse-text initial-expand">Click to expand</span> -->
                 </div>
-                <!-- end content-module-heading -->
-
                 <div class="content-module-main cf">
-
-
                     <table>
                         <form action="" method="post" name="search">
                             <input name="searchtxt" type="text" class="round my_text_box" placeholder="Search">
@@ -105,47 +65,20 @@ include_once("init.php");
 
                             <input type="hidden" name="table" value="stock_entries">
                             <input type="hidden" name="return" value="view_purchase.php">
-                         <!--   <input type="button" name="selectall" value="SelectAll"
-                                   class="my_button round blue   text-upper" onClick="checkAll()"
-                                   style="margin-left:5px;"/>
-                            <input type="button" name="unselectall" value="DeSelectAll"
-                                   class="my_button round blue   text-upper" onClick="uncheckAll()"
-                                   style="margin-left:5px;"/>-->
                             <input name="dsubmit" type="button" value="hapus item terpilih"
                                    class="my_button round blue   text-upper" style="margin-left:5px;"
                                    onclick="return confirmDeleteSubmit()"/>
- <!--<input type="button" name="Deleteall" value="Delect All Records"
-                                   class="my_button round blue   text-upper" onClick="deleteall()"
-                                   style="margin-left:5px;" id="cancelall"/>-->
-
                             <table>
                                 <?php
-
-
                                 $SQL = "SELECT DISTINCT(stock_id) FROM  stock_entries where type='entry'";
 
                                 if (isset($_POST['Search']) AND trim($_POST['searchtxt']) != "") {
-
-                                    //$SQL = "SELECT DISTINCT(stock_id) FROM  stock_entries WHERE stock_name LIKE '%" . $_POST['searchtxt'] . "%' OR stock_supplier_name LIKE '%" . $_POST['searchtxt'] . "%' OR stock_id LIKE '%" . $_POST['searchtxt'] . "%' OR date LIKE '%" . $_POST['searchtxt'] . "%' OR type LIKE '%" . $_POST['searchtxt'] . "%' AND type='entry'";
                                     $SQL = "SELECT DISTINCT(stock_id) FROM  stock_entries WHERE stock_name LIKE '%" . $_POST['searchtxt'] ."%' ORDER BY id DESC ";
 
                                 }
 
-                                $tbl_name = "stock_entries";        //your table name
-
-                                // How many adjacent pages should be shown on each side?
-
+                                $tbl_name = "stock_entries";      
                                 $adjacents = 3;
-
-
-                                /*
-
-                                   First get total number of rows in data table.
-
-                                   If you have a WHERE clause in your query, make sure you mirror it here.
-
-                                */
-
                                 $query = "SELECT COUNT(DISTINCT stock_id) as num FROM $tbl_name where type='entry'";
                                 if (isset($_POST['Search']) AND trim($_POST['searchtxt']) != "") {
 
@@ -157,12 +90,8 @@ include_once("init.php");
 
                                 $total_pages = $total_pages['num'];
 
-
-                                /* Setup vars for query. */
-
-                                $targetpage = "view_stock_entries.php";    //your file name  (the name of this file)
-
-                                $limit = 10;                                //how many items to show per page
+                                $targetpage = "view_stock_entries.php";    
+                                $limit = 10;                                
                                 if (isset($_GET['limit']))
                                     $limit = $_GET['limit'];
 
@@ -170,55 +99,28 @@ include_once("init.php");
 
                                 if ($page)
 
-                                    $start = ($page - 1) * $limit;            //first item to display on this page
-
+                                    $start = ($page - 1) * $limit;           
                                 else
 
-                                    $start = 0;                                //if no page var is given, set start to 0
-
-
-                                /* Get data. */
-
-                                //$sql = "SELECT DISTINCT(stock_id) FROM stock_entries where type='entry' ORDER BY date desc LIMIT $start, $limit  ";
+                                    $start = 0;                                
                                 $sql = "SELECT * FROM stock_entries ORDER BY id desc LIMIT $start, $limit  ";
                                 if (isset($_POST['Search']) AND trim($_POST['searchtxt']) != "") {
-
-                                    //$sql = "SELECT DISTINCT(stock_id) FROM stock_entries WHERE stock_name LIKE '%" . $_POST['searchtxt'] . "%' OR stock_supplier_name LIKE '%" . $_POST['searchtxt'] . "%' OR stock_id LIKE '%" . $_POST['searchtxt'] . "%' OR date LIKE '%" . $_POST['searchtxt'] . "%' OR type LIKE '%" . $_POST['searchtxt'] . "%' and type='entry' ORDER BY date desc LIMIT $start, $limit";
                                     $sql = "SELECT * FROM stock_entries WHERE stock_name LIKE '%" . $_POST['searchtxt'] . "%'  ORDER BY id desc LIMIT $start, $limit";
 
                                 }
 
                                 $result = mysqli_query($db->connection, $sql);
 
-
-                                /* Setup page vars for display. */
-
-                                if ($page == 0) $page = 1;                    //if no page var is given, default to 1.
-
-                                $prev = $page - 1;                            //previous page is page - 1
-
-                                $next = $page + 1;                            //next page is page + 1
-
-                                $lastpage = ceil($total_pages / $limit);        //lastpage is = total pages / items per page, rounded up.
-
-                                $lpm1 = $lastpage - 1;                        //last page minus 1
-
-
-                                /*
-
-                                    Now we apply our rules and draw the pagination object.
-
-                                    We're actually saving the code to a variable in case we want to draw it more than once.
-
-                                */
-
+                                if ($page == 0) $page = 1;                 
+                                $prev = $page - 1;                           
+                                $next = $page + 1;                            
+                                $lastpage = ceil($total_pages / $limit);      
+                                $lpm1 = $lastpage - 1;                        
                                 $pagination = "";
 
                                 if ($lastpage > 1) {
 
                                     $pagination .= "<div >";
-
-                                    //previous button
 
                                     if ($page > 1)
 
@@ -228,11 +130,7 @@ include_once("init.php");
 
                                         $pagination .= "<span class=my_pagination>Previous</span>";
 
-
-                                    //pages
-
-                                    if ($lastpage < 7 + ($adjacents * 2))    //not enough pages to bother breaking it up
-
+                                    if ($lastpage < 7 + ($adjacents * 2))    
                                     {
 
                                         for ($counter = 1; $counter <= $lastpage; $counter++) {
@@ -247,11 +145,9 @@ include_once("init.php");
 
                                         }
 
-                                    } elseif ($lastpage > 5 + ($adjacents * 2))    //enough pages to hide some
-
+                                    } elseif ($lastpage > 5 + ($adjacents * 2)) 
                                     {
 
-                                        //close to beginning; only hide later pages
 
                                         if ($page < 1 + ($adjacents * 2)) {
 
@@ -273,8 +169,7 @@ include_once("init.php");
 
                                             $pagination .= "<a href=\"view_purchase.php?page=$lastpage&limit=$limit\" class=my_pagination>$lastpage</a>";
 
-                                        } //in middle; hide some front and some back
-
+                                        } 
                                         elseif ($lastpage - ($adjacents * 2) > $page && $page > ($adjacents * 2)) {
 
                                             $pagination .= "<a href=\"view_purchase.php?page=1&limit=$limit\" class=my_pagination>1</a>";
@@ -301,7 +196,7 @@ include_once("init.php");
 
                                             $pagination .= "<a href=\"view_purchase.php?page=$lastpage&limit=$limit\" class=my_pagination>$lastpage</a>";
 
-                                        } //close to end; only hide early pages
+                                        } 
 
                                         else {
 
@@ -326,9 +221,6 @@ include_once("init.php");
                                         }
 
                                     }
-
-
-                                    //next button
 
                                     if ($page < $counter - 1)
 
@@ -359,8 +251,6 @@ include_once("init.php");
                                 <?php $i = 1;
                                 $no = $page - 1;
                                 $no = $no * $limit;
-
-																//Count number of records
 								$co=0;
 								$co1=0;
 								$s=mysqli_query($db->connection, "select * from stock_entries");
@@ -371,12 +261,7 @@ include_once("init.php");
 
 
                                 while ($row = mysqli_fetch_array($result)) {
-                                   // $entryid = $row['stock_id'];
-								   $co1++;
-                                    //$line = $db->queryUniqueObject("SELECT * FROM stock_entries WHERE stock_id='$entryid' ");
-                                   // $mysqldate = $line->date;
-                                    //$phpdate = strtotime($mysqldate);
-                                   // $phpdate = date("d/m/Y", $phpdate);
+    								   $co1++;
                                     ?>
                                     <tr id='tr<?php echo $row['id']; ?>'>
 
@@ -407,14 +292,7 @@ include_once("init.php");
                                 </table>
                             </table>
                         </form>
-
-
                 </div>
             </div>
-            <div id="footer">
-
-            </div>
-            <!-- end footer -->
-
 </body>
 </html>

@@ -10,7 +10,7 @@ include_once "db.php";
     "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <title>Welcome to Stock Management System !</title>
+    <title>Selamat datang di Sistem Manajemen Stock</title>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
     <link rel="stylesheet" href="css/validationEngine.jquery.css" type="text/css" media="screen" title="no title" charset="utf-8"/>
     <link rel="stylesheet" href="css/template.css" type="text/css" media="screen" title="no title" charset="utf-8"/>

@@ -5,7 +5,7 @@ include_once("init.php");
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>POSNIC - Update Supplier</title>
+    <title>Pure Nature Shop - Pemasok</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="js/date_pic/date_input.css">
     <link rel="stylesheet" href="lib/auto/css/jquery.autocomplete.css">
@@ -23,14 +23,14 @@ include_once("init.php");
 <div id="header-with-tabs">
     <div class="page-full-width cf">
         <ul id="tabs" class="fl">
-            <li><a href="dashboard.php" class="dashboard-tab">Dashboard</a></li>
-            <li><a href="view_sales.php" class="sales-tab">Sales</a></li>
-            <li><a href="view_customers.php" class=" customers-tab">Customers</a></li>
-            <li><a href="view_purchase.php" class="active-tab purchase-tab">Purchase</a></li>
-            <li><a href="view_supplier.php" class=" supplier-tab">Supplier</a></li>
-            <li><a href="view_product.php" class="stock-tab">Stocks / Products</a></li>
-            <li><a href="view_payments.php" class="payment-tab">Payments / Outstandings</a></li>
-            <li><a href="view_report.php" class="report-tab">Reports</a></li>
+            	<li><a href="dashboard.php" class="dashboard-tab">Dashboard</a></li>
+                <li><a href="view_sales.php" class="sales-tab">Penjualan</a></li>
+                <li><a href="view_customers.php" class=" customers-tab">Pelangggan</a></li>
+                <li><a href="view_purchase.php" class="purchase-tab">Pembelian</a></li>
+                <li><a href="view_supplier.php" class=" supplier-tab">Pemasok</a></li>
+                <li><a href="view_product.php" class="active-tab stock-tab">Produk</a></li>
+                <li><a href="view_payments.php" class="payment-tab">Pembayaran</a></li>
+                <li><a href="view_report.php" class="report-tab">Rekap Laporan</a></li>
         </ul>
         <a href="#" id="company-branding-small" class="fr"><img src="<?php if (isset($_SESSION['logo'])) {
                 echo "upload/" . $_SESSION['logo'];

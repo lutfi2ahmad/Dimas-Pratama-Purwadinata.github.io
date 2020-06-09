@@ -1,42 +1,23 @@
 <?php
 include_once("init.php");
-
 ?>
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <title>Pure Nature Shop - Rekap</title>
-
-    <!-- Stylesheets -->
-
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="js/date_pic/date_input.css">
-
-    <!-- Optimize for mobile devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-    <!-- jQuery & JS files -->
     <?php include_once("tpl/common_js.php"); ?>
     <script src="js/date_pic/jquery.date_input.js"></script>
     <script src="js/script.js"></script>
     <script src="js/view_report.js"></script>
-
-
 </head>
 <body>
-
-<!-- TOP BAR -->
 <?php include_once("tpl/top_bar.php"); ?>
-<!-- end top-bar -->
-
-
-<!-- HEADER -->
 <div id="header-with-tabs">
-
     <div class="page-full-width cf">
-
         <ul id="tabs" class="fl">
           <li><a href="dashboard.php" class="active-tab dashboard-tab">Dashboard</a></li>
           <li><a href="view_sales.php" class="sales-tab">Penjualan</a></li>
@@ -50,38 +31,23 @@ include_once("init.php");
         <a href="dashboard.php" id="company-branding-small" class="fr"><img src="images/s.png" alt=""></a>
       </div>
 </div>
-
-<!-- MAIN CONTENT -->
 <div id="content">
-
     <div class="page-full-width cf">
-
         <div class="side-menu fl">
-
             <h3>Rekap</h3>
             <ul>
                 <ul>
                     <li><a></a></li>
-
                 </ul>
             </ul>
-
-
         </div>
-        <!-- end side-menu -->
-
         <div class="side-content fr">
-
             <div class="content-module">
-
                 <div class="content-module-heading cf">
                     <h3 class="fl">Rekap</h3>
                 </div>
-                <!-- end content-module-heading -->
-
                 <div class="content-module-main cf">
                     <form action="">
-
                         <table class="form" border="0" cellspacing="0" cellpadding="0">
                             <form action="sales_report.php" method="post" name="form1" id="form1" name="sales_report"
                                   id="sales_report" target="myNewWinsr">
@@ -148,27 +114,9 @@ include_once("init.php");
                             </form>
 
                         </table>
-
-
                 </div>
-                <!-- end content-module-main -->
-
-
             </div>
-            <!-- end content-module -->
-
-
         </div>
-        <!-- end full-width -->
-
     </div>
-    <!-- end content -->
-
-
-    <!-- FOOTER -->
-    <div id="footer">
-    </div>
-    <!-- end footer -->
-
 </body>
 </html>

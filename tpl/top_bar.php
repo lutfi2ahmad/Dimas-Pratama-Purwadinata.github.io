@@ -1,7 +1,9 @@
-<div id="top-bar">
-		<div class="page-full-width cf">
+<div id="top-bar"style="background:#262626">
+		<div class="page-full-width cf" >
 			<ul id="nav" class="fl">
-				<li class="v-sep"><a href="#" class="round button dark menu-user image-left">Welcome <strong><?php echo $POSNIC['username'] ?></strong></a>
+				<li class="v-sep"><a href="dashboard.php" class="round button menu-logo image-left"  style="  color: #ffffff; background-image: url("../images/icons/menu/menu-logo.png"><strong>PURE NATURE SHOP</strong></a>
+				</li>
+				<li><a href="#" class="round button dark menu-user image-left">Welcome <?php echo $POSNIC['username'] ?></a>
 					<ul>
 						<li><a href="change_password.php">Ubah Password</a></li>
 						<li><a href="logout.php">Log out</a></li>
@@ -18,3 +20,4 @@
 			</form>
 		</div>
 	</div>
+<!-- style="position:fixed; width:100%;z-index: 9; -->

@@ -6,14 +6,14 @@
         Author: Adi Purdila
         Author URI: http://www.adipurdila.com
         Version: 1.0.0
-        
+
 **********************************************************************************/
 
 /* ---------- RESET ---------- */
-/* ---------- Based upon 'reset.css' in the 
-Yahoo! User Interface Library: 
+/* ---------- Based upon 'reset.css' in the
+Yahoo! User Interface Library:
 http://developer.yahoo.com/yui ---------- */
-*, html, body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, 
+*, html, body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4,
 h5, h6, pre, form, label, fieldset, input, p, blockquote, th, td {
     margin: 0;
     padding: 0;
@@ -80,8 +80,8 @@ p {
     color: #9498a1;
 }
 
-.fl { float: left; }
-.fr { float: right; }
+.fl { float: right; }
+.fr { float: left; }
 .cb { clear: both; }
 
 .half-size-column {
@@ -145,7 +145,7 @@ body, form {
 }
 
 p, .button, form input, ul#nav li ul, ul#tabs, div.side-menu ul li a, table,
-.information-box, .confirmation-box, .error-box, .error-message, .warning-box, ol, .regular-ul, 
+.information-box, .confirmation-box, .error-box, .error-message, .warning-box, ol, .regular-ul,
 .custom-ul, blockquote, cite { font-size: 0.85em; /* 12/16 */ }
 
 div.content-module-heading span { font-size: 0.625em; /* 10/16 */ }
@@ -196,20 +196,28 @@ p a, p a:hover { border-bottom: 1px dotted; }
     border: 1px solid #bbbdbe;
 }
 .my_button{
-    height:30px; 
+    height:30px;
     padding: 0px 5px 0px 5px;
 }
 .my_pagination{
     border: 1px solid #bbbdbe;
     padding: 0px 5px 0px 5px;
-    margin-left:10px; 
+    margin-left:10px;
 }
 
-
+.fixed-menu{
+  z-index: 9;
+    background: rgba(0,0,0,0.4);
+    padding-top: 0px!important;
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
 
 /* ---------- WIDTHS ---------- */
 /* Form Inputs Style */
-.default-width-input { width: 20.833em; /* Default Value. Equals 250px for the 12px font size */ }	
+.default-width-input { width: 20.833em; /* Default Value. Equals 250px for the 12px font size */ }
 
 .full-width-input { width: 95%; }
 
@@ -302,8 +310,7 @@ p a, p a:hover { border-bottom: 1px dotted; }
 .menu-logoff:hover { background-image: url("../images/icons/menu/menu-logoff-over.png"); }
 
 .menu-user { background-image: url("../images/icons/menu/menu-user.png"); }
-
-
+.menu-logo { background-image: url("../images/icons/menu/menu-logo.png") }
 
 
 
@@ -423,7 +430,7 @@ ul#nav > li {
     position: relative;
 }
 ul#nav li:first-child { margin-left: 0; }
-ul#nav li:hover ul { left: 0; /* On hover, we make the submenu visible again */ }	
+ul#nav li:hover ul { left: 0; /* On hover, we make the submenu visible again */ }
 /* Persistent hover state, exactly the same style as the inner anchor on hover (.dark:hover) */
 ul#nav li:hover a {
     background-color: #5d6677;
@@ -469,7 +476,7 @@ ul#nav li ul li a:hover { background-color: #7a8497; }
 
 /* ---------- TOP + HEADER ---------- */
 div#top-bar {
-    background-color: #2a2e36;
+    background-color: #1b1b1b;
     padding: 0.625em 0; /* 10/16 */
 }
 
@@ -484,8 +491,8 @@ div#login-intro {
 div#login-intro h1 { text-transform: uppercase; margin: 0.312em 0 0 0; }
 div#login-intro h5 { color: #9498a1; }
 
-a#company-branding img { height: 60px; }	
-a#company-branding-small img { height: 60px; }	
+a#company-branding img { height: 60px; }
+a#company-branding-small img { height: 60px; }
 
 
 
@@ -508,38 +515,38 @@ ul#tabs li a:hover { color: #2a2e36; }
 
 ul#tabs li a.dashboard-tab {
     background: transparent url('../images/tab-dashboard.png') no-repeat 0.833em center /* 10/12 */;
-    padding-left: 3em; /* 36/12 */	
+    padding-left: 3em; /* 36/12 */
 }
 ul#tabs li a.sales-tab {
     background: transparent url('../images/sales-icon.png') no-repeat 0.833em center /* 10/12 */;
-    padding-left: 3em; /* 36/12 */	
+    padding-left: 3em; /* 36/12 */
 }
 
 ul#tabs li a.customers-tab {
     background: transparent url('../images/customer-icon.png') no-repeat 0.833em center /* 10/12 */;
-    padding-left: 3em; /* 36/12 */	
+    padding-left: 3em; /* 36/12 */
 }
 
 ul#tabs li a.purchase-tab {
     background: transparent url('../images/purchase-icon.png') no-repeat 0.833em center /* 10/12 */;
-    padding-left: 3em; /* 36/12 */	
+    padding-left: 3em; /* 36/12 */
 }
 
 ul#tabs li a.supplier-tab {
     background: transparent url('../images/supplier-icon.png') no-repeat 0.833em center /* 10/12 */;
-    padding-left: 3em; /* 36/12 */	
+    padding-left: 3em; /* 36/12 */
 }
 ul#tabs li a.stock-tab {
     background: transparent url('../images/stock-icon.png') no-repeat 0.833em center /* 10/12 */;
-    padding-left: 3em; /* 36/12 */	
+    padding-left: 3em; /* 36/12 */
 }
 ul#tabs li a.payment-tab {
     background: transparent url('../images/payment-icon.png') no-repeat 0.833em center /* 10/12 */;
-    padding-left: 3em; /* 36/12 */	
+    padding-left: 3em; /* 36/12 */
 }
 ul#tabs li a.report-tab {
     background: transparent url('../images/report-icon.png') no-repeat 0.833em center /* 10/12 */;
-    padding-left: 3em; /* 36/12 */	
+    padding-left: 3em; /* 36/12 */
 }
 ul#tabs li a.active-tab, ul#tabs li a.active-tab:hover {
     background-color: #f8f9fa;
@@ -549,7 +556,7 @@ ul#tabs li a.active-tab, ul#tabs li a.active-tab:hover {
 ul#tabs li .active-tab
 {
     background: transparent url('../images/sales-icon.png') no-repeat 0.833em center /* 10/12 */;
-    padding-left: 3em; /* 36/12 */   
+    padding-left: 3em; /* 36/12 */
 }
 
 
@@ -713,7 +720,7 @@ div.content-module {
 }
 
 div.content-module-heading {
-    background: #3f4551;
+    background: #262626;
     cursor: pointer;
 }
 
@@ -724,8 +731,8 @@ div.content-module-heading h3 {
     margin: 1.25em; /* 15/12 */
 }
 
-div.content-module-heading span { 
-    color: #969dac;
+div.content-module-heading span {
+    color: #262626;
     text-transform: uppercase;
     margin: 1.5em; /* 15/10 */
 }
@@ -740,11 +747,12 @@ div.content-module-main { padding: 1em; /* 16/16 */ }
 div#footer {
     text-align: center;
     padding: 1.875em 0; /* 30/16 */
+    width: 100%;
 }
 .my_with{
     width: 80px;
 
-    padding:2px 2px 2px 2px ; 
+    padding:2px 2px 2px 2px ;
 
 }
 .my_table tr td{

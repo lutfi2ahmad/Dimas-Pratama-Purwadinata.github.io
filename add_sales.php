@@ -19,6 +19,7 @@ include_once("init.php");?>
 <?php include_once("tpl/top_bar.php"); ?>
 <div id="header-with-tabs">
     <div class="page-full-width cf">
+    <a href="dashboard.php" id="company-branding-small" class="fr"><img src="images/s.png" alt=""></a>
       <ul id="tabs" class="fl">
           <li><a href="dashboard.php" class="dashboard-tab">Dashboard</a></li>
           <li><a href="view_sales.php" class="active-tab sales-tab">Penjualan</a></li>
@@ -29,7 +30,6 @@ include_once("init.php");?>
           <li><a href="view_payments.php" class="payment-tab">Pembayaran</a></li>
           <li><a href="view_report.php" class="report-tab">Rekap Laporan</a></li>
       </ul>
-    <a href="dashboard.php" id="company-branding-small" class="fr"><img src="images/s.png" alt=""></a>
     </div>
 </div>
 <div id="content">
@@ -61,7 +61,6 @@ include_once("init.php");?>
                             echo $gump->get_readable_errors(true);
                         } else {
                             $username = $_SESSION['username'];
-
                             $stockid = mysqli_real_escape_string($db->connection, $_POST['stockid']);
                             //$bill_no = mysqli_real_escape_string($db->connection, $_POST['bill_no']);
                             $customer = mysqli_real_escape_string($db->connection, $_POST['supplier']);
@@ -245,7 +244,6 @@ include_once("init.php");?>
         </div>
     </div>
 </div>
-<div id="footer">
-</div>
+<?php include_once("tpl/footer.php"); ?>
 </body>
 </html>

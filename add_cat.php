@@ -175,5 +175,6 @@ include_once("init.php");
     <div id="footer">
 
     </div>
+
 </body>
 </html>

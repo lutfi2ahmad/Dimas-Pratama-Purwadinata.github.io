@@ -128,8 +128,5 @@ include_once("init.php");?>
             </div>
         </div>
     </div>
-    <div id="footer">
-    </p>
-    </div>
 </body>
 </html>

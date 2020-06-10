@@ -6,6 +6,7 @@ include_once("init.php");?>
     <meta charset="utf-8">
     <title>Pure Nature Shop - Tambah Jenis Produk</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/bootstrap.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <?php include_once("tpl/common_js.php"); ?>
     <script src="js/script.js"></script>
@@ -41,11 +42,11 @@ include_once("init.php");?>
             </ul>
         </div>
         <div class="side-content fr">
-            <div class="content-module">
-                <div class="content-module-heading cf"
-                    <h3 class="fl">Tambah Jenis Produk</h3>
-                </div>
-                <div class="content-module-main cf">
+           <div class="content-module">
+                  <div class="content-module-heading cf">
+                      <h3 class="fl">Tambah Jenis Bibit</h3>
+                  </div>
+                  <div class="content-module-main cf">
                     <?php
                     if (isset($_POST['name'])) {
                         $_POST = $gump->sanitize($_POST);
@@ -79,7 +80,7 @@ include_once("init.php");?>
                     }
                     ?>
                     <form name="form1" method="post" id="form1" action="">
-                        <p><strong>Tambah Jenis Produk</strong></p>
+                        <p><strong>Masukan Jenis Bibit</strong></p>
                         <table class="form" border="0" cellspacing="0" cellpadding="0">
                             <tr>
                                 <td><span class="man">*</span>Nama:</td>
@@ -118,8 +119,6 @@ include_once("init.php");?>
             </div>
         </div>
     </div>
-
-    <div id="footer">
-    </div>
 </body>
+<?php include_once("tpl/footer.php"); ?>
 </html>

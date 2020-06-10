@@ -4,7 +4,6 @@
 	<script src="js/lib/jquery.validate.min.js" type="text/javascript"></script>
 <script>
 	$(document).ready(function() {
-			// SUCCESS AJAX CALL, replace "success: false," by:     success : function() { callSuccessFunction() }, 
 			jQuery(document).bind('keydown', 'Ctrl+s',function() {
 			  $('#form1').submit();
 			  return false;
@@ -61,9 +60,5 @@
 			    $('#form1').submit();
 			  return false;
 			});
-			//$.validationEngine.loadValidation("#date")
-			//alert($("#formID").validationEngine({returnIsValid:true}))
-			//$.validationEngine.buildPrompt("#date","This is an example","error")	 		 // Exterior prompt build example								 // input prompt close example
-			//$.validationEngine.closePrompt(".formError",true) 							// CLOSE ALL OPEN PROMPTS
 		});
 	</script>

@@ -283,9 +283,9 @@ include_once("init.php");
                             <td align="center">
                                 <div style="margin-left:20px;"><?php echo $pagination; ?></div>
                             </td>
-
                         </tr>
                 </div>
             </div>
+      <?php include_once("tpl/footer.php"); ?>
 </body>
 </html>

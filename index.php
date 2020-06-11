@@ -71,9 +71,6 @@ if (isset($_SESSION['username'])) {
         <br/>
     </form>
 </div>
+<?php include_once("tpl/footer.php"); ?>
 </body>
-<footer>
-<div id="footer">
-</div>
-</footer>
 </html>

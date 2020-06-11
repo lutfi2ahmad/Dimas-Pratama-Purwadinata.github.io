@@ -179,7 +179,6 @@ if (isset($_POST['submit']) and isset($_POST['sname']) and isset($_POST['address
         </form>
     </div>
 </div>
-<div id="footer">
-</div>
+<?php include_once("tpl/footer.php"); ?>
 </body>
 </html>

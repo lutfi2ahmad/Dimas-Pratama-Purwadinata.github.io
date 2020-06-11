@@ -56,10 +56,9 @@ include_once("init.php");
     <a href="dashboard.php" id="company-branding-small" class="fr"><img src="images/s.png" alt=""></a>
     </div>
 </div>
-
 <div id="content">
     <div class="page-full-width cf">
-        <div class="side-menu fl">
+        <div class="side-menu fr">
             <h3>Kelola data produk</h3>
             <ul>
                 <li><a href="add_stock.php">Tambah Bibit Tanaman</a></li>
@@ -67,13 +66,11 @@ include_once("init.php");
                 <li><a href="add_cat.php">Tambah Jenis Bibit</a></li>
             </ul>
         </div>
-
         <div class="side-content fr">
             <div class="content-module">
                 <div class="content-module-heading cf">
                     <h3 class="fl">Tambah Pelanggan</h3>
                 </div>
-
                 <div class="content-module-main cf">
                     <?php
                     if (isset($_POST['name'])) {
@@ -106,7 +103,6 @@ include_once("init.php");
                             if ($count == 1) {
                                 echo "<div class='error-box round'>Dublicat Entry. Please Verify</div>";
                             } else {
-
                                 if ($db->query("insert into customer_details values(NULL,'$name','$address','$contact1','$contact2',0)"))
                                     echo "<div class='confirmation-box round'>[ $name ] Customer Details Added !</div>";
                                 else
@@ -158,7 +154,6 @@ include_once("init.php");
                             </tr>
                             <tr>
                                 <td>&nbsp;
-
                                 </td>
                                 <td>
                                     <input class="button round blue image-right ic-add text-upper" type="submit"

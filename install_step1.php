@@ -55,7 +55,6 @@
         </fieldset>
     </form>
 </div>
-<div id="footer">
-</div>
+<?php include_once("tpl/footer.php"); ?>
 </body>
 </html>

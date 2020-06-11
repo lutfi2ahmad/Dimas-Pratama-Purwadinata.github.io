@@ -68,7 +68,6 @@ if (isset($_POST['submit']) and isset($_POST['uname']) and isset($_POST['passwor
             &nbsp;</fieldset>
     </form>
 </div>
-<div id="footer">
-</div>
+<?php include_once("tpl/footer.php"); ?>
 </body>
 </html>

@@ -321,5 +321,6 @@ $count=0;
                         </form>
                 </div>
             </div>
+	<?php include_once("tpl/footer.php"); ?>
 </body>
 </html>

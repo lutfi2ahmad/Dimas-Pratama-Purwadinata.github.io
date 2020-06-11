@@ -73,7 +73,7 @@ include_once("init.php");
                                             $SQL = "SELECT * FROM  supplier_details WHERE supplier_name LIKE '%" . $_POST['searchtxt'] . "%' OR supplier_address LIKE '%" . $_POST['searchtxt'] . "%' OR supplier_contact1 LIKE '%" . $_POST['searchtxt'] . "%' OR supplier_contact1 LIKE '%" . $_POST['searchtxt'] . "%' ORDER BY id DESC";
                                         }
 
-                                        $tbl_name = "supplier_details";  
+                                        $tbl_name = "supplier_details";
 
                                         $adjacents = 3;
 
@@ -88,8 +88,8 @@ include_once("init.php");
 
                                         $total_pages = $total_pages['num'];
 
-                                        $targetpage = "view_supplier.php";  
-                                        $limit = 10;                               
+                                        $targetpage = "view_supplier.php";
+                                        $limit = 10;
                                         if (isset($_GET['limit']) && is_numeric($_GET['limit'])) {
                                             $limit = $_GET['limit'];
                                             $_GET['limit'] = 10;
@@ -99,9 +99,9 @@ include_once("init.php");
 
 
                                         if ($page)
-                                            $start = ($page - 1) * $limit;            
+                                            $start = ($page - 1) * $limit;
                                         else
-                                            $start = 0;                               
+                                            $start = 0;
                                         $sql = "SELECT * FROM supplier_details  ORDER BY id DESC LIMIT $start, $limit ";
                                         if (isset($_POST['Search']) AND trim($_POST['searchtxt']) != "") {
 
@@ -112,12 +112,12 @@ include_once("init.php");
                                         $result = mysqli_query($db->connection, $sql);
 
                                         if ($page == 0)
-                                            $page = 1;                    
-                                        $prev = $page - 1;                           
-                                        $next = $page + 1;                            
-                                        $lastpage = ceil($total_pages / $limit);        
+                                            $page = 1;
+                                        $prev = $page - 1;
+                                        $next = $page + 1;
+                                        $lastpage = ceil($total_pages / $limit);
 
-                                        $lpm1 = $lastpage - 1;                        
+                                        $lpm1 = $lastpage - 1;
                                         $pagination = "";
 
                                         if ($lastpage > 1) {
@@ -129,7 +129,7 @@ include_once("init.php");
                                             else
                                                 $pagination .= "<span class=my_pagination>Previous</span>";
 
-                                            if ($lastpage < 7 + ($adjacents * 2)) {    
+                                            if ($lastpage < 7 + ($adjacents * 2)) {
 
                                                 for ($counter = 1; $counter <= $lastpage; $counter++) {
 
@@ -138,7 +138,7 @@ include_once("init.php");
                                                     else
                                                         $pagination .= "<a href=\"view_supplier.php?page=$counter&limit=$limit\" class=my_pagination>$counter</a>";
                                                 }
-                                            } elseif ($lastpage > 5 + ($adjacents * 2)) { 
+                                            } elseif ($lastpage > 5 + ($adjacents * 2)) {
 
                                                 if ($page < 1 + ($adjacents * 2)) {
 
@@ -155,7 +155,7 @@ include_once("init.php");
                                                     $pagination .= "<a href=\"view_supplier.php?page=$lpm1&limit=$limit\" class=my_pagination>$lpm1</a>";
 
                                                     $pagination .= "<a href=\"view_supplier.php?page=$lastpage&limit=$limit\" class=my_pagination>$lastpage</a>";
-                                                } 
+                                                }
 
                                                 elseif ($lastpage - ($adjacents * 2) > $page && $page > ($adjacents * 2)) {
 
@@ -178,7 +178,7 @@ include_once("init.php");
                                                     $pagination .= "<a href=\"view_supplier.php?page=$lpm1&limit=$limit\" class=my_pagination>$lpm1</a>";
 
                                                     $pagination .= "<a href=\"view_supplier.php?page=$lastpage&limit=$limit\" class=my_pagination>$lastpage</a>";
-                                                } 
+                                                }
 
                                                 else {
 
@@ -261,6 +261,8 @@ include_once("init.php");
 
                         </div>
                     </div>
+                  </div>
+              </div>
 		    <?php include_once("tpl/footer.php"); ?>
                     </body>
                     </html>

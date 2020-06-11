@@ -19,7 +19,7 @@
 <div id="header">
     <div class="page-full-width cf">
         <div id="login-intro" class="fl">
-            <h1>FORM PENDAFTARAN</h1>
+            <h1>Biodata Admin </h1>
         </div>
                 <a href="#" id="company-branding-small" class="fr"><img src="images/s.png" alt=""></a>
     </div>
@@ -42,7 +42,7 @@ if (isset($_POST['submit']) and isset($_POST['uname']) and isset($_POST['passwor
     $password = $_POST['password'];
     $answer = $_POST['answer'];
     $db->query("UPDATE stock_user  SET username ='" . $uname . "',password='" . $password . "',answer='" . $answer . "'");
-    echo "<script>window.location = 'install_step4.php';</script>";
+    echo "<script>window.location = 'index.php';</script>";
 }
 ?>
 <div id="content">

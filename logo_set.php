@@ -102,5 +102,6 @@
     <p>Any Queries email to <a href="mailto:sridhar.posnic@gmail.com?subject=Stock%20Management%20System">sridhar.posnic@gmail.com</a>.
     </p>
 </div>
+<?php include_once("tpl/footer.php"); ?>
 </body>
 </html>

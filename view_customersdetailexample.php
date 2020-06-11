@@ -706,5 +706,6 @@ include_once "db.php";
 </td>
 </tr>
 </table>
+<?php include_once("tpl/footer.php"); ?>
 </body>
 </html>

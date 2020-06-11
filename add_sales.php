@@ -34,7 +34,7 @@ include_once("init.php");?>
 </div>
 <div id="content">
     <div class="page-full-width cf">
-        <div class="side-menu fl">
+        <div class="side-menu fr">
             <h3>Kelola Data Penjualan</h3>
             <ul>
                 <li><a href="add_sales.php">Tambah Penjualan</a></li>
@@ -173,11 +173,9 @@ include_once("init.php");?>
                                 <td>Pelanggan: </td>
                                 <td><input name="supplier" placeholder="ENTER CUSTOMER" type="text" id="supplier"
                                            value="pembeli" maxlength="200" class="round default-width-input" style="width:130px "/></td>
-
                                 <td>Alamat: </td>
                                 <td><input name="address" placeholder="Masukan Alamat" type="text" id="address"
                                            value=""maxlength="200" class="round default-width-input"/></td>
-
                                 <td>kontak: </td>
                                 <td><input name="contact" placeholder="Masukan kontak" type="text" id="contact1"
                                            value=""maxlength="200" class="round default-width-input"

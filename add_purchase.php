@@ -33,11 +33,8 @@ include_once("init.php");?>
             </div>
         </div>
         <div id="content">
-
             <div class="page-full-width cf">
-
-                <div class="side-menu fl">
-
+                <div class="side-menu fr">
                     <h3>Kelola Pengeluaran</h3>
                     <ul>
                         <li><a href="add_purchase.php">Tambah Pembelian</a></li>
@@ -59,7 +56,6 @@ include_once("init.php");?>
                                 $gump->validation_rules(array(
                                     'supplier' => 'required|max_len,100|min_len,3'
                                 ));
-
                                 $gump->filter_rules(array(
                                     'supplier' => 'trim|sanitize_string|mysqli_escape'
                                 ));
@@ -89,9 +85,6 @@ include_once("init.php");?>
                                     $total = $_POST['total'];
                                     $subtotal = $_POST['subtotal'];
                                     $description = mysqli_real_escape_string($db->connection, $_POST['description']);
-                                    //$due = mysqli_real_escape_string($db->connection, $_POST['duedate']);
-                                    //$payment = mysqli_real_escape_string($db->connection, $_POST['payment']);
-                                    //$balance = mysqli_real_escape_string($db->connection, $_POST['balance']);
                                     $mode = mysqli_real_escape_string($db->connection, $_POST['mode']);
                                     $autoid = $_POST['purchaseid'];
                                     $autoid1 = $autoid;
@@ -110,8 +103,6 @@ include_once("init.php");?>
                                             $amount1 = $amount + $quty[$i];
                                             $db->execute("UPDATE stock_avail SET quantity='$amount1' WHERE name='$stock_name[$i]'");
                                             $db->query("INSERT INTO stock_entries(stock_id,stock_name,stock_supplier_name,quantity,company_price,selling_price,opening_stock,closing_stock,date,username,type,total,mode,description,subtotal,count1) VALUES ('$autoid1','$stock_name[$i]','$supplier','$quty[$i]','$cost[$i]','$sell[$i]','$amount','$amount1','$date','$username','entry','$total[$i]','$mode','$description','$subtotal',$i+1)");
-                                            //INSERT INTO `stock`.`stock_entries` (`id`, `stock_id`, `stock_name`, `stock_supplier_name`, `category`, `quantity`, `company_price`, `selling_price`, `opening_stock`, `closing_stock`, `date`, `username`, `type`, `salesid`, `total`, `payment`, `balance`, `mode`, `description`, `due`, `subtotal`, `count1`)
-                                            //VALUES (NULL, '$autoid1', '$stock_name[$i]', '$supplier', '', '$quantity', '$brate', '$srate', '$amount', '$amount1', '$mysqldate', 'sdd', 'entry', 'Sa45', '432.90', '2342.90', '24.34', 'cash', 'sdflj', '2010-03-25 12:32:02', '45645', '1');
                                         }
                                     }
                                     $msg = "<br><font color=green size=6px >Parchase order Added successfully Ref: [" . $_POST['purchaseid'] . "] !</font>";
@@ -178,31 +169,21 @@ include_once("init.php");?>
                                         <td> &nbsp;</td>
                                     </tr>
                                     <tr>
-
                                         <td><input name="" type="text" id="item" maxlength="200"
                                                    class="round default-width-input " style="width: 150px"/></td>
-
                                         <td><input name="" type="text" id="quty" maxlength="200"
                                                    class="round default-width-input my_with"
                                                    onKeyPress="quantity_chnage(event);return numbersonly(event);"
                                                    onkeyup="total_amount();unique_check()"/></td>
-
                                         <td><input name="" type="text" id="cost" readonly="readonly" maxlength="200"
                                                    class="round default-width-input my_with"/></td>
-
-
                                         <td><input name="" type="text" id="sell" readonly="readonly" maxlength="200"
                                                    class="round default-width-input my_with"/></td>
-
-
                                         <td><input name="" type="text" id="stock" readonly="readonly" maxlength="200"
                                                    class="round  my_with"/></td>
-
-
                                         <td><input name="" type="text" id="total" maxlength="200"
                                                    class="round default-width-input " style="width:120px;  margin-left: 20px"/>
                                         </td>
-
                                     </tr>
                                 </table>
                                 <table class="form"  style="width: inherit; transform: translate(157px, 10px);">

@@ -34,7 +34,7 @@ include_once("init.php");?>
 </div>
 <div id="content">
     <div class="page-full-width cf">
-        <div class="side-menu fl">
+        <div class="side-menu fr">
             <h3>Kelola Data Produk</h3>
             <ul>
               <li><a href="add_stock.php">Tambah Bibit Tanaman</a></li>
@@ -110,12 +110,10 @@ include_once("init.php");?>
                                 <td><input name="stockid" type="text" id="stockid" readonly="readonly" maxlength="200"
                                            class="round default-width-input"
                                            value="<?php echo isset($autoid) ? $autoid : ''; ?>"/></td>
-
                                 <td><span class="man">*</span>Nama Bibit Tanaman:</td>
                                 <td><input name="name" placeholder="Masukan nama bibit" type="text" id="name"
                                            maxlength="200" class="round default-width-input"
                                            value="<?php echo isset($name) ? $name : ''; ?>"/></td>
-
                             </tr>
                             <tr>
                                 <td><span class="man">*</span>Harga beli:</td>
@@ -129,14 +127,12 @@ include_once("init.php");?>
                                            maxlength="200" class="round default-width-input"
                                            onkeypress="return numbersonly(event)"
                                            value="<?php echo isset($sell) ? $sell : ''; ?>"/></td>
-
                             </tr>
                             <tr>
                                 <td>Pemasok:</td>
                                 <td><input name="supplier" placeholder="Masukan Nama Pemasok" type="text" id="supplier"
                                            maxlength="200" class="round default-width-input"
                                            value="<?php echo isset($supplier) ? $supplier : ''; ?>"/></td>
-
                                 <td>Jenis:</td> <td><input name="category" placeholder="Masukan Jenis Bibit" type="text" id="category"
                                            maxlength="200" class="round default-width-input"
                                            value="<?php echo isset($category) ? $category : ''; ?>"/></td>

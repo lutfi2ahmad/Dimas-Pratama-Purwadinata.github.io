@@ -93,9 +93,6 @@ include_once("init.php");
         </div>
     </div>
 </div>
-<footer>
-<div id="footer">
-
-</div>
-</footer>
+<?php include_once("tpl/footer.php"); ?>
+</body>
 </html>

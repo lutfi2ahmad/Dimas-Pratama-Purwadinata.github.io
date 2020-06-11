@@ -198,8 +198,8 @@ include_once("init.php");
                                 </td>
                             </tr>
                         </form>
-
                 </div>
             </div>
+	<?php include_once("tpl/footer.php"); ?>
 </body>
 </html>

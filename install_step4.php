@@ -50,7 +50,7 @@ if (isset($_POST['submit']) and $_POST['submit'] === 'Upload') {
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>POSNIC - Login to Control Panel</title>
+    <title>Pure Nature Shop</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/cmxform.css">
     <link rel="stylesheet" href="js/lib/validationEngine.jquery.css">

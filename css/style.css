@@ -83,6 +83,7 @@ p {
 .fl { float: right; }
 .fr { float: left; }
 .cb { clear: both; }
+.fd { float: left;}
 
 .half-size-column {
     width: 48%;
@@ -133,15 +134,12 @@ cite {
     color: #9498a1;
 }
 
-
-
-
-
-
 /* ---------- TYPOGRAPHY ---------- */
 body, form {
     font-family: "Droid Sans", Helvetica, Arial, sans-serif;
     line-height: 1.125em; /* 18/16 */
+    width: 100%;
+    max-width: -webkit-fill-available;
 }
 
 p, .button, form input, ul#nav li ul, ul#tabs, div.side-menu ul li a, table,
@@ -161,8 +159,6 @@ h5 { font-size: 0.625em; /* 10/16 */ }
 .man {
     color:#FF0000;
 }
-
-
 
 /* ---------- COLORS ---------- */
 a { color: #2069b4; }
@@ -686,10 +682,10 @@ form#login-form {
 }
 
 div.side-menu {
-    background: #3f4551;
+    background: #262626;
     border: 1px solid #eeefef;
     width: 15%;
-    margin-bottom: 1em; /* 16/16 */
+    margin-bottom: 1em;
 }
 
 div.side-menu h3 {

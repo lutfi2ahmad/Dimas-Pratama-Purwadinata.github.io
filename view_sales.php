@@ -59,7 +59,6 @@ include_once("init.php");
                             <input name="go" type="button" value="pergi" class=" round blue my_button  text-upper"
                                    onclick="return confirmLimitSubmit()">
                         </form>
-
                         <form name="deletefiles" action="delete.php" method="post">
 
                             <input type="hidden" name="table" value="category_details">
@@ -73,52 +72,32 @@ include_once("init.php");
                             <input name="dsubmit" type="button" value="hapus item terpilih"
                                    class="my_button round blue   text-upper" style="margin-left:5px;"
                                    onclick="return confirmDeleteSubmit()"/>
-
                             <table id="tblDisplay">
                                 <?php
-
-
                                 $SQL = "SELECT DISTINCT(transactionid) FROM  stock_sales ORDER BY id DESC ";
                                 if (isset($_POST['Search']) AND trim($_POST['searchtxt']) != "") {
 
                                     $SQL = "SELECT DISTINCT(transactionid) FROM  stock_sales WHERE stock_name LIKE '%" . $_POST['searchtxt'] . "%' ORDER BY id DESC ";
                                 }
-
                                 $tbl_name = "stock_sales";
-
                                 $adjacents = 3;
-
                                 $query = "SELECT COUNT(transactionid) as num FROM $tbl_name ";
                                 if (isset($_POST['Search']) AND trim($_POST['searchtxt']) != "") {
-
                                     $query = "SELECT COUNT(transactionid) as num FROM stock_sales WHERE stock_name LIKE '%" . $_POST['searchtxt'] . "%'";
-
-
                                 }
-
-
                                 $total_pages = mysqli_fetch_array(mysqli_query($db->connection, $query));
                                 $total_pages = $total_pages['num'];
-
                                 $targetpage = "view_sales.php";
-
                                 $limit = 10;
                                 if (isset($_GET['limit']) && is_numeric($_GET['limit'])) {
                                     $limit = $_GET['limit'];
                                     $_GET['limit'] = 10;
                                 }
-
                                 $page = isset($_GET['page']) ? $_GET['page'] : 0;
-
-
                                 if ($page)
-
                                     $start = ($page - 1) * $limit;
-
                                 else
-
                                     $start = 0;
-
 								$co=0;
 								$co1=0;
 								$s=mysqli_query($db->connection, "select * from stock_sales");
@@ -126,142 +105,76 @@ include_once("init.php");
 								{
 									$co++;
 								}
-
-
                                 $sql = "SELECT * FROM stock_sales ORDER BY id desc LIMIT $start, $limit  ";
                                 if (isset($_POST['Search']) AND trim($_POST['searchtxt']) != "") {
-
                                     $sql = "SELECT * FROM stock_sales WHERE stock_name LIKE '%" . $_POST['searchtxt'] . "%'  ORDER BY id desc LIMIT $start, $limit";
-
-
                                 }
-
-
                                 $result = mysqli_query($db->connection, $sql);
-
                                 if ($page == 0) $page = 1;
                                 $prev = $page - 1;
                                 $next = $page + 1;
-
                                 $lastpage = ceil($total_pages / $limit);
                                 $lpm1 = $lastpage - 1;
                                 $pagination = "";
-
                                 if ($lastpage > 1) {
-
                                     $pagination .= "<div >";
-
                                     if ($page > 1)
-
                                         $pagination .= "<a href=\"view_sales.php?page=$prev&limit=$limit\" class=my_pagination >Previous</a>";
-
                                     else
-
                                         $pagination .= "<span class=my_pagination>Previous</span>";
-
                                     if ($lastpage < 7 + ($adjacents * 2))
-
                                     {
-
                                         for ($counter = 1; $counter <= $lastpage; $counter++) {
-
                                             if ($counter == $page)
-
                                                 $pagination .= "<span class=my_pagination>$counter</span>";
-
                                             else
-
                                                 $pagination .= "<a href=\"view_sales.php?page=$counter&limit=$limit\" class=my_pagination>$counter</a>";
-
                                         }
-
                                     } elseif ($lastpage > 5 + ($adjacents * 2))
                                     {
                                         if ($page < 1 + ($adjacents * 2)) {
-
                                             for ($counter = 1; $counter < 4 + ($adjacents * 2); $counter++) {
-
                                                 if ($counter == $page)
-
                                                     $pagination .= "<span class=my_pagination>$counter</span>";
-
                                                 else
-
                                                     $pagination .= "<a href=\"view_sales.php?page=$counter&limit=$limit\" class=my_pagination>$counter</a>";
-
                                             }
-
                                             $pagination .= "...";
-
                                             $pagination .= "<a href=\"view_sales.php?page=$lpm1&limit=$limit\" class=my_pagination>$lpm1</a>";
-
                                             $pagination .= "<a href=\"view_sales.php?page=$lastpage&limit=$limit\" class=my_pagination>$lastpage</a>";
-
                                         }
-
                                         elseif ($lastpage - ($adjacents * 2) > $page && $page > ($adjacents * 2)) {
-
                                             $pagination .= "<a href=\"view_sales.php?page=1&limit=$limit\" class=my_pagination>1</a>";
-
                                             $pagination .= "<a href=\"view_sales.php?page=2&limit=$limit\" class=my_pagination>2</a>";
-
                                             $pagination .= "...";
-
                                             for ($counter = $page - $adjacents; $counter <= $page + $adjacents; $counter++) {
-
                                                 if ($counter == $page)
-
                                                     $pagination .= "<span  class=my_pagination>$counter</span>";
-
                                                 else
-
                                                     $pagination .= "<a href=\"view_sales.php?page=$counter&limit=$limit\" class=my_pagination>$counter</a>";
-
                                             }
-
                                             $pagination .= "...";
-
                                             $pagination .= "<a href=\"view_sales.php?page=$lpm1&limit=$limit\" class=my_pagination>$lpm1</a>";
-
                                             $pagination .= "<a href=\"view_sales.php?page=$lastpage&limit=$limit\" class=my_pagination>$lastpage</a>";
-
                                         }
                                         else {
-
                                             $pagination .= "<a href=\"$view_sales.php?page=1&limit=$limit\" class=my_pagination>1</a>";
-
                                             $pagination .= "<a href=\"$view_sales.php?page=2&limit=$limit\" class=my_pagination>2</a>";
-
                                             $pagination .= "...";
-
                                             for ($counter = $lastpage - (2 + ($adjacents * 2)); $counter <= $lastpage; $counter++) {
-
                                                 if ($counter == $page)
-
                                                     $pagination .= "<span class=my_pagination >$counter</span>";
-
                                                 else
-
                                                     $pagination .= "<a href=\"$targetpage?page=$counter&limit=$limit\" class=my_pagination>$counter</a>";
-
                                             }
-
                                         }
-
                                     }
-
                                     if ($page < $counter - 1)
-
                                         $pagination .= "<a href=\"view_sales.php?page=$next&limit=$limit\" class=my_pagination>Next</a>";
-
                                     else
-
                                         $pagination .= "<span class= my_pagination >Next</span>";
-
                                     $pagination .= "</div>\n";
-
                                 }
-
                                 ?>
                                 <tr>
                                     <th>No</th>
@@ -269,34 +182,28 @@ include_once("init.php");
                                     <th>Id Penjualan</th>
                                     <th>Tanggal</th>
                                     <th>Nama Pelanggan</th>
-
                                     <th>pembayaran</th>
                                     <th>Jumlah</th>
                                     <th> Edit / hapus</th>
                                     <th>  Pilih</th>
                                 </tr>
-
-                                <?php
-$count=0;
-
-								$i = 1;
-                                $no = $page - 1;
-                                $no = $no * $limit;
+                                  <?php
+                                  $count=0;
+								                  $i = 1;
+                                  $no = $page - 1;
+                                  $no = $no * $limit;
                                 while ($row = mysqli_fetch_array($result)) {
-									$count++;
-									$co1++;
+									                         $count++;
+									                         $co1++;
                                     ?>
                                     <tr id='tr<?php echo $row['id']; ?>'>
                                         <td> <?php echo $no + $i; ?></td>
-
                                         <td><?php echo $row['stock_name']; ?></td>
                                         <td> <?php echo $row['transactionid']; ?></td>
                                         <td> <?php echo $row['date']; ?></td>
                                         <td> <?php echo $row['customer_id']; ?></td>
                                         <td> <?php echo $row['payment']; ?></td>
                                         <td> <?php echo $row['subtotal']; ?></td>
-
-
                                         <td>
                                             <a href="update_sales.php?sid=<?php echo $row['id']; ?>&table=stock_sales&return=view_sales.php"
                                                class="table-actions-button ic-table-edit">
@@ -308,7 +215,6 @@ $count=0;
                                         <td><input type="checkbox" value="<?php echo $row['id']; ?>" name="checklist[]"
                                                    id="<?php echo $row['id']; ?>" /></td>
                                                    </td>
-
                                     </tr>
                                     <?php $i++;
                                 } ?>
@@ -321,6 +227,8 @@ $count=0;
                         </form>
                 </div>
             </div>
+        </div>
+  </div>
 	<?php include_once("tpl/footer.php"); ?>
 </body>
 </html>

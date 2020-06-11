@@ -58,7 +58,7 @@ include_once("init.php");
                 <div class="content-module-main cf">
                     <?php
                     if (isset($_POST['supplier']) and isset($_POST['stock_name'])) {
-                
+
                         $autoid = mysqli_real_escape_string($db->connection, $_POST['id']);
 
                         $supplier = mysqli_real_escape_string($db->connection, $_POST['supplier']);
@@ -70,9 +70,9 @@ include_once("init.php");
                             $db->query("insert into supplier_details(supplier_name,supplier_address,supplier_contact1) values('$supplier','$address','$contact')");
                         }
                         $temp_balance = $db->queryUniqueValue("SELECT balance FROM supplier_details WHERE supplier_name='$supplier'");
-                      
+
                         $db->execute("UPDATE supplier_details SET balance='$temp_balance' WHERE supplier_name='$supplier'");
-                
+
                         $mode = mysqli_real_escape_string($db->connection, $_POST['mode']);
                         $description = mysqli_real_escape_string($db->connection, $_POST['description']);
 
@@ -88,7 +88,7 @@ include_once("init.php");
 
                         $i = 0;
                         $j = 1;
-			    
+
                         $selected_date = $_POST['date'];
                         $selected_date = strtotime($selected_date);
                         $mysqldate = date('Y-m-d H:i:s', $selected_date);
@@ -126,8 +126,8 @@ include_once("init.php");
                         <table class="form" border="0" cellspacing="0" cellpadding="0">
                             <tr>
                                 <?php
-                                $str = $db->maxOfAll("stock_id", "stock_entries"); 
-                                $array = explode(' ', $str);                           
+                                $str = $db->maxOfAll("stock_id", "stock_entries");
+                                $array = explode(' ', $str);
                                 $autoid = ++$array[0];
                                   ?>
                                 <td>Purchase ID:</td>
@@ -181,10 +181,10 @@ include_once("init.php");
                                            onKeyPress="quantity_chnage(event);return numbersonly(event)"
                                            onkeyup="total_amount();unique_check()"
                                            value="<?php echo isset($category) ? $category : ''; ?>"/></td>
-                                <td><input name="" type="text" id="cost" readonly="readonly" maxlength="200" style="width: 133px" 
+                                <td><input name="" type="text" id="cost" readonly="readonly" maxlength="200" style="width: 133px"
                                            class="round my_with"
                                            value="<?php echo isset($category) ? $category : ''; ?>"/></td>
-                                <td><input name="" type="text" id="sell" readonly="readonly" maxlength="200" style="width: 130px" 
+                                <td><input name="" type="text" id="sell" readonly="readonly" maxlength="200" style="width: 130px"
                                            class="round  my_with"
                                            value="<?php echo isset($category) ? $category : ''; ?>"/></td>
                                 <td><input name="" type="text" id="stock" readonly="readonly" maxlength="200" style="width: 143px"
@@ -202,7 +202,7 @@ include_once("init.php");
                                            style="width:30px;float: right; border:none;height:30px;background:url(images/close_new.png)">
                                 </td>
                             </tr>
-                        </table>   
+                        </table>
                         <input type="hidden" id="guid">
                         <input type="hidden" id="edit_guid">
 
@@ -248,14 +248,14 @@ include_once("init.php");
                                                    style="margin-left:20px;width: 120px" class="round "
                                                    value="<?php echo $line1->total; ?>"/>
                                         <input type="hidden" id="<?php echo $item; ?>"><input type="hidden" name="gu_id[]" value="<?php echo $line1->id ?>">
-                                        
+
                                         <td><input type=button value="" id="<?php echo $item; ?>"
                                                    style="float: right;width:30px;border:none;height:30px;background:url(images/edit_new.png)"
                                                    class="round" onclick="edit_stock_details(this.id)"></td>
                                     </tr>
                                 <?php } ?>
                             </table>
-                        </div> 
+                        </div>
                         <table>
                             <tr>
                                 <td>Mode &nbsp;</td>

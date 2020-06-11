@@ -33,8 +33,8 @@ include_once("init.php");
 </div>
 <div id="content">
     <div class="page-full-width cf">
-        <div class="side-menu fl">
-            <h3>Rekap</h3>
+        <div class="side-menu fr">
+            <h3>Rekap Data</h3>
             <ul>
                 <ul>
                     <li><a></a></li>
@@ -44,7 +44,7 @@ include_once("init.php");
         <div class="side-content fr">
             <div class="content-module">
                 <div class="content-module-heading cf">
-                    <h3 class="fl">Rekap</h3>
+                    <h3 class="fr">Rekap Data</h3>
                 </div>
                 <div class="content-module-main cf">
                     <form action="">
@@ -52,7 +52,6 @@ include_once("init.php");
                             <form action="sales_report.php" method="post" name="form1" id="form1" name="sales_report"
                                   id="sales_report" target="myNewWinsr">
                                 <tr>
-
                                     <td><strong>Rekap Penjualan</strong></td>
                                     <td>From</td>
                                     <td><input name="from_sales_date" type="text" id="from_sales_date"
@@ -62,7 +61,6 @@ include_once("init.php");
                                     </td>
                                     <td><div style="padding-left: 15px;"><input class="button round blue image" name="submit" type="button" value="Lihat" onClick='sales_report_fn();'>
                                         </div></td>
-
                                 </tr>
                             </form>
                             <tr>
@@ -87,7 +85,6 @@ include_once("init.php");
                                         </div></td>
                                 </tr>
                             </form>
-
                             <tr>
                                 <td>&nbsp;</td>
                                 <td>&nbsp;</td>
@@ -96,7 +93,6 @@ include_once("init.php");
                                 <td>&nbsp;</td>
                                 <td>&nbsp;</td>
                             </tr>
-
                             <form action="sales_purchase_report.php" method="post" name="sales_purchase_report"
                                   target="_blank">
                                 <tr>
@@ -107,17 +103,17 @@ include_once("init.php");
                                     <td>To</td>
                                     <td><input name="to_sales_purchase_date" type="text" id="to_sales_purchase_date"
                                                style="width:80px;"></td>
-
                                     <td><div style="padding-left: 15px;"><input  class="button round blue image" name="submit" type="button" value="Lihat"
                                                 onClick='sales_purchase_report_fn();'></div></td>
                                 </tr>
                             </form>
-
                         </table>
                 </div>
             </div>
         </div>
     </div>
+  </div>
+</div>
 <?php include_once("tpl/footer.php"); ?>
 </body>
 </html>

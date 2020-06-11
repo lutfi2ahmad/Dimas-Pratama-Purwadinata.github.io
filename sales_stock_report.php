@@ -153,6 +153,7 @@ if (!isset($_SESSION['username']) || $_SESSION['usertype'] != 'admin') {
                 </td>
             </tr>
         </table>
+        <?php include_once("tpl/footer.php"); ?>
         </body>
         </html>
         <?php
